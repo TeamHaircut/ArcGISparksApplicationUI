@@ -4,9 +4,8 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import com.esri.arcgisruntime.mapping.ArcGISMap;
@@ -20,28 +19,24 @@ public class MyParksMain extends Application {
 
 	  @Override
 	  public void start(Stage stage) throws IOException {
-		      StackPane stackpane = new StackPane();
 		      
-		      
-		      Node view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
-		      ParkController.myViewList.add(view0);
-		      
-		      stackpane.getChildren().add(view0);
-		      view0.setVisible(true);
-		
-		      Scene scene = new Scene(stackpane);
-		      stage.setTitle("Test ArcGIS JavaFX Application");
-		      stage.setWidth(800);
-		      stage.setHeight(700);
-		      stage.setScene(scene);
-		      stage.show();
-		
-		      ArcGISMap map = new ArcGISMap(Basemap.createLightGrayCanvasVector());
-		
-		      mapView = new MapView();
-		      mapView.setMap(map);
-		
-		      stackpane.getChildren().addAll(mapView);
+	      BorderPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
+	      ParkController.myViewList.add(view0);
+	      
+	      view0.setVisible(true);
+	      
+	      Scene scene = new Scene(view0);
+	      stage.setTitle("Test ArcGIS JavaFX Application");
+	      stage.setWidth(800);
+	      stage.setHeight(700);
+	      stage.setScene(scene);
+	      stage.show();
+	
+	      ArcGISMap map = new ArcGISMap(Basemap.createLightGrayCanvasVector());
+	
+	      mapView = new MapView();
+	      mapView.setMap(map);
+	      view0.setCenter(mapView);
 	  }
 	
 	  @Override

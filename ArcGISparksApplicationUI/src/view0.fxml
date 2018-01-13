@@ -5,8 +5,29 @@
 <?import javafx.scene.layout.*?>
 
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
-   <children>
-      <Button mnemonicParsing="false" text="Button" />
-   </children>
-</FlowPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
+   <bottom>
+      <Accordion BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane animated="false" text="untitled 1">
+               <content>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Button" />
+                     </children>
+                  </FlowPane>
+               </content>
+          </TitledPane>
+          <TitledPane animated="false" text="untitled 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </bottom>
+</BorderPane>
