@@ -18,6 +18,19 @@ public class ParkModel {
 		}
 	}
 	
+//testentity property (object property)														testentity property (object property)
+		ObjectProperty<TestEntity> testentityProp = new SimpleObjectProperty<TestEntity>();
+		public ObjectProperty<TestEntity> testentityProperty(){
+			return testentityProp;
+		}
+		public void setTestentityProp(TestEntity newTestentity){
+			testentityProp.setValue(newTestentity);
+			System.out.println(getTestentityProp());
+		}
+		public TestEntity getTestentityProp(){
+			return testentityProp.getValue();
+		}
+	
 //list view property (items property)														list view property (items property)
 		ObjectProperty<ObservableList<TestEntity>> listviewProp = new SimpleObjectProperty<ObservableList<TestEntity>>();
 		public ObjectProperty<ObservableList<TestEntity>> listviewProperty() {
@@ -33,7 +46,7 @@ public class ParkModel {
 			return listviewProp.getValue();
 		}
 		
-//list view (getAccountList())																list view (getAccountList())
+//list view (getList())																list view (getList())
 		public static ParkJPA myJPA;
 		public List<TestEntity> myList = new ArrayList<TestEntity>();
 		public List<TestEntity> getList(){

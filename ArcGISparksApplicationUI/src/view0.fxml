@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
    <bottom>
       <Accordion BorderPane.alignment="CENTER">
         <panes>
@@ -22,7 +22,7 @@
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listview1" maxHeight="200.0" maxWidth="700.0" />
+                        <ListView fx:id="listview1" minWidth="775.0" prefHeight="200.0" />
                      </children>
                   </FlowPane>
                </content>

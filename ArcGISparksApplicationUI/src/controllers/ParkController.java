@@ -36,7 +36,7 @@ public class ParkController {
 				@Override
 				public void changed(ObservableValue<? extends TestEntity> arg0,
 						TestEntity arg1, TestEntity arg2) {
-						//accountModel.setAccountProp(arg2);
+						parkModel.setTestentityProp(arg2);
 				}
 			});
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
