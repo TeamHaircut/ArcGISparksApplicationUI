@@ -8,7 +8,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import entities.Site;
-import entities.TestEntity;
 import jpa.ParkJPA;
 
 public class ParkModel {
@@ -20,16 +19,16 @@ public class ParkModel {
 	}
 	
 //Site property (object property)														Site property (object property)
-		ObjectProperty<Site> testentityProp = new SimpleObjectProperty<Site>();
-		public ObjectProperty<Site> testentityProperty(){
-			return testentityProp;
+		ObjectProperty<Site> siteProp = new SimpleObjectProperty<Site>();
+		public ObjectProperty<Site> siteProperty(){
+			return siteProp;
 		}
-		public void setTestentityProp(Site newTestentity){
-			testentityProp.setValue(newTestentity);
-			System.out.println(getTestentityProp());
+		public void setSiteProp(Site newSite){
+			siteProp.setValue(newSite);
+			System.out.println(getSiteProp());
 		}
-		public Site getTestentityProp(){
-			return testentityProp.getValue();
+		public Site getSiteProp(){
+			return siteProp.getValue();
 		}
 	
 //list view property (items property)														list view property (items property)
@@ -52,7 +51,7 @@ public class ParkModel {
 		public List<Site> myList = new ArrayList<Site>();
 		public List<Site> getList(){
 			if(myJPA != null)
-			myList = myJPA.getDBTestEntities();
+			myList = myJPA.getDBSites();
 			return myList;
 		}
 

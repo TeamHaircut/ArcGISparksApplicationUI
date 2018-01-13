@@ -11,7 +11,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import entities.Site;
-import entities.TestEntity;
 
 public class ParkJPA {
 	
@@ -39,7 +38,7 @@ public class ParkJPA {
 	    return em = (EntityManager) emf.createEntityManager();
 	}
 	
-	public List<Site> getDBTestEntities(){
+	public List<Site> getDBSites(){
 		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{

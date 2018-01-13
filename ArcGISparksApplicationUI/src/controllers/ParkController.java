@@ -11,8 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import entities.Site;
-import entities.TestEntity;
-
 
 public class ParkController {
 	
@@ -36,7 +34,7 @@ public class ParkController {
 				@Override
 				public void changed(ObservableValue<? extends Site> arg0,
 						Site arg1, Site arg2) {
-						parkModel.setTestentityProp(arg2);
+						parkModel.setSiteProp(arg2);
 				}
 			});
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
