@@ -26,7 +26,7 @@ public class MyParksMain extends Application {
 	      view0.setVisible(true);
 	      
 	      Scene scene = new Scene(view0);
-	      stage.setTitle("Test ArcGIS JavaFX Application with VC");
+	      stage.setTitle("Test ArcGIS JavaFX Application with MVC");
 	      stage.setWidth(800);
 	      stage.setHeight(700);
 	      stage.setScene(scene);

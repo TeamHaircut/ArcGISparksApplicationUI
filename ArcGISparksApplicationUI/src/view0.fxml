@@ -22,7 +22,7 @@
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="button2" mnemonicParsing="false" onAction="#button2Action" text="button 2" />
+                        <ListView fx:id="listview1" maxHeight="200.0" maxWidth="700.0" />
                      </children>
                   </FlowPane>
                </content>
