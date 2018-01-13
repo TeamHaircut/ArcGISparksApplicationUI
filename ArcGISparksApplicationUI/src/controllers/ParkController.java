@@ -11,13 +11,16 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
+import entities.TestEntity;
+
+
 public class ParkController {
 	
 	public static ArrayList<Node> myViewList = new ArrayList<Node>();
 	public static ParkModel parkModel = new ParkModel();
 	
 	@FXML Button button1;
-	@FXML ListView<String> listview1;
+	@FXML ListView<TestEntity> listview1;
 	
 	@FXML
 	private void button1Action(ActionEvent event){
@@ -27,11 +30,11 @@ public class ParkController {
 	@FXML void initialize(){
 		if(listview1 != null)
 		{
-			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TestEntity>(){
 
 				@Override
-				public void changed(ObservableValue<? extends String> arg0,
-						String arg1, String arg2) {
+				public void changed(ObservableValue<? extends TestEntity> arg0,
+						TestEntity arg1, TestEntity arg2) {
 						//accountModel.setAccountProp(arg2);
 				}
 			});
