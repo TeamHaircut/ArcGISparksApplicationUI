@@ -7,10 +7,16 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import entities.TestEntity;
+import jpa.ParkJPA;
 
 public class ParkModel {
+	
+	public void connect() {
+		if(myJPA == null) {
+			myJPA = new ParkJPA();
+		}
+	}
 	
 //list view property (items property)														list view property (items property)
 		ObjectProperty<ObservableList<TestEntity>> listviewProp = new SimpleObjectProperty<ObservableList<TestEntity>>();
@@ -28,13 +34,11 @@ public class ParkModel {
 		}
 		
 //list view (getAccountList())																list view (getAccountList())
-		//public static ParkJPA myJPA;
+		public static ParkJPA myJPA;
 		public List<TestEntity> myList = new ArrayList<TestEntity>();
 		public List<TestEntity> getList(){
-			//if(myJPA != null)
-			//myList = myJPA.getDBAccounts();
-			myList.add(new TestEntity(1,"item1"));
-			myList.add(new TestEntity(2, "item2"));
+			if(myJPA != null)
+			myList = myJPA.getDBTestEntities();
 			return myList;
 		}
 

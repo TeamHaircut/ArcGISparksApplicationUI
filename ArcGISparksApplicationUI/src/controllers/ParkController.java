@@ -30,6 +30,7 @@ public class ParkController {
 	@FXML void initialize(){
 		if(listview1 != null)
 		{
+			parkModel.connect();
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TestEntity>(){
 
 				@Override
