@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-
+import entities.Site;
 import entities.TestEntity;
 
 
@@ -20,7 +20,7 @@ public class ParkController {
 	public static ParkModel parkModel = new ParkModel();
 	
 	@FXML Button button1;
-	@FXML ListView<TestEntity> listview1;
+	@FXML ListView<Site> listview1;
 	
 	@FXML
 	private void button1Action(ActionEvent event){
@@ -31,11 +31,11 @@ public class ParkController {
 		if(listview1 != null)
 		{
 			parkModel.connect();
-			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TestEntity>(){
+			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
-				public void changed(ObservableValue<? extends TestEntity> arg0,
-						TestEntity arg1, TestEntity arg2) {
+				public void changed(ObservableValue<? extends Site> arg0,
+						Site arg1, Site arg2) {
 						parkModel.setTestentityProp(arg2);
 				}
 			});

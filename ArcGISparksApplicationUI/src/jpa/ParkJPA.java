@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import entities.Site;
 import entities.TestEntity;
 
 public class ParkJPA {
@@ -21,7 +22,6 @@ public class ParkJPA {
 	{
 		em = null;
 		em = getEntityManager("jdbc:derby:c:/users/public/documents/databases/derby/mydb/testParkDB;");
-	
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -39,14 +39,14 @@ public class ParkJPA {
 	    return em = (EntityManager) emf.createEntityManager();
 	}
 	
-	public List<TestEntity> getDBTestEntities(){
-		List<TestEntity> entityList = new ArrayList<TestEntity>();
+	public List<Site> getDBTestEntities(){
+		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{
 			Query q;
-			q = em.createQuery("select x from TestEntity x");
+			q = em.createQuery("select x from Site x");
 			@SuppressWarnings("unchecked")
-			List<TestEntity>myResultList = q.getResultList();
+			List<Site>myResultList = q.getResultList();
 			entityList.addAll(myResultList);
 		}
 		return entityList;

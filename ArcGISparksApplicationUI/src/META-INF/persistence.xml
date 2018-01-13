@@ -2,6 +2,11 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 	<persistence-unit name="testParkDB">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<class>entities.Color</class>
+		<class>entities.Designation</class>
+		<class>entities.Region</class>
+		<class>entities.Site</class>
+		<class>entities.State</class>
 		<class>entities.TestEntity</class>
 		<properties>
 			<property name="openjpa.ConnectionDriverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>

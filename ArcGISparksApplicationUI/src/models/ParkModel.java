@@ -7,6 +7,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import entities.Site;
 import entities.TestEntity;
 import jpa.ParkJPA;
 
@@ -18,38 +19,38 @@ public class ParkModel {
 		}
 	}
 	
-//testentity property (object property)														testentity property (object property)
-		ObjectProperty<TestEntity> testentityProp = new SimpleObjectProperty<TestEntity>();
-		public ObjectProperty<TestEntity> testentityProperty(){
+//Site property (object property)														Site property (object property)
+		ObjectProperty<Site> testentityProp = new SimpleObjectProperty<Site>();
+		public ObjectProperty<Site> testentityProperty(){
 			return testentityProp;
 		}
-		public void setTestentityProp(TestEntity newTestentity){
+		public void setTestentityProp(Site newTestentity){
 			testentityProp.setValue(newTestentity);
 			System.out.println(getTestentityProp());
 		}
-		public TestEntity getTestentityProp(){
+		public Site getTestentityProp(){
 			return testentityProp.getValue();
 		}
 	
 //list view property (items property)														list view property (items property)
-		ObjectProperty<ObservableList<TestEntity>> listviewProp = new SimpleObjectProperty<ObservableList<TestEntity>>();
-		public ObjectProperty<ObservableList<TestEntity>> listviewProperty() {
+		ObjectProperty<ObservableList<Site>> listviewProp = new SimpleObjectProperty<ObservableList<Site>>();
+		public ObjectProperty<ObservableList<Site>> listviewProperty() {
 			listviewProp.setValue(FXCollections.observableList(getList()));
 			return listviewProp;
 		}
 		
-		public void setListviewProp(ObservableList<TestEntity> newListviewProp){
+		public void setListviewProp(ObservableList<Site> newListviewProp){
 			listviewProp.setValue(newListviewProp);	
 		}
 		
-		public ObservableList<TestEntity> getListviewProp(){
+		public ObservableList<Site> getListviewProp(){
 			return listviewProp.getValue();
 		}
 		
 //list view (getList())																list view (getList())
 		public static ParkJPA myJPA;
-		public List<TestEntity> myList = new ArrayList<TestEntity>();
-		public List<TestEntity> getList(){
+		public List<Site> myList = new ArrayList<Site>();
+		public List<Site> getList(){
 			if(myJPA != null)
 			myList = myJPA.getDBTestEntities();
 			return myList;
