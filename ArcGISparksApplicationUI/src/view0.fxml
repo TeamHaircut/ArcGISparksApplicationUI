@@ -9,23 +9,23 @@
    <bottom>
       <Accordion BorderPane.alignment="CENTER">
         <panes>
-          <TitledPane animated="false" text="untitled 1">
+          <TitledPane animated="false" text="Search Database">
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button fx:id="button1" mnemonicParsing="false" onAction="#button1Action" text="button 1" />
                      </children>
                   </FlowPane>
                </content>
           </TitledPane>
-          <TitledPane animated="false" text="untitled 2">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <TitledPane animated="false" text="Result List">
+               <content>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TextField />
+                        <Button fx:id="button2" mnemonicParsing="false" onAction="#button2Action" text="button 2" />
                      </children>
-                  </AnchorPane>
-            </content>
+                  </FlowPane>
+               </content>
           </TitledPane>
         </panes>
       </Accordion>
