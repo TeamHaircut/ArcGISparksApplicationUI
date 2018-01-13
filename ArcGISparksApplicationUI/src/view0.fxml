@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
+<BorderPane fx:id="view0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
    <bottom>
       <Accordion BorderPane.alignment="CENTER">
         <panes>
@@ -13,7 +13,7 @@
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="button1" mnemonicParsing="false" onAction="#button1Action" text="button 1" />
+                        <Button fx:id="button1" mnemonicParsing="false" onAction="#loadAction" text="load points on map" />
                      </children>
                   </FlowPane>
                </content>

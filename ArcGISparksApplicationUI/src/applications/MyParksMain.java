@@ -21,7 +21,7 @@ public class MyParksMain extends Application {
 	  public void start(Stage stage) throws IOException {
 		      
 	      BorderPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
-	      ParkController.myViewList.add(view0);
+	      
 	      
 	      view0.setVisible(true);
 	      
@@ -33,10 +33,11 @@ public class MyParksMain extends Application {
 	      stage.show();
 	
 	      ArcGISMap map = new ArcGISMap(Basemap.createLightGrayCanvasVector());
-	
 	      mapView = new MapView();
 	      mapView.setMap(map);
 	      view0.setCenter(mapView);
+	      
+	      ParkController.myViewList.add(view0);
 	  }
 	
 	  @Override
