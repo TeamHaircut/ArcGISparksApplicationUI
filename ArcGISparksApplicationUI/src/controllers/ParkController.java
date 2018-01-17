@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
@@ -32,7 +33,7 @@ public class ParkController {
 	@FXML private ListView<Site> listview1;
 	
 	@FXML
-	private void loadAction(ActionEvent event){
+	private void queryAction(ActionEvent event){
 		view0 = myViewList.get(0);
 		
 		ArcGISMap map = new ArcGISMap(Basemap.createLightGrayCanvasVector());
@@ -40,9 +41,8 @@ public class ParkController {
 		MapView mapView = new MapView();
 		GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
 		mapView.getGraphicsOverlays().add(graphicsOverlay);
-
-	      // add some red circled points to the graphics overlay
-	      createPoints(graphicsOverlay);
+		
+		displayDataPoints(graphicsOverlay);
 		mapView.setMap(map);
 		view0.setCenter(mapView);
 	
@@ -66,24 +66,24 @@ public class ParkController {
 		}
 	}
 	
-	private void createPoints(GraphicsOverlay graphicsOverlay) {
+	private void displayDataPoints(GraphicsOverlay graphicsOverlay) {
+		
+		
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
 	    // create a red (0xFFFF0000) circle simple marker symbol
 	    SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000, 10);
 
 	    // create graphics and add to graphics overlay
 	    Graphic graphic;
-	    graphic = new Graphic(new Point(-2.72, 56.065, SPATIAL_REFERENCE), redCircleSymbol);
-	    graphicsOverlay.getGraphics().add(graphic);
-
-	    graphic = new Graphic(new Point(-2.69, 56.065, SPATIAL_REFERENCE), redCircleSymbol);
-	    graphicsOverlay.getGraphics().add(graphic);
-
-	    graphic = new Graphic(new Point(-2.66, 56.065, SPATIAL_REFERENCE), redCircleSymbol);
-	    graphicsOverlay.getGraphics().add(graphic);
-
-	    graphic = new Graphic(new Point(-2.63, 56.065, SPATIAL_REFERENCE), redCircleSymbol);
-	    graphicsOverlay.getGraphics().add(graphic);
+	    List<Site> resultSet = parkModel.queryDB();
+	    
+	    for(Site site :resultSet) {
+	    	
+	    	graphic = new Graphic(new Point(site.getLat(), site.getLon(), SPATIAL_REFERENCE), redCircleSymbol);
+		    graphicsOverlay.getGraphics().add(graphic);
+		    System.out.println(site+" "+site.getLon()+" "+site.getLat());
+	    }
+	    
 	  }
 
 }

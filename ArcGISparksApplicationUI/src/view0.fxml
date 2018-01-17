@@ -13,7 +13,7 @@
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="button1" mnemonicParsing="false" onAction="#loadAction" text="load points on map" />
+                        <Button fx:id="button1" mnemonicParsing="false" onAction="#queryAction" text="Execute Query" />
                      </children>
                   </FlowPane>
                </content>

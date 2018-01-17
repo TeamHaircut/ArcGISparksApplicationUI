@@ -18,6 +18,12 @@ public class ParkModel {
 		}
 	}
 	
+	public List<Site> queryDB() {
+		List<Site> siteList = new ArrayList<Site>();
+		siteList = myJPA.getDBSites();
+		return siteList;
+	}
+	
 //Site property (object property)														Site property (object property)
 		ObjectProperty<Site> siteProp = new SimpleObjectProperty<Site>();
 		public ObjectProperty<Site> siteProperty(){
