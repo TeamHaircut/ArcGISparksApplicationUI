@@ -6,20 +6,23 @@ import java.util.List;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
+import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.mapping.view.MapView;
-import com.esri.arcgisruntime.symbology.SimpleMarkerSymbol;
+import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import entities.Site;
 
@@ -42,7 +45,7 @@ public class ParkController {
 		GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
 		mapView.getGraphicsOverlays().add(graphicsOverlay);
 		
-		displayDataPoints(graphicsOverlay);
+		showQueryResults(graphicsOverlay);
 		mapView.setMap(map);
 		view0.setCenter(mapView);
 	
@@ -66,24 +69,39 @@ public class ParkController {
 		}
 	}
 	
-	private void displayDataPoints(GraphicsOverlay graphicsOverlay) {
-		
+	private void showQueryResults(GraphicsOverlay graphicsOverlay) {
 		
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
-	    // create a red (0xFFFF0000) circle simple marker symbol
-	    SimpleMarkerSymbol redCircleSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.Style.CIRCLE, 0xFFFF0000, 10);
-
-	    // create graphics and add to graphics overlay
-	    Graphic graphic;
+	    
 	    List<Site> resultSet = parkModel.queryDB();
 	    
+	    Image newImage = new Image("arrowhead.png");
+	    PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
+	    
+	    
 	    for(Site site :resultSet) {
-	    	
-	    	graphic = new Graphic(new Point(site.getLat(), site.getLon(), SPATIAL_REFERENCE), redCircleSymbol);
-		    graphicsOverlay.getGraphics().add(graphic);
-		    System.out.println(site+" "+site.getLon()+" "+site.getLat());
+	    	placePictureMarkerSymbol(parkSymbol, new Point(site.getLat(), site.getLon(), SPATIAL_REFERENCE), graphicsOverlay);	
 	    }
 	    
 	  }
+	
+	private void placePictureMarkerSymbol(PictureMarkerSymbol markerSymbol, Point graphicPoint, GraphicsOverlay graphicsOverlay) {
+		
+	    markerSymbol.setHeight(30);
+	    markerSymbol.setWidth(30);
 
+	    markerSymbol.loadAsync();
+
+	    markerSymbol.addDoneLoadingListener(() -> {
+	      if (markerSymbol.getLoadStatus() == LoadStatus.LOADED) {
+	        Graphic symbolGraphic = new Graphic(graphicPoint, markerSymbol);
+	        graphicsOverlay.getGraphics().add(symbolGraphic);
+	      } else {
+	        Alert alert = new Alert(Alert.AlertType.ERROR, "Picture Marker Symbol Failed to Load!");
+	        alert.show();
+	      }
+	    });
+
+	  }
+	
 }
