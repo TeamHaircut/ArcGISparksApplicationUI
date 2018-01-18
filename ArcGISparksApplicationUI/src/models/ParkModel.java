@@ -21,6 +21,8 @@ public class ParkModel {
 	public List<Site> queryDB() {
 		List<Site> siteList = new ArrayList<Site>();
 		siteList = myJPA.getDBSites();
+		myList = siteList;
+		listviewProperty();
 		return siteList;
 	}
 	
@@ -56,8 +58,6 @@ public class ParkModel {
 		public static ParkJPA myJPA;
 		public List<Site> myList = new ArrayList<Site>();
 		public List<Site> getList(){
-			if(myJPA != null)
-			myList = myJPA.getDBSites();
 			return myList;
 		}
 

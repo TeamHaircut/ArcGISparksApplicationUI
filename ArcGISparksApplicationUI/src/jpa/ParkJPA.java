@@ -44,6 +44,7 @@ public class ParkJPA {
 		{
 			Query q;
 			q = em.createQuery("select x from Site x");
+			q = em.createQuery("select x from Site x where x.state_id = 3");
 			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q.getResultList();
 			entityList.addAll(myResultList);
