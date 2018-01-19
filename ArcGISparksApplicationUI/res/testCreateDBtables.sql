@@ -35,8 +35,8 @@ CREATE TABLE SITE (
 	SITE_NAME VARCHAR(50) NOT NULL UNIQUE,
 	DESIGNATION_ID INT CONSTRAINT DESIGNATION_FK REFERENCES DESIGNATION,
 	STATE_ID INT CONSTRAINT STATE_FK REFERENCES STATE,
-	LAT DOUBLE NOT NULL,
 	LON DOUBLE NOT NULL,
+	LAT DOUBLE NOT NULL,
 	WEBSITE VARCHAR(200),
 	MAP VARCHAR(200),
 	VISITED INT DEFAULT 0);
@@ -156,65 +156,183 @@ insert into state (state_name, state_abbreviation, region_id) select 'Virgin Isl
 
 --ij> run 'C:/Users\RuthDan/Desktop/DanDesktop/dev/javadevelopment/lunaworkspace/ArcTest4/res/DBtablesCreate.txt';
 
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Acadia',15,19,44.340313, -68.273396,'https://www.nps.gov/Acad/index.htm','https://www.nps.gov/Acad/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Arches',15,44,38.616580, -109.616662,'https://www.nps.gov/Arch/index.htm','https://www.nps.gov/Arch/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Badlands',15,41,43.853872, -102.350524,'https://www.nps.gov/Badl/index.htm','https://www.nps.gov/Badl/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Big Bend',15,43,29.159337, -103.257377,'https://www.nps.gov/BiBe/index.htm','https://www.nps.gov/BiBe/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Biscayne',15,9,25.477785, -80.184273,'https://www.nps.gov/Bisc/index.htm','https://www.nps.gov/Bisc/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Black Canyon of the Gunnison',15,6,38.574441, -107.741514 ,'https://www.nps.gov/BlCa/index.htm','https://www.nps.gov/BlCa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Bryce Canyon',15,44,37.592173, -112.187595,'https://www.nps.gov/BrCa/index.htm','https://www.nps.gov/BrCa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Canyonlands',15,44,38.323331, -109.878973,'https://www.nps.gov/Cany/index.htm','https://www.nps.gov/Cany/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Capitol Reef',15,44,38.356048, -111.260386,'https://www.nps.gov/CaRe/index.htm','https://www.nps.gov/CaRe/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Carlsbad Caverns',15,31,32.141150, -104.553627,'https://www.nps.gov/cave/index.htm','https://www.nps.gov/cave/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Channel Islands',15,5,33.991113, -119.729528,'https://www.nps.gov/ChIs/index.htm','https://www.nps.gov/ChIs/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Congaree',15,40,33.792038, -80.777035,'https://www.nps.gov/Cong/index.htm','https://www.nps.gov/Cong/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Crater Lake',15,37,42.869115, -122.157573,'https://www.nps.gov/CrLa/index.htm','https://www.nps.gov/CrLa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Cuyahoga Valley',15,35,41.279624, -81.569920,'https://www.nps.gov/CuVa/index.htm','https://www.nps.gov/CuVa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Death Valley',15,5,36.426749, -117.030657,'https://www.nps.gov/DeVa/index.htm','https://www.nps.gov/DeVa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Denali',17,2,63.166349, -151.171772,'https://www.nps.gov/Dena/index.htm','https://www.nps.gov/Dena/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Dry Tortugas',15,9,24.628269, -82.873654,'https://www.nps.gov/DrTo/index.htm','https://www.nps.gov/DrTo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Everglades',15,9,25.316088, -80.899433,'https://www.nps.gov/Ever/index.htm','https://www.nps.gov/Ever/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Gates of the Arctic',17,2,67.810865, -153.734304,'https://www.nps.gov/gaar/index.htm','https://www.nps.gov/gaar/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Glacier Bay',15,2,58.660097, -136.949043,'https://www.nps.gov/GlBa/index.htm','https://www.nps.gov/GlBa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Grand Canyon',15,3,36.160343, -112.154012,'https://www.nps.gov/GrCa/index.htm','https://www.nps.gov/GrCa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Glacier',15,26,48.712762, -113.824467,'https://www.nps.gov/Glac/index.htm','https://www.nps.gov/Glac/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Grand Teton',15,50,43.798385, -110.685935,'https://www.nps.gov/GrTe/index.htm','https://www.nps.gov/GrTe/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Great Basin',15,28,38.979981, -114.307374,'https://www.nps.gov/GrBa/index.htm','https://www.nps.gov/GrBa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Great Sand Dunes',17,6,37.789636, -105.599735,'https://www.nps.gov/GrSa/index.htm','https://www.nps.gov/GrSa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Great Smoky Mountains',15,42,35.603834, -83.525050,'https://www.nps.gov/GrSm/index.htm','https://www.nps.gov/GrSm/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Guadalupe Mountains',15,43,31.945712, -104.880240,'https://www.nps.gov/GuMo/index.htm','https://www.nps.gov/GuMo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Haleakala',15,11,20.723843, -156.190726,'https://www.nps.gov/Hale/index.htm','https://www.nps.gov/Hale/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Hawai‘i Volcanoes',15,11,19.426288, -155.289793,'https://www.nps.gov/HaVo/index.htm','https://www.nps.gov/HaVo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Hot Springs',15,4,34.522386, -93.044079,'https://www.nps.gov/HoSp/index.htm','https://www.nps.gov/HoSp/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Isle Royale',15,22,47.971302, -88.907485,'https://www.nps.gov/IsRo/index.htm','https://www.nps.gov/IsRo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Joshua Tree',15,5,33.858158, -115.902097,'https://www.nps.gov/JoTr/index.htm','https://www.nps.gov/JoTr/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Katmai',17,2,58.553591, -154.701900,'https://www.nps.gov/Katm/index.htm','https://www.nps.gov/Katm/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Kenai Fjords',15,2,60.030492, -149.826287,'https://www.nps.gov/KeFj/index.htm','https://www.nps.gov/KeFj/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Kings Canyon',15,5,36.882202, -118.553296,'https://www.nps.gov/seki/index.htm','https://www.nps.gov/seki/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Kobuk Valley',15,2,67.316817, -159.136097,'https://www.nps.gov/KoVa/index.htm','https://www.nps.gov/KoVa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Lake Clark',17,2,60.400069, -154.328035,'https://www.nps.gov/LaCl/index.htm','https://www.nps.gov/LaCl/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Lassen Volcanic',15,5,40.493861, -121.419357,'https://www.nps.gov/LaVo/index.htm','https://www.nps.gov/LaVo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Mammoth Cave',15,17,37.184430, -86.100873,'https://www.nps.gov/MaCa/index.htm','https://www.nps.gov/MaCa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Mesa Verde',15,6,37.235451, -108.461526,'https://www.nps.gov/MeVe/index.htm','https://www.nps.gov/MeVe/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Mount Rainier',15,47,46.875111, -121.728816,'https://www.nps.gov/MoRa/index.htm','https://www.nps.gov/MoRa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('National Park of American Samoa',15,51,-14.260224, -170.683414,'https://www.nps.gov/npsa/index.htm','https://www.nps.gov/npsa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('North Cascades',15,47,48.817646, -121.267831,'https://www.nps.gov/NoCa/index.htm','https://www.nps.gov/NoCa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Olympic',15,47,47.793316, -123.604536,'https://www.nps.gov/Olym/index.htm','https://www.nps.gov/Olym/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Petrified Forest',15,3,34.903063, -109.807599,'https://www.nps.gov/PeFo/index.htm','https://www.nps.gov/PeFo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Pinnacles',15,5,36.487895, -121.182212,'https://www.nps.gov/Pinn/index.htm','https://www.nps.gov/Pinn/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Redwood',15,5,41.208268, -124.005974,'https://www.nps.gov/Redw/index.htm','https://www.nps.gov/Redw/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Rocky Mountain',15,6,40.330962, -105.686899,'https://www.nps.gov/RoMo/index.htm','https://www.nps.gov/RoMo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Saguaro',15,3,32.284396, -111.164582,'https://www.nps.gov/Sagu/index.htm','https://www.nps.gov/Sagu/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Sequoia',15,5,36.471434, -118.565384,'https://www.nps.gov/seki/index.htm','https://www.nps.gov/seki/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Shenandoah',15,46,38.300605, -78.651428,'https://www.nps.gov/Shen/index.htm','https://www.nps.gov/Shen/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Theodore Roosevelt',15,34,46.956833, -103.522350,'https://www.nps.gov/ThRo/index.htm','https://www.nps.gov/ThRo/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Virgin Islands',15,59,18.341025, -64.748593,'https://www.nps.gov/ViIs/index.htm','https://www.nps.gov/ViIs/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Voyageurs',15,23,48.486884, -92.820107,'https://www.nps.gov/Voya/index.htm','https://www.nps.gov/Voya/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Wind Cave',15,41,43.601120, -103.423311,'https://www.nps.gov/WiCa/index.htm','https://www.nps.gov/WiCa/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Wrangell-St.  Elias',15,2,61.639130, -142.991965,'https://www.nps.gov/wrst/index.htm','https://www.nps.gov/wrst/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Yellowstone',15,50,44.410559, -110.583835,'https://www.nps.gov/Yell/index.htm','https://www.nps.gov/Yell/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Yosemite',15,5,37.864566, -119.537912,'https://www.nps.gov/Yose/index.htm','https://www.nps.gov/Yose/planyourvisit/maps.htm',0);
-insert into site (site_name, designation_id, state_id, lat, lon, website, map, visited) values ('Zion',15,44,37.289471, -113.027066,'https://www.nps.gov/Zion/index.htm','https://www.nps.gov/Zion/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Acadia',15,19,44.340313, -
+
+68.273396,'https://www.nps.gov/Acad/index.htm','https://www.nps.gov/Acad/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Arches',15,44,38.616580, -
+
+109.616662,'https://www.nps.gov/Arch/index.htm','https://www.nps.gov/Arch/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Badlands',15,41,43.853872, -
+
+102.350524,'https://www.nps.gov/Badl/index.htm','https://www.nps.gov/Badl/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Big Bend',15,43,29.159337, -
+
+103.257377,'https://www.nps.gov/BiBe/index.htm','https://www.nps.gov/BiBe/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Biscayne',15,9,25.477785, -
+
+80.184273,'https://www.nps.gov/Bisc/index.htm','https://www.nps.gov/Bisc/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Black Canyon of the Gunnison',15,6,38.574441, -107.741514 
+
+,'https://www.nps.gov/BlCa/index.htm','https://www.nps.gov/BlCa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Bryce Canyon',15,44,37.592173, -
+
+112.187595,'https://www.nps.gov/BrCa/index.htm','https://www.nps.gov/BrCa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Canyonlands',15,44,38.323331, -
+
+109.878973,'https://www.nps.gov/Cany/index.htm','https://www.nps.gov/Cany/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Capitol Reef',15,44,38.356048, -
+
+111.260386,'https://www.nps.gov/CaRe/index.htm','https://www.nps.gov/CaRe/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Carlsbad Caverns',15,31,32.141150, -
+
+104.553627,'https://www.nps.gov/cave/index.htm','https://www.nps.gov/cave/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Channel Islands',15,5,33.991113, -
+
+119.729528,'https://www.nps.gov/ChIs/index.htm','https://www.nps.gov/ChIs/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Congaree',15,40,33.792038, -
+
+80.777035,'https://www.nps.gov/Cong/index.htm','https://www.nps.gov/Cong/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Crater Lake',15,37,42.869115, -
+
+122.157573,'https://www.nps.gov/CrLa/index.htm','https://www.nps.gov/CrLa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Cuyahoga Valley',15,35,41.279624, -
+
+81.569920,'https://www.nps.gov/CuVa/index.htm','https://www.nps.gov/CuVa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Death Valley',15,5,36.426749, -
+
+117.030657,'https://www.nps.gov/DeVa/index.htm','https://www.nps.gov/DeVa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Denali',17,2,63.166349, -
+
+151.171772,'https://www.nps.gov/Dena/index.htm','https://www.nps.gov/Dena/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Dry Tortugas',15,9,24.628269, -
+
+82.873654,'https://www.nps.gov/DrTo/index.htm','https://www.nps.gov/DrTo/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Everglades',15,9,25.316088, -
+
+80.899433,'https://www.nps.gov/Ever/index.htm','https://www.nps.gov/Ever/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Gates of the Arctic',17,2,67.810865, -
+
+153.734304,'https://www.nps.gov/gaar/index.htm','https://www.nps.gov/gaar/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Glacier Bay',15,2,58.660097, -
+
+136.949043,'https://www.nps.gov/GlBa/index.htm','https://www.nps.gov/GlBa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Grand Canyon',15,3,36.160343, -
+
+112.154012,'https://www.nps.gov/GrCa/index.htm','https://www.nps.gov/GrCa/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Glacier',15,26,48.712762, -
+
+113.824467,'https://www.nps.gov/Glac/index.htm','https://www.nps.gov/Glac/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Grand Teton',15,50,43.798385, -
+
+110.685935,'https://www.nps.gov/GrTe/index.htm','https://www.nps.gov/GrTe/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Great Basin',15,28,38.979981, -
+
+114.307374,'https://www.nps.gov/GrBa/index.htm','https://www.nps.gov/GrBa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Great Sand Dunes',17,6,37.789636, -
+
+105.599735,'https://www.nps.gov/GrSa/index.htm','https://www.nps.gov/GrSa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Great Smoky Mountains',15,42,35.603834, -
+
+83.525050,'https://www.nps.gov/GrSm/index.htm','https://www.nps.gov/GrSm/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Guadalupe Mountains',15,43,31.945712, -
+
+104.880240,'https://www.nps.gov/GuMo/index.htm','https://www.nps.gov/GuMo/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Haleakala',15,11,20.723843, -
+
+156.190726,'https://www.nps.gov/Hale/index.htm','https://www.nps.gov/Hale/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Hawai‘i Volcanoes',15,11,19.426288, -
+
+155.289793,'https://www.nps.gov/HaVo/index.htm','https://www.nps.gov/HaVo/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Hot Springs',15,4,34.522386, -
+
+93.044079,'https://www.nps.gov/HoSp/index.htm','https://www.nps.gov/HoSp/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Isle Royale',15,22,47.971302, -
+
+88.907485,'https://www.nps.gov/IsRo/index.htm','https://www.nps.gov/IsRo/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Joshua Tree',15,5,33.858158, -
+
+115.902097,'https://www.nps.gov/JoTr/index.htm','https://www.nps.gov/JoTr/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Katmai',17,2,58.553591, -
+
+154.701900,'https://www.nps.gov/Katm/index.htm','https://www.nps.gov/Katm/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Kenai Fjords',15,2,60.030492, -
+
+149.826287,'https://www.nps.gov/KeFj/index.htm','https://www.nps.gov/KeFj/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Kings Canyon',15,5,36.882202, -
+
+118.553296,'https://www.nps.gov/seki/index.htm','https://www.nps.gov/seki/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Kobuk Valley',15,2,67.316817, -
+
+159.136097,'https://www.nps.gov/KoVa/index.htm','https://www.nps.gov/KoVa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Lake Clark',17,2,60.400069, -
+
+154.328035,'https://www.nps.gov/LaCl/index.htm','https://www.nps.gov/LaCl/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Lassen Volcanic',15,5,40.493861, -
+
+121.419357,'https://www.nps.gov/LaVo/index.htm','https://www.nps.gov/LaVo/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Mammoth Cave',15,17,37.184430, -
+
+86.100873,'https://www.nps.gov/MaCa/index.htm','https://www.nps.gov/MaCa/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Mesa Verde',15,6,37.235451, -
+
+108.461526,'https://www.nps.gov/MeVe/index.htm','https://www.nps.gov/MeVe/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Mount Rainier',15,47,46.875111, -
+
+121.728816,'https://www.nps.gov/MoRa/index.htm','https://www.nps.gov/MoRa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('National Park of American Samoa',15,51,-14.260224, -
+
+170.683414,'https://www.nps.gov/npsa/index.htm','https://www.nps.gov/npsa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('North Cascades',15,47,48.817646, -
+
+121.267831,'https://www.nps.gov/NoCa/index.htm','https://www.nps.gov/NoCa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Olympic',15,47,47.793316, -
+
+123.604536,'https://www.nps.gov/Olym/index.htm','https://www.nps.gov/Olym/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Petrified Forest',15,3,34.903063, -
+
+109.807599,'https://www.nps.gov/PeFo/index.htm','https://www.nps.gov/PeFo/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Pinnacles',15,5,36.487895, -
+
+121.182212,'https://www.nps.gov/Pinn/index.htm','https://www.nps.gov/Pinn/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Redwood',15,5,41.208268, -
+
+124.005974,'https://www.nps.gov/Redw/index.htm','https://www.nps.gov/Redw/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Rocky Mountain',15,6,40.330962, -
+
+105.686899,'https://www.nps.gov/RoMo/index.htm','https://www.nps.gov/RoMo/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Saguaro',15,3,32.284396, -
+
+111.164582,'https://www.nps.gov/Sagu/index.htm','https://www.nps.gov/Sagu/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Sequoia',15,5,36.471434, -
+
+118.565384,'https://www.nps.gov/seki/index.htm','https://www.nps.gov/seki/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Shenandoah',15,46,38.300605, -
+
+78.651428,'https://www.nps.gov/Shen/index.htm','https://www.nps.gov/Shen/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Theodore Roosevelt',15,34,46.956833, -
+
+103.522350,'https://www.nps.gov/ThRo/index.htm','https://www.nps.gov/ThRo/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Virgin Islands',15,59,18.341025, -
+
+64.748593,'https://www.nps.gov/ViIs/index.htm','https://www.nps.gov/ViIs/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Voyageurs',15,23,48.486884, -
+
+92.820107,'https://www.nps.gov/Voya/index.htm','https://www.nps.gov/Voya/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Wind Cave',15,41,43.601120, -
+
+103.423311,'https://www.nps.gov/WiCa/index.htm','https://www.nps.gov/WiCa/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Wrangell-St.  Elias',15,2,61.639130, -
+
+142.991965,'https://www.nps.gov/wrst/index.htm','https://www.nps.gov/wrst/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Yellowstone',15,50,44.410559, -
+
+110.583835,'https://www.nps.gov/Yell/index.htm','https://www.nps.gov/Yell/planyourvisit/maps.htm',0);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Yosemite',15,5,37.864566, -
+
+119.537912,'https://www.nps.gov/Yose/index.htm','https://www.nps.gov/Yose/planyourvisit/maps.htm',1);
+insert into site (site_name, designation_id, state_id, lon, lat, website, map, visited) values ('Zion',15,44,37.289471, -
+
+113.027066,'https://www.nps.gov/Zion/index.htm','https://www.nps.gov/Zion/planyourvisit/maps.htm',0);
 
 
 select * from color;
