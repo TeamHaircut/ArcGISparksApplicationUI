@@ -18,9 +18,19 @@ public class ParkModel {
 		}
 	}
 	
+	private boolean visitedFlag;
+	public void setVisitedFlag(boolean newSetting) {
+		visitedFlag = newSetting;
+		System.out.println(visitedFlag);
+	}
+	public boolean getVisitedFlag() {
+		return visitedFlag;
+	}
+	
 	public List<Site> queryDB() {
+		
 		List<Site> siteList = new ArrayList<Site>();
-		siteList = myJPA.getDBSites();
+		siteList = myJPA.getDBSites(getVisitedFlag()? 1:0);
 		myList = siteList;
 		listviewProperty();
 		return siteList;

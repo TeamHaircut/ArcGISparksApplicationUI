@@ -38,13 +38,13 @@ public class ParkJPA {
 	    return em = (EntityManager) emf.createEntityManager();
 	}
 	
-	public List<Site> getDBSites(){
+	public List<Site> getDBSites(int visited){
 		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{
 			Query q;
 			q = em.createQuery("select x from Site x");
-			q = em.createQuery("select x from Site x where x.state_id = 3");
+			q = em.createQuery("select x from Site x where x.visited = "+visited);
 			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q.getResultList();
 			entityList.addAll(myResultList);

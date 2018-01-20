@@ -32,7 +32,7 @@ public class MyParksMain extends Application {
 	      stage.setScene(scene);
 	      stage.show();
 	
-	      ArcGISMap map = new ArcGISMap(Basemap.createLightGrayCanvasVector());
+	      ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
 	      mapView = new MapView();
 	      mapView.setMap(map);
 	      view0.setCenter(mapView);

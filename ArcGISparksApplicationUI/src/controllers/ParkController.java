@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -33,13 +34,14 @@ public class ParkController {
 	
 	@FXML private BorderPane view0;
 	@FXML private Button button1;
+	@FXML private CheckBox checkbox1;
 	@FXML private ListView<Site> listview1;
 	
 	@FXML
 	private void queryAction(ActionEvent event){
 		view0 = myViewList.get(0);
 		
-		ArcGISMap map = new ArcGISMap(Basemap.createLightGrayCanvasVector());
+		ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
 	
 		MapView mapView = new MapView();
 		GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
@@ -51,12 +53,18 @@ public class ParkController {
 	
 	}
 	
+	@FXML 
+	private void checkboxAction(ActionEvent event) {
+		parkModel.setVisitedFlag(!parkModel.getVisitedFlag());
+	}
+	
 	
 	@FXML void initialize(){
 		
 		if(listview1 != null)
 		{
 			parkModel.connect();
+			parkModel.setVisitedFlag(false);
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
