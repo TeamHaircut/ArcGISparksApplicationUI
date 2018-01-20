@@ -2,17 +2,17 @@ package supportclasses;
 
 public class QueryState {
 	
-	private boolean visited;
+	private Number visited;
 	
 	public QueryState() {
-		this.visited = false;
+		this.visited = 2;
 	}
 
-	public boolean getVisited() {
+	public Number getVisited() {
 		return visited;
 	}
 
-	public void setVisited(boolean visited) {
+	public void setVisited(Number visited) {
 		this.visited = visited;
 	}
 

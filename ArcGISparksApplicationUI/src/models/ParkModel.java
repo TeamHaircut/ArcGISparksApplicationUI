@@ -20,9 +20,8 @@ public class ParkModel {
 	}
 	
 	private static QueryState queryState = new QueryState();
-	public void updateQueryState(int code) {
-		if(code == 100) 
-		queryState.setVisited(!queryState.getVisited());
+	public void updateQueryState(Number id) {
+			queryState.setVisited(id);
 		
 	}
 	

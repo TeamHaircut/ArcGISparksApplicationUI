@@ -40,12 +40,23 @@ public class ParkJPA {
 	}
 	
 	public List<Site> getDBSites(QueryState state){
+		
+		String visitedCriteria = "";
+		switch(state.getVisited().intValue()) {
+			case 0:
+				visitedCriteria = " where x.visited = 1";
+				break;
+			case 1:
+				visitedCriteria = " where x.visited = 0";
+				break;
+		}
+
 		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{
 			Query q;
 			q = em.createQuery("select x from Site x");
-			q = em.createQuery("select x from Site x where x.visited = "+(state.getVisited()? 1:0));
+			q = em.createQuery("select x from Site x"+ visitedCriteria);
 			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q.getResultList();
 			entityList.addAll(myResultList);

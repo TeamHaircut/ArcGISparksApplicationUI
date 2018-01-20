@@ -17,11 +17,10 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -33,38 +32,40 @@ public class ParkController {
 	public static ParkModel parkModel = new ParkModel();
 	
 	@FXML private BorderPane view0;
-	@FXML private Button button1;
-	@FXML private CheckBox checkbox1;
-	@FXML private ListView<Site> listview1;
-	
-	@FXML
-	private void queryAction(ActionEvent event){
-		view0 = myViewList.get(0);
-		
-		ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-	
-		MapView mapView = new MapView();
-		GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
-		mapView.getGraphicsOverlays().add(graphicsOverlay);
-		
-		showQueryResults(graphicsOverlay);
-		mapView.setMap(map);
-		view0.setCenter(mapView);
-	
-	}
-	
-	@FXML 
-	private void checkboxAction(ActionEvent event) {
-		int code100 = 100;
-		parkModel.updateQueryState(code100);
-	}
-	
+	@FXML private ChoiceBox<String> choicebox1;
+	@FXML private ListView<Site> listview1;	
 	
 	@FXML void initialize(){
 		
 		if(listview1 != null)
 		{
 			parkModel.connect();
+			choicebox1.setItems(FXCollections.observableArrayList(
+				    "visited", "unvisited","both (visited & unvisited)")
+				);
+			
+			choicebox1.getSelectionModel().selectedIndexProperty().addListener(new 
+				ChangeListener<Number>() {
+
+						@Override
+						public void changed(
+								ObservableValue<? extends Number> arg0,
+								Number arg1, Number arg2) {
+							parkModel.updateQueryState(arg2);
+							//** Query Action***************************************************
+								view0 = myViewList.get(0);
+								ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+								MapView mapView = new MapView();
+								GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
+								mapView.getGraphicsOverlays().add(graphicsOverlay);
+								showQueryResults(graphicsOverlay);
+								mapView.setMap(map);
+								view0.setCenter(mapView);
+							//******************************************************************
+						}
+				}
+			);
+			
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
@@ -80,36 +81,32 @@ public class ParkController {
 	private void showQueryResults(GraphicsOverlay graphicsOverlay) {
 		
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
+		
+		List<Site> resultSet = parkModel.queryDB();
+		
+		Image newImage = new Image("arrowhead.png");
+		PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
+		
+		for(Site site :resultSet) {
+			placePictureMarkerSymbol(parkSymbol, new Point(site.getLat(), site.getLon(), SPATIAL_REFERENCE), graphicsOverlay);	
+		}
 	    
-	    List<Site> resultSet = parkModel.queryDB();
-	    
-	    Image newImage = new Image("arrowhead.png");
-	    PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
-	    
-	    
-	    for(Site site :resultSet) {
-	    	placePictureMarkerSymbol(parkSymbol, new Point(site.getLat(), site.getLon(), SPATIAL_REFERENCE), graphicsOverlay);	
-	    }
-	    
-	  }
+	}
 	
 	private void placePictureMarkerSymbol(PictureMarkerSymbol markerSymbol, Point graphicPoint, GraphicsOverlay graphicsOverlay) {
 		
 	    markerSymbol.setHeight(30);
 	    markerSymbol.setWidth(30);
-
 	    markerSymbol.loadAsync();
-
 	    markerSymbol.addDoneLoadingListener(() -> {
 	      if (markerSymbol.getLoadStatus() == LoadStatus.LOADED) {
-	        Graphic symbolGraphic = new Graphic(graphicPoint, markerSymbol);
-	        graphicsOverlay.getGraphics().add(symbolGraphic);
+	    	  Graphic symbolGraphic = new Graphic(graphicPoint, markerSymbol);
+	    	  graphicsOverlay.getGraphics().add(symbolGraphic);
 	      } else {
-	        Alert alert = new Alert(Alert.AlertType.ERROR, "Picture Marker Symbol Failed to Load!");
-	        alert.show();
+	    	  Alert alert = new Alert(Alert.AlertType.ERROR, "Picture Marker Symbol Failed to Load!");
+	    	  alert.show();
 	      }
-	    });
-
-	  }
+      });
+	}
 	
 }

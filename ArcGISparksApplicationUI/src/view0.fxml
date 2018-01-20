@@ -12,8 +12,7 @@
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="button1" mnemonicParsing="false" onAction="#queryAction" text="Execute Query" />
-                        <CheckBox fx:id="checkbox1" mnemonicParsing="false" onAction="#checkboxAction" text="visited" />
+                        <ChoiceBox fx:id="choicebox1" prefWidth="150.0" />
                      </children>
                   </FlowPane>
                </content>
@@ -22,7 +21,7 @@
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listview1" minWidth="775.0" prefHeight="200.0" />
+                        <ListView fx:id="listview1" minWidth="300.0" prefHeight="200.0" />
                      </children>
                   </FlowPane>
                </content>
