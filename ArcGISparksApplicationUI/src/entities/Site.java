@@ -88,7 +88,7 @@ public class Site {
 		
 		@Override
 		public String toString() {
-			return getSite_id() +" "+getSite_name() + " " +getWebsite();
+			return getSite_name();
 		}
 	   
 }//end class
