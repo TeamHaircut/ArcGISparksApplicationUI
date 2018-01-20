@@ -55,7 +55,8 @@ public class ParkController {
 	
 	@FXML 
 	private void checkboxAction(ActionEvent event) {
-		parkModel.setVisitedFlag(!parkModel.getVisitedFlag());
+		int code100 = 100;
+		parkModel.updateQueryState(code100);
 	}
 	
 	
@@ -64,7 +65,6 @@ public class ParkController {
 		if(listview1 != null)
 		{
 			parkModel.connect();
-			parkModel.setVisitedFlag(false);
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override

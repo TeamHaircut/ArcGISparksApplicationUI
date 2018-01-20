@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import supportclasses.QueryState;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -18,19 +19,17 @@ public class ParkModel {
 		}
 	}
 	
-	private boolean visitedFlag;
-	public void setVisitedFlag(boolean newSetting) {
-		visitedFlag = newSetting;
-		System.out.println(visitedFlag);
-	}
-	public boolean getVisitedFlag() {
-		return visitedFlag;
+	private static QueryState queryState = new QueryState();
+	public void updateQueryState(int code) {
+		if(code == 100) 
+		queryState.setVisited(!queryState.getVisited());
+		
 	}
 	
 	public List<Site> queryDB() {
 		
 		List<Site> siteList = new ArrayList<Site>();
-		siteList = myJPA.getDBSites(getVisitedFlag()? 1:0);
+		siteList = myJPA.getDBSites(queryState);
 		myList = siteList;
 		listviewProperty();
 		return siteList;

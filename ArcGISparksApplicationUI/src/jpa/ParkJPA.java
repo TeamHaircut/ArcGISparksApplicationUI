@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import supportclasses.QueryState;
 import entities.Site;
 
 public class ParkJPA {
@@ -38,13 +39,13 @@ public class ParkJPA {
 	    return em = (EntityManager) emf.createEntityManager();
 	}
 	
-	public List<Site> getDBSites(int visited){
+	public List<Site> getDBSites(QueryState state){
 		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{
 			Query q;
 			q = em.createQuery("select x from Site x");
-			q = em.createQuery("select x from Site x where x.visited = "+visited);
+			q = em.createQuery("select x from Site x where x.visited = "+(state.getVisited()? 1:0));
 			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q.getResultList();
 			entityList.addAll(myResultList);
