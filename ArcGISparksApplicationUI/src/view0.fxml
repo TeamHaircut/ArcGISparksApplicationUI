@@ -17,7 +17,7 @@
                   </FlowPane>
                </content>
           </TitledPane>
-          <TitledPane fx:id="titledpane2" animated="false" text="0 parks found">
+          <TitledPane fx:id="titledpane2" animated="false" text="0 Parks Found">
                <content>
                   <FlowPane prefHeight="200.0" prefWidth="200.0">
                      <children>

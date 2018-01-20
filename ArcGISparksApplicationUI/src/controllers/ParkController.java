@@ -88,7 +88,7 @@ public class ParkController {
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
 		
 		List<Site> resultSet = parkModel.queryDB();
-		titledpane2.setText(resultSet.size()+" parks found");
+		titledpane2.setText(resultSet.size()+" Parks Found");
 		
 		Image newImage = new Image("arrowhead.png");
 		PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
