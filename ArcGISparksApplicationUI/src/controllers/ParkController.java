@@ -19,9 +19,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import entities.Site;
@@ -32,6 +34,7 @@ public class ParkController {
 	public static ParkModel parkModel = new ParkModel();
 	
 	@FXML private BorderPane view0;
+	@FXML private TitledPane titledpane2;
 	@FXML private ChoiceBox<String> choicebox1;
 	@FXML private ListView<Site> listview1;	
 	
@@ -54,6 +57,8 @@ public class ParkController {
 							parkModel.updateQueryState(arg2);
 							//** Query Action***************************************************
 								view0 = myViewList.get(0);
+								Accordion acc = (Accordion) view0.getChildren().get(0);
+								titledpane2 = acc.getPanes().get(1);
 								ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
 								MapView mapView = new MapView();
 								GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
@@ -83,6 +88,7 @@ public class ParkController {
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
 		
 		List<Site> resultSet = parkModel.queryDB();
+		titledpane2.setText(resultSet.size()+" parks found");
 		
 		Image newImage = new Image("arrowhead.png");
 		PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
