@@ -36,6 +36,7 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
@@ -52,7 +53,6 @@ public class ParkController {
 	@FXML private ChoiceBox<String> choicebox1;
 	@FXML private ListView<Site> listview1;	
 	@FXML private Hyperlink hyperlink;
-	@FXML private label label1;
 	
 	@FXML void initialize(){
 		

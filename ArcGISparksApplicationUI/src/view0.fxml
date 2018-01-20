@@ -23,7 +23,6 @@
                      <children>
                         <ListView fx:id="listview1" minWidth="300.0" prefHeight="200.0" />
                         <Hyperlink fx:id="hyperlink" onAction="#hyperlinkAction" text="Hyperlink" />
-                        <Label fx:id="label1" text="Label" />
                      </children>
                   </FlowPane>
                </content>
