@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import supportclasses.QueryState;
+import entities.Designation;
 import entities.Site;
 
 public class ParkJPA {
@@ -39,6 +40,19 @@ public class ParkJPA {
 	    return em = (EntityManager) emf.createEntityManager();
 	}
 	
+	public List<Designation> getDBDesignationRecords(){
+		List<Designation> recordList = new ArrayList<Designation>();
+		if(em.isOpen())
+		{
+			Query q;
+			q = em.createQuery("select x from Designation x");
+			@SuppressWarnings("unchecked")
+			List<Designation>myRecordList = q.getResultList();
+			recordList.addAll(myRecordList);
+		}
+		return recordList;
+	}
+	
 	public List<Site> getDBSites(QueryState state){
 		
 		String visitedCriteria = "";
@@ -50,12 +64,12 @@ public class ParkJPA {
 				visitedCriteria = " where x.visited = 0";
 				break;
 		}
-
+		
 		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{
 			Query q;
-			q = em.createQuery("select x from Site x");
+			//q = em.createQuery("select s.site_name, d.designation_name from Site s, Designation d where s.designation_id = d.designation_id");
 			q = em.createQuery("select x from Site x"+ visitedCriteria);
 			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q.getResultList();

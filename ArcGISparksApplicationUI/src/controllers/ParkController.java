@@ -52,22 +52,22 @@ public class ParkController {
 	
 	@FXML
 	private void addAction() {
-		//parkModel.add();
+		parkModel.add();
 	}
 	
 	@FXML 
 	private void removeAction() {
-		//parkModel.remove();
+		parkModel.remove();
 	}
 	
 	@FXML
 	private void addAllAction() {
-		//parkModel.addAll();
+		parkModel.addAll();
 	}
 	
 	@FXML
 	private void removeAllAction() {
-		//parkModel.removeAll();
+		parkModel.removeAll();
 	}
 	
 	@FXML void initialize(){
@@ -113,6 +113,33 @@ public class ParkController {
 				}
 			});
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
+			
+			/*
+			 * ARLV
+			 */
+			// ** xAllBTN functionality is currently disabled
+				//removeAllEntityBTN.setDisable(true);
+				//addAllEntityBTN.setDisable(true);
+				
+				lvEntity1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+
+					@Override
+					public void changed(ObservableValue<? extends Designation> arg0,
+							Designation arg1, Designation arg2) {
+							parkModel.setDesignationProp(arg2);
+					}	
+		        });
+		        lvEntity1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
+		        
+		        lvEntity2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+
+					@Override
+					public void changed(ObservableValue<? extends Designation> arg0,
+							Designation arg1, Designation arg2) {
+						parkModel.setDesignationProp2(arg2);
+					}	
+		        });
+		        lvEntity2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
 		}
 	}
 	
