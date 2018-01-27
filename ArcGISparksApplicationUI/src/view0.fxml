@@ -15,6 +15,25 @@
                         <ChoiceBox fx:id="choicebox1" prefWidth="150.0" />
                      </children>
                   </FlowPane>
+                  <FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
+				   <children>
+				   	<ChoiceBox fx:id="choicebox1" prefWidth="150.0" />
+				      <HBox alignment="CENTER">
+				         <children>
+				            <ListView fx:id="lv1" prefHeight="200.0" prefWidth="200.0" />
+				            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+				               <children>
+				                  <Button fx:id="addAllBTN" mnemonicParsing="false" onAction="#addAllAction" text="ADD ALL" />
+				                  <Button fx:id="removeAllBTN" mnemonicParsing="false" onAction="#removeAllAction" text="DEL ALL" />
+				                  <Button fx:id="addBTN" mnemonicParsing="false" onAction="#addAction" text="ADD" />
+				                  <Button fx:id="removeBTN" mnemonicParsing="false" onAction="#removeAction" text="DEL" />
+				               </children>
+				            </VBox>
+				            <ListView fx:id="lv2" prefHeight="200.0" prefWidth="200.0" />
+				         </children>
+				      </HBox>
+				   </children>
+				</FlowPane>
                </content>
           </TitledPane>
           <TitledPane fx:id="titledpane2" animated="false" text="0 Parks Found">
