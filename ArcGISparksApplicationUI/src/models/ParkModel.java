@@ -21,8 +21,7 @@ public class ParkModel {
 	
 	private static QueryState queryState = new QueryState();
 	public void updateQueryState(Number id) {
-			queryState.setVisited(id);
-		
+			queryState.setVisited(id);	
 	}
 	
 	public List<Site> queryDB() {
