@@ -21,8 +21,6 @@ public class MyParksMain extends Application {
 	  public void start(Stage stage) throws IOException {
 		      
 	      BorderPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
-	      
-	      
 	      view0.setVisible(true);
 	      
 	      Scene scene = new Scene(view0);
