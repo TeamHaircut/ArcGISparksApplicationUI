@@ -21,12 +21,14 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import entities.Designation;
 import entities.Site;
 
 public class ParkController {
@@ -39,6 +41,34 @@ public class ParkController {
 	@FXML private ChoiceBox<String> choicebox1;
 	@FXML private ListView<Site> listview1;	
 	@FXML private Hyperlink hyperlink;
+	
+	@FXML private ListView<Designation> lvEntity1;
+	@FXML private ListView<Designation> lvEntity2;
+	
+	@FXML private Button addAllEntityBTN;
+	@FXML private Button removeAllEntityBTN;
+	@FXML private Button addEntityBTN;
+	@FXML private Button removeEntityBTN;
+	
+	@FXML
+	private void addAction() {
+		//parkModel.add();
+	}
+	
+	@FXML 
+	private void removeAction() {
+		//parkModel.remove();
+	}
+	
+	@FXML
+	private void addAllAction() {
+		//parkModel.addAll();
+	}
+	
+	@FXML
+	private void removeAllAction() {
+		//parkModel.removeAll();
+	}
 	
 	@FXML void initialize(){
 		
