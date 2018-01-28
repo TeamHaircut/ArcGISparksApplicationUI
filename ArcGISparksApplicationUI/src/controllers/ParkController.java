@@ -3,6 +3,10 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
+
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
@@ -14,6 +18,10 @@ import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 
+
+
+
+
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -24,10 +32,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.util.Callback;
 import entities.Designation;
 import entities.Site;
 
@@ -140,6 +152,43 @@ public class ParkController {
 					}	
 		        });
 		        lvEntity2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
+		        
+		        lvEntity1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+		            @Override
+		            public ListCell<Designation> call(ListView<Designation> p) {
+		                return new ListCell<Designation>() {
+		                    @Override
+		                    protected void updateItem(Designation item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        
+		        lvEntity2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+		            @Override
+		            public ListCell<Designation> call(ListView<Designation> p) {
+		                return new ListCell<Designation>() {
+		                    @Override
+		                    protected void updateItem(Designation item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        
 		}
 	}
 	
