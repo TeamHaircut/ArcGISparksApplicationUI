@@ -19,10 +19,10 @@
 				            <ListView fx:id="lvEntity1" prefHeight="195.0" prefWidth="195.0" />
 				            <VBox alignment="CENTER" spacing="5.0">
 				               <children>
-				                  <Button fx:id="addAllBTN" mnemonicParsing="false" onAction="#addAllAction" text="ADD ALL" />
-				                  <Button fx:id="removeAllBTN" mnemonicParsing="false" onAction="#removeAllAction" text="DEL ALL" />
-				                  <Button fx:id="addBTN" mnemonicParsing="false" onAction="#addAction" text="ADD" />
-				                  <Button fx:id="removeBTN" mnemonicParsing="false" onAction="#removeAction" text="DEL" />
+				                  <Button fx:id="addAllBTN" mnemonicParsing="false" onAction="#addAllAction" text=" >> " />
+				                  <Button fx:id="removeAllBTN" mnemonicParsing="false" onAction="#removeAllAction" text=" &lt;&lt; " />
+				                  <Button fx:id="addBTN" mnemonicParsing="false" onAction="#addAction" text=" > " />
+				                  <Button fx:id="removeBTN" mnemonicParsing="false" onAction="#removeAction" text=" &lt; " />
 				               </children>
 				            </VBox>
 				            <ListView fx:id="lvEntity2" prefHeight="195.0" prefWidth="195.0" />
