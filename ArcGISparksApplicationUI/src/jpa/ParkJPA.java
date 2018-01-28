@@ -10,7 +10,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import supportclasses.QueryState;
 import entities.Designation;
 import entities.Site;
 

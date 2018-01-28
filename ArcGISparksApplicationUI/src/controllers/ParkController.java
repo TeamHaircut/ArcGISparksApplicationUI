@@ -76,7 +76,7 @@ public class ParkController {
 		{
 			parkModel.connect();
 			choicebox1.setItems(FXCollections.observableArrayList(
-				    "unvisited", "visited","both (visited & unvisited)")
+				    "not visited", "visited","both (visited & not visited)")
 				);
 			
 			choicebox1.getSelectionModel().selectedIndexProperty().addListener(new 

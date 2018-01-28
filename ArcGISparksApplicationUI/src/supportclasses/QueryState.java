@@ -1,7 +1,5 @@
 package supportclasses;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javafx.collections.ObservableList;
@@ -29,17 +27,19 @@ public class QueryState {
 			query = query.concat(" and");
 		}
 		
-		String desIdString = "";
-		for(	Designation d: ((ObservableList<Designation>)queryDataMap.get("desList"))	) {
-//			query = query.concat(" x.designation_id = "+d.getDesignation_id());
-//			query = query.concat(" or");
-			desIdString = desIdString.concat(""+d.getDesignation_id()+",");
+		if(!((ObservableList<Designation>)queryDataMap.get("desList")).isEmpty()) {
+			String desIdString = "";
+			for(	Designation d: ((ObservableList<Designation>)queryDataMap.get("desList"))	) {
+				desIdString = desIdString.concat(""+d.getDesignation_id()+",");
+			}
+			desIdString = desIdString.substring(0, desIdString.length()-1);
+			
+			query = query.concat(" x.designation_id in ("+desIdString+")");
 		}
-		desIdString = desIdString.substring(0, desIdString.length()-1);
+		else {
+			query = query.substring(0, query.lastIndexOf(" "));
+		}
 		
-		query = query.concat(" x.designation_id in ("+desIdString+")");
-		
-//		query = query.substring(0, query.length()-3);
 		System.out.println(query);
 		
 		return query;
