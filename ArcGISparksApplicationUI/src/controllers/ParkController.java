@@ -76,7 +76,7 @@ public class ParkController {
 		{
 			parkModel.connect();
 			choicebox1.setItems(FXCollections.observableArrayList(
-				    "visited", "unvisited","both (visited & unvisited)")
+				    "unvisited", "visited","both (visited & unvisited)")
 				);
 			
 			choicebox1.getSelectionModel().selectedIndexProperty().addListener(new 
@@ -86,7 +86,7 @@ public class ParkController {
 						public void changed(
 								ObservableValue<? extends Number> arg0,
 								Number arg1, Number arg2) {
-							parkModel.updateQueryState(arg2);
+								parkModel.updateQueryState(arg2);
 							//** Query Action***************************************************
 								view0 = myViewList.get(0);
 								Accordion acc = (Accordion) view0.getChildren().get(0);

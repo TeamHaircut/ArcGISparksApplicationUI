@@ -1,7 +1,9 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import supportclasses.QueryState;
 import javafx.beans.property.ObjectProperty;
@@ -20,15 +22,21 @@ public class ParkModel {
 		}
 	}
 	
-	private static QueryState queryState = new QueryState();
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void updateQueryState(Number id) {
-			queryState.setVisited(id);	
+			//queryState.setVisited(id);
+			//queryState.setDesignationList(getlvDesignation2Prop());
+			
+			Map queryDataMap = new HashMap<>();
+			queryDataMap.put("visitId", id);
+			queryDataMap.put("desList", getlvDesignation2Prop());
+			myJPA.setMyQuery(QueryState.buildQuery(queryDataMap));
 	}
 	
 	public List<Site> queryDB() {
 		
 		List<Site> siteList = new ArrayList<Site>();
-		siteList = myJPA.getDBSites(queryState);
+		siteList = myJPA.getDBSites();
 		myList = siteList;
 		listviewProperty();
 		return siteList;

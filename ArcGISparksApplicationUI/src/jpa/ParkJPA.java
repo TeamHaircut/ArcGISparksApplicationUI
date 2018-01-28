@@ -53,24 +53,21 @@ public class ParkJPA {
 		return recordList;
 	}
 	
-	public List<Site> getDBSites(QueryState state){
-		
-		String visitedCriteria = "";
-		switch(state.getVisited().intValue()) {
-			case 0:
-				visitedCriteria = " where x.visited = 1";
-				break;
-			case 1:
-				visitedCriteria = " where x.visited = 0";
-				break;
-		}
+	private String myQuery;
+	public void setMyQuery(String newQuery) {
+		myQuery = newQuery;
+	}
+	private String getMyQuery() {
+		return myQuery;
+	}
+	
+	public List<Site> getDBSites(){
 		
 		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{
 			Query q;
-			//q = em.createQuery("select s.site_name, d.designation_name from Site s, Designation d where s.designation_id = d.designation_id");
-			q = em.createQuery("select x from Site x"+ visitedCriteria);
+			q = em.createQuery(getMyQuery());
 			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q.getResultList();
 			entityList.addAll(myResultList);
