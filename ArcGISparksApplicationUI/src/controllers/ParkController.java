@@ -54,32 +54,60 @@ public class ParkController {
 	@FXML private ListView<Site> listview1;	
 	@FXML private Hyperlink hyperlink;
 	
-	@FXML private ListView<Designation> lvEntity1;
-	@FXML private ListView<Designation> lvEntity2;
+	@FXML private ListView<Designation> lvDes1;
+	@FXML private ListView<Designation> lvDes2;
 	
-	@FXML private Button addAllEntityBTN;
-	@FXML private Button removeAllEntityBTN;
-	@FXML private Button addEntityBTN;
-	@FXML private Button removeEntityBTN;
+	@FXML private Button addAllDesBTN;
+	@FXML private Button removeAllDesBTN;
+	@FXML private Button addDesBTN;
+	@FXML private Button removeDesBTN;
+	
+	@FXML private ListView<Designation> lvState1;
+	@FXML private ListView<Designation> lvState2;
+	
+	@FXML private Button addAllStateBTN;
+	@FXML private Button removeAllStateBTN;
+	@FXML private Button addStateBTN;
+	@FXML private Button removeStateBTN;
 	
 	@FXML
-	private void addAction() {
+	private void addDesAction() {
 		parkModel.add();
 	}
 	
 	@FXML 
-	private void removeAction() {
+	private void removeDesAction() {
 		parkModel.remove();
 	}
 	
 	@FXML
-	private void addAllAction() {
+	private void addAllDesAction() {
 		parkModel.addAll();
 	}
 	
 	@FXML
-	private void removeAllAction() {
+	private void removeAllDesAction() {
 		parkModel.removeAll();
+	}
+	
+	@FXML
+	private void addStateAction() {
+//		parkModel.add();
+	}
+	
+	@FXML 
+	private void removeStateAction() {
+//		parkModel.remove();
+	}
+	
+	@FXML
+	private void addAllStateAction() {
+//		parkModel.addAll();
+	}
+	
+	@FXML
+	private void removeAllStateAction() {
+//		parkModel.removeAll();
 	}
 	
 	@FXML void initialize(){
@@ -133,7 +161,7 @@ public class ParkController {
 				//removeAllEntityBTN.setDisable(true);
 				//addAllEntityBTN.setDisable(true);
 				
-				lvEntity1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+				lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 
 					@Override
 					public void changed(ObservableValue<? extends Designation> arg0,
@@ -141,9 +169,9 @@ public class ParkController {
 							parkModel.setDesignationProp(arg2);
 					}	
 		        });
-		        lvEntity1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
+		        lvDes1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
 		        
-		        lvEntity2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+		        lvDes2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 
 					@Override
 					public void changed(ObservableValue<? extends Designation> arg0,
@@ -151,9 +179,9 @@ public class ParkController {
 						parkModel.setDesignationProp2(arg2);
 					}	
 		        });
-		        lvEntity2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
+		        lvDes2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
 		        
-		        lvEntity1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+		        lvDes1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
 		            @Override
 		            public ListCell<Designation> call(ListView<Designation> p) {
 		                return new ListCell<Designation>() {
@@ -171,7 +199,7 @@ public class ParkController {
 		            }
 		        });
 		        
-		        lvEntity2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+		        lvDes2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
 		            @Override
 		            public ListCell<Designation> call(ListView<Designation> p) {
 		                return new ListCell<Designation>() {
