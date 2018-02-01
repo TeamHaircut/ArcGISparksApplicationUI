@@ -10,7 +10,7 @@ public class QueryState {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static String buildQuery(Map queryDataMap) {
 		String query = "";
-		
+		//
 		query = "Select x from Site x";
 		
 		if(		Integer.parseInt(queryDataMap.get("visitId").toString()) == 2		) {
