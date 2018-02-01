@@ -32,6 +32,7 @@ public class ParkModel {
 			queryDataMap.put("visitId", id);
 			System.out.println(getlvDesignation2Prop());
 			queryDataMap.put("desList", getlvDesignation2Prop());
+			queryDataMap.put("stateList", getlvState2Prop());
 			myJPA.setMyQuery(QueryState.buildQuery(queryDataMap));
 	}
 	
