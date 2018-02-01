@@ -3,10 +3,6 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
@@ -17,10 +13,6 @@ import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
-
-
-
-
 
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
@@ -37,11 +29,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 import entities.Designation;
 import entities.Site;
+import entities.State;
 
 public class ParkController {
 	
@@ -54,32 +46,60 @@ public class ParkController {
 	@FXML private ListView<Site> listview1;	
 	@FXML private Hyperlink hyperlink;
 	
-	@FXML private ListView<Designation> lvEntity1;
-	@FXML private ListView<Designation> lvEntity2;
+	@FXML private ListView<Designation> lvDes1;
+	@FXML private ListView<Designation> lvDes2;
 	
-	@FXML private Button addAllEntityBTN;
-	@FXML private Button removeAllEntityBTN;
-	@FXML private Button addEntityBTN;
-	@FXML private Button removeEntityBTN;
+	@FXML private Button addAllDesBTN;
+	@FXML private Button removeAllDesBTN;
+	@FXML private Button addDesBTN;
+	@FXML private Button removeDesBTN;
+	
+	@FXML private ListView<State> lvState1;
+	@FXML private ListView<State> lvState2;
+	
+	@FXML private Button addAllStateBTN;
+	@FXML private Button removeAllStateBTN;
+	@FXML private Button addStateBTN;
+	@FXML private Button removeStateBTN;
 	
 	@FXML
-	private void addAction() {
+	private void addDesAction() {
 		parkModel.add();
 	}
 	
 	@FXML 
-	private void removeAction() {
+	private void removeDesAction() {
 		parkModel.remove();
 	}
 	
 	@FXML
-	private void addAllAction() {
+	private void addAllDesAction() {
 		parkModel.addAll();
 	}
 	
 	@FXML
-	private void removeAllAction() {
+	private void removeAllDesAction() {
 		parkModel.removeAll();
+	}
+	
+	@FXML
+	private void addStateAction() {
+		parkModel.addState();
+	}
+	
+	@FXML 
+	private void removeStateAction() {
+		parkModel.removeState();
+	}
+	
+	@FXML
+	private void addAllStateAction() {
+		parkModel.addAllState();
+	}
+	
+	@FXML
+	private void removeAllStateAction() {
+		parkModel.removeAllState();
 	}
 	
 	@FXML void initialize(){
@@ -133,7 +153,7 @@ public class ParkController {
 				//removeAllEntityBTN.setDisable(true);
 				//addAllEntityBTN.setDisable(true);
 				
-				lvEntity1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+				lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 
 					@Override
 					public void changed(ObservableValue<? extends Designation> arg0,
@@ -141,9 +161,9 @@ public class ParkController {
 							parkModel.setDesignationProp(arg2);
 					}	
 		        });
-		        lvEntity1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
+		        lvDes1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
 		        
-		        lvEntity2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+		        lvDes2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 
 					@Override
 					public void changed(ObservableValue<? extends Designation> arg0,
@@ -151,9 +171,9 @@ public class ParkController {
 						parkModel.setDesignationProp2(arg2);
 					}	
 		        });
-		        lvEntity2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
+		        lvDes2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
 		        
-		        lvEntity1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+		        lvDes1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
 		            @Override
 		            public ListCell<Designation> call(ListView<Designation> p) {
 		                return new ListCell<Designation>() {
@@ -171,7 +191,7 @@ public class ParkController {
 		            }
 		        });
 		        
-		        lvEntity2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+		        lvDes2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
 		            @Override
 		            public ListCell<Designation> call(ListView<Designation> p) {
 		                return new ListCell<Designation>() {
@@ -188,6 +208,63 @@ public class ParkController {
 		                };
 		            }
 		        });
+		        //
+		        lvState1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
+
+					@Override
+					public void changed(ObservableValue<? extends State> arg0,
+							State arg1, State arg2) {
+							parkModel.setStateProp(arg2);
+					}	
+		        });
+		        lvState1.itemsProperty().bindBidirectional(parkModel.lvState1Property());
+		        
+		        lvState2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
+
+					@Override
+					public void changed(ObservableValue<? extends State> arg0,
+							State arg1, State arg2) {
+						parkModel.setStateProp2(arg2);
+					}	
+		        });
+		        lvState2.itemsProperty().bindBidirectional(parkModel.lvState2Property());
+		        
+		        lvState1.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
+		            @Override
+		            public ListCell<State> call(ListView<State> p) {
+		                return new ListCell<State>() {
+		                    @Override
+		                    protected void updateItem(State item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        
+		        lvState2.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
+		            @Override
+		            public ListCell<State> call(ListView<State> p) {
+		                return new ListCell<State>() {
+		                    @Override
+		                    protected void updateItem(State item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        //
 		        
 		}
 	}
