@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javafx.collections.ObservableList;
 import entities.Designation;
+import entities.State;
 
 public class QueryState {
 	
@@ -35,6 +36,25 @@ public class QueryState {
 			desIdString = desIdString.substring(0, desIdString.length()-1);
 			
 			query = query.concat(" x.designation_id in ("+desIdString+")");
+		}
+		else {
+			query = query.substring(0, query.lastIndexOf(" "));
+		}
+		if(query.length() <= 20) {
+			query = query.concat(" where");
+		}
+		else {
+			query = query.concat(" and");
+		}
+		
+		if(!((ObservableList<State>)queryDataMap.get("stateList")).isEmpty()) {
+			String stateIdString = "";
+			for(	State s: ((ObservableList<State>)queryDataMap.get("stateList"))	) {
+				stateIdString = stateIdString.concat(""+s.getState_id()+",");
+			}
+			stateIdString = stateIdString.substring(0, stateIdString.length()-1);
+			
+			query = query.concat(" x.state_id in ("+stateIdString+")");
 		}
 		else {
 			query = query.substring(0, query.lastIndexOf(" "));

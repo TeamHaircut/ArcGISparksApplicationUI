@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import entities.Designation;
 import entities.Site;
+import entities.State;
 import jpa.ParkJPA;
 
 public class ParkModel {
@@ -162,7 +163,90 @@ public class ParkModel {
 			return designationProp2.getValue();
 		}
 		
+/*
+ *  state ARLV
+ */
+		public void addAllState() {
+		}
 		
+		public void removeAllState() {
+		}
+		
+		public void addState() {
+			if(getStateProp()!=null) {
+				State e = getStateProp();
+				lvState1Prop.get().remove(e);
+				lvState2Prop.get().add(e);
+			}
+		}
+		
+		public void removeState() {
+			if(getStateProp2()!=null) {
+				State e = getStateProp2();
+				lvState2Prop.get().remove(e);
+				lvState1Prop.get().add(e);
+			}
+		}
+		
+		public List<State> myStateRecordList = new ArrayList<State>();
+		public List<State> getStateRecordList(){
+				if(myJPA != null)
+				myStateRecordList = myJPA.getDBStateRecords();
+			return myStateRecordList;
+		}
+		
+		ObjectProperty<ObservableList<State>> lvState1Prop = new SimpleObjectProperty<ObservableList<State>>();
+		public ObjectProperty<ObservableList<State>> lvState1Property() {
+			lvState1Prop.setValue(FXCollections.observableList(getStateRecordList()));
+			return lvState1Prop;
+		}
+		
+		public void setlvState1Prop(ObservableList<State> newProp){
+			lvState1Prop.setValue(newProp);	
+		}
+		
+		public ObservableList<State> getlvState1Prop(){
+			return lvState1Prop.getValue();
+		}
+		
+		
+		ObjectProperty<ObservableList<State>> lvState2Prop = new SimpleObjectProperty<ObservableList<State>>();
+		public ObjectProperty<ObservableList<State>> lvState2Property() {
+			lvState2Prop.setValue(FXCollections.observableList(new ArrayList<State>()));
+			return lvState2Prop;
+		}
+		
+		public void setlvState2Prop(ObservableList<State> newProp){
+			lvState2Prop.setValue(newProp);	
+		}
+		
+		public ObservableList<State> getlvState2Prop(){
+			return lvState2Prop.getValue();
+		}
+		
+		
+		ObjectProperty<State> stateProp = new SimpleObjectProperty<State>();
+		public ObjectProperty<State> StateProperty(){
+			return stateProp;
+		}
+		public void setStateProp(State newState){
+			stateProp.setValue(newState);
+		}
+		public State getStateProp(){
+			return stateProp.getValue();
+		}
+		
+		ObjectProperty<State> stateProp2 = new SimpleObjectProperty<State>();
+		public ObjectProperty<State> StateProperty2(){
+			return stateProp2;
+		}
+		public void setStateProp2(State newState){
+			stateProp2.setValue(newState);
+		}
+		public State getStateProp2(){
+			return stateProp2.getValue();
+		}
+						
 	
 
 }
