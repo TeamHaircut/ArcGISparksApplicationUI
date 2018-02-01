@@ -3,10 +3,6 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
@@ -17,10 +13,6 @@ import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
-
-
-
-
 
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
@@ -37,11 +29,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 import entities.Designation;
 import entities.Site;
+import entities.State;
 
 public class ParkController {
 	
@@ -62,8 +54,8 @@ public class ParkController {
 	@FXML private Button addDesBTN;
 	@FXML private Button removeDesBTN;
 	
-	@FXML private ListView<Designation> lvState1;
-	@FXML private ListView<Designation> lvState2;
+	@FXML private ListView<State> lvState1;
+	@FXML private ListView<State> lvState2;
 	
 	@FXML private Button addAllStateBTN;
 	@FXML private Button removeAllStateBTN;
@@ -92,22 +84,22 @@ public class ParkController {
 	
 	@FXML
 	private void addStateAction() {
-//		parkModel.add();
+		parkModel.addState();
 	}
 	
 	@FXML 
 	private void removeStateAction() {
-//		parkModel.remove();
+		parkModel.removeState();
 	}
 	
 	@FXML
 	private void addAllStateAction() {
-//		parkModel.addAll();
+		parkModel.addAllState();
 	}
 	
 	@FXML
 	private void removeAllStateAction() {
-//		parkModel.removeAll();
+		parkModel.removeAllState();
 	}
 	
 	@FXML void initialize(){
@@ -216,6 +208,63 @@ public class ParkController {
 		                };
 		            }
 		        });
+		        //
+		        lvState1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
+
+					@Override
+					public void changed(ObservableValue<? extends State> arg0,
+							State arg1, State arg2) {
+							parkModel.setStateProp(arg2);
+					}	
+		        });
+		        lvState1.itemsProperty().bindBidirectional(parkModel.lvState1Property());
+		        
+		        lvState2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
+
+					@Override
+					public void changed(ObservableValue<? extends State> arg0,
+							State arg1, State arg2) {
+						parkModel.setStateProp2(arg2);
+					}	
+		        });
+		        lvState2.itemsProperty().bindBidirectional(parkModel.lvState2Property());
+		        
+		        lvState1.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
+		            @Override
+		            public ListCell<State> call(ListView<State> p) {
+		                return new ListCell<State>() {
+		                    @Override
+		                    protected void updateItem(State item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        
+		        lvState2.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
+		            @Override
+		            public ListCell<State> call(ListView<State> p) {
+		                return new ListCell<State>() {
+		                    @Override
+		                    protected void updateItem(State item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        //
 		        
 		}
 	}
