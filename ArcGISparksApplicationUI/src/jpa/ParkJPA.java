@@ -40,6 +40,19 @@ public class ParkJPA {
 	    return em = (EntityManager) emf.createEntityManager();
 	}
 	
+	public List<Site> getDBSiteRecords(){
+		List<Site> recordList = new ArrayList<Site>();
+		if(em.isOpen())
+		{
+			Query q;
+			q = em.createQuery("select x from Site x");
+			@SuppressWarnings("unchecked")
+			List<Site>myRecordList = q.getResultList();
+			recordList.addAll(myRecordList);
+		}
+		return recordList;
+	}
+	
 	public List<Designation> getDBDesignationRecords(){
 		List<Designation> recordList = new ArrayList<Designation>();
 		if(em.isOpen())

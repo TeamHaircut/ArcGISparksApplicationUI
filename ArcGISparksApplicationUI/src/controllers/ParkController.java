@@ -46,6 +46,14 @@ public class ParkController {
 	@FXML private ListView<Site> listview1;	
 	@FXML private Hyperlink hyperlink;
 	
+	@FXML private ListView<Site> lvSite1;
+	@FXML private ListView<Site> lvSite2;
+	
+	@FXML private Button addAllSiteBTN;
+	@FXML private Button removeAllSiteBTN;
+	@FXML private Button addSiteBTN;
+	@FXML private Button removeSiteBTN;
+	
 	@FXML private ListView<Designation> lvDes1;
 	@FXML private ListView<Designation> lvDes2;
 	
@@ -61,6 +69,26 @@ public class ParkController {
 	@FXML private Button removeAllStateBTN;
 	@FXML private Button addStateBTN;
 	@FXML private Button removeStateBTN;
+	
+	@FXML
+	private void addSiteAction() {
+		parkModel.addSite();
+	}
+	
+	@FXML 
+	private void removeSiteAction() {
+		parkModel.removeSite();
+	}
+	
+	@FXML
+	private void addAllSiteAction() {
+		parkModel.addAllSite();
+	}
+	
+	@FXML
+	private void removeAllSiteAction() {
+		parkModel.removeAllSite();
+	}
 	
 	@FXML
 	private void addDesAction() {
@@ -146,12 +174,62 @@ public class ParkController {
 			});
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
 			
-			/*
-			 * ARLV
-			 */
-			// ** xAllBTN functionality is currently disabled
-				//removeAllEntityBTN.setDisable(true);
-				//addAllEntityBTN.setDisable(true);
+			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
+
+				@Override
+				public void changed(ObservableValue<? extends Site> arg0,
+						Site arg1, Site arg2) {
+						parkModel.setSitePropQ(arg2);
+				}	
+	        });
+	        lvSite1.itemsProperty().bindBidirectional(parkModel.lvSite1Property());
+	        
+	        lvSite2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
+
+				@Override
+				public void changed(ObservableValue<? extends Site> arg0,
+						Site arg1, Site arg2) {
+					parkModel.setSiteProp2(arg2);
+				}	
+	        });
+	        lvSite2.itemsProperty().bindBidirectional(parkModel.lvSite2Property());
+	        
+	        lvSite1.setCellFactory(new Callback<ListView<Site>, ListCell<Site>>() {
+	            @Override
+	            public ListCell<Site> call(ListView<Site> p) {
+	                return new ListCell<Site>() {
+	                    @Override
+	                    protected void updateItem(Site item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
+	        
+	        lvSite2.setCellFactory(new Callback<ListView<Site>, ListCell<Site>>() {
+	            @Override
+	            public ListCell<Site> call(ListView<Site> p) {
+	                return new ListCell<Site>() {
+	                    @Override
+	                    protected void updateItem(Site item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
+				//
 				
 				lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 

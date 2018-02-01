@@ -30,7 +30,7 @@ public class ParkModel {
 			
 			Map queryDataMap = new HashMap<>();
 			queryDataMap.put("visitId", id);
-			System.out.println(getlvDesignation2Prop());
+			queryDataMap.put("siteList", getlvSite2Prop());
 			queryDataMap.put("desList", getlvDesignation2Prop());
 			queryDataMap.put("stateList", getlvState2Prop());
 			myJPA.setMyQuery(QueryState.buildQuery(queryDataMap));
@@ -79,7 +79,89 @@ public class ParkModel {
 		public List<Site> getList(){
 			return myList;
 		}
+/*
+ * ARLV
+ */
+		public void addAllSite() {
+		}
 		
+		public void removeAllSite() {
+		}
+		
+		public void addSite() {
+			if(getSitePropQ()!=null) {
+				Site e = getSitePropQ();
+				lvSite1Prop.get().remove(e);
+				lvSite2Prop.get().add(e);
+			}
+		}
+		
+		public void removeSite() {
+			if(getSiteProp2()!=null) {
+				Site e = getSiteProp2();
+				lvSite2Prop.get().remove(e);
+				lvSite1Prop.get().add(e);
+			}
+		}
+		
+		public List<Site> mySiteRecordList = new ArrayList<Site>();
+		public List<Site> getSiteRecordList(){
+				if(myJPA != null)
+				mySiteRecordList = myJPA.getDBSiteRecords();
+			return mySiteRecordList;
+		}
+		
+		ObjectProperty<ObservableList<Site>> lvSite1Prop = new SimpleObjectProperty<ObservableList<Site>>();
+		public ObjectProperty<ObservableList<Site>> lvSite1Property() {
+			lvSite1Prop.setValue(FXCollections.observableList(getSiteRecordList()));
+			return lvSite1Prop;
+		}
+		
+		public void setlvSite1Prop(ObservableList<Site> newProp){
+			lvSite1Prop.setValue(newProp);	
+		}
+		
+		public ObservableList<Site> getlvSite1Prop(){
+			return lvSite1Prop.getValue();
+		}
+		
+		
+		ObjectProperty<ObservableList<Site>> lvSite2Prop = new SimpleObjectProperty<ObservableList<Site>>();
+		public ObjectProperty<ObservableList<Site>> lvSite2Property() {
+			lvSite2Prop.setValue(FXCollections.observableList(new ArrayList<Site>()));
+			return lvSite2Prop;
+		}
+		
+		public void setlvSite2Prop(ObservableList<Site> newProp){
+			lvSite2Prop.setValue(newProp);	
+		}
+		
+		public ObservableList<Site> getlvSite2Prop(){
+			return lvSite2Prop.getValue();
+		}
+		
+		
+		ObjectProperty<Site> sitePropQ = new SimpleObjectProperty<Site>();
+		public ObjectProperty<Site> SiteProperty(){
+			return sitePropQ;
+		}
+		public void setSitePropQ(Site newSite){
+			sitePropQ.setValue(newSite);
+		}
+		public Site getSitePropQ(){
+			return sitePropQ.getValue();
+		}
+		
+		ObjectProperty<Site> siteProp2 = new SimpleObjectProperty<Site>();
+		public ObjectProperty<Site> SiteProperty2(){
+			return siteProp2;
+		}
+		public void setSiteProp2(Site newSite){
+			siteProp2.setValue(newSite);
+		}
+		public Site getSiteProp2(){
+			return siteProp2.getValue();
+		}		
 /*
  * ARLV
  */
