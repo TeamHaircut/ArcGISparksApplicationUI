@@ -62,15 +62,19 @@ public class QueryState {
 		}
 		
 		
-		//make corrections to sql
-		if(query.length() <= 20) {
-			query = query.concat(" where");
-		}
-		else {
-			query = query.concat(" and");
-		}
+		System.out.println(query);
+		
+		return query;
+		
+	}
+	
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static String buildQuery1(Map queryDataMap) {
+		String query = "";
 		
 		if(!((ObservableList<Site>)queryDataMap.get("siteList")).isEmpty()) {
+			query = "Select x from Site x where";
 			String siteIdString = "";
 			for(	Site s: ((ObservableList<Site>)queryDataMap.get("siteList"))	) {
 				siteIdString = siteIdString.concat(""+s.getSite_id()+",");
@@ -80,13 +84,10 @@ public class QueryState {
 			query = query.concat(" x.site_id in ("+siteIdString+")");
 		}
 		else {
+			if(!query.equals(""))
 			query = query.substring(0, query.lastIndexOf(" "));
+			else query = null;
 		}
-		
-		System.out.println(query);
-		
 		return query;
-		
 	}
-
 }

@@ -87,16 +87,37 @@ public class ParkJPA {
 		return myQuery;
 	}
 	
+	private String myQuery1;
+	public void setMyQuery1(String newQuery1) {
+		myQuery1 = newQuery1;
+	}
+	private String getMyQuery1() {
+		return myQuery1;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Site> getDBSites(){
 		
 		List<Site> entityList = new ArrayList<Site>();
 		if(em.isOpen())
 		{
-			Query q;
-			q = em.createQuery(getMyQuery());
+			Query q0;
+			q0 = em.createQuery(getMyQuery());
+			
+			
+			
+			
 			@SuppressWarnings("unchecked")
-			List<Site>myResultList = q.getResultList();
+			List<Site>myResultList = q0.getResultList();
 			entityList.addAll(myResultList);
+			
+			//todo clean up duplicates
+			if(getMyQuery1() != null) {
+				Query q1;
+				q1 = em.createQuery(getMyQuery1());
+				myResultList = q1.getResultList();
+				entityList.addAll(myResultList);
+			}
 		}
 		return entityList;
 	}
