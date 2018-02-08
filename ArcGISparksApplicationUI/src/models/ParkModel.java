@@ -34,6 +34,7 @@ public class ParkModel {
 			queryDataMap.put("siteList", getlvSite2Prop());
 			queryDataMap.put("desList", getlvDesignation2Prop());
 			queryDataMap.put("stateList", getlvState2Prop());
+			queryDataMap.put("regionList", getlvRegion2Prop());
 			myJPA.setMyQuery(QueryState.buildQuery(queryDataMap));
 			myJPA.setMyQuery1(QueryState.buildQuery1(queryDataMap));
 	}
