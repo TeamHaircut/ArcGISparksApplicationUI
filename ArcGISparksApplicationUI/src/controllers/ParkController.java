@@ -32,6 +32,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 import entities.Designation;
+import entities.Region;
 import entities.Site;
 import entities.State;
 
@@ -69,6 +70,14 @@ public class ParkController {
 	@FXML private Button removeAllStateBTN;
 	@FXML private Button addStateBTN;
 	@FXML private Button removeStateBTN;
+	
+	@FXML private ListView<Region> lvRegion1;
+	@FXML private ListView<Region> lvRegion2;
+	
+	@FXML private Button addAllRegionBTN;
+	@FXML private Button removeAllRegionBTN;
+	@FXML private Button addRegionBTN;
+	@FXML private Button removeRegionBTN;
 	
 	@FXML
 	private void addSiteAction() {
@@ -128,6 +137,26 @@ public class ParkController {
 	@FXML
 	private void removeAllStateAction() {
 		parkModel.removeAllState();
+	}
+	
+	@FXML
+	private void addRegionAction() {
+		parkModel.addRegion();
+	}
+	
+	@FXML 
+	private void removeRegionAction() {
+		parkModel.removeRegion();
+	}
+	
+	@FXML
+	private void addAllRegionAction() {
+		parkModel.addAllRegion();
+	}
+	
+	@FXML
+	private void removeAllRegionAction() {
+		parkModel.removeAllRegion();
 	}
 	
 	@FXML void initialize(){
@@ -331,6 +360,62 @@ public class ParkController {
 		                return new ListCell<State>() {
 		                    @Override
 		                    protected void updateItem(State item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        //
+		        lvRegion1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
+
+					@Override
+					public void changed(ObservableValue<? extends Region> arg0,
+							Region arg1, Region arg2) {
+							parkModel.setRegionProp(arg2);
+					}	
+		        });
+		        lvRegion1.itemsProperty().bindBidirectional(parkModel.lvRegion1Property());
+		        
+		        lvRegion2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
+
+					@Override
+					public void changed(ObservableValue<? extends Region> arg0,
+							Region arg1, Region arg2) {
+						parkModel.setRegionProp2(arg2);
+					}	
+		        });
+		        lvRegion2.itemsProperty().bindBidirectional(parkModel.lvRegion2Property());
+		        
+		        lvRegion1.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
+		            @Override
+		            public ListCell<Region> call(ListView<Region> p) {
+		                return new ListCell<Region>() {
+		                    @Override
+		                    protected void updateItem(Region item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (empty) {
+		                            setText(null);
+		                        } else {
+		                            setText(item == null ? "null" : item.toString());
+		                            setFont(Font.font(10));
+		                        }
+		                    }
+		                };
+		            }
+		        });
+		        
+		        lvRegion2.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
+		            @Override
+		            public ListCell<Region> call(ListView<Region> p) {
+		                return new ListCell<Region>() {
+		                    @Override
+		                    protected void updateItem(Region item, boolean empty) {
 		                        super.updateItem(item, empty);
 		                        if (empty) {
 		                            setText(null);
