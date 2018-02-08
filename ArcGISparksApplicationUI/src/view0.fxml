@@ -78,7 +78,7 @@
       				                  <Button fx:id="removeRegionBTN" mnemonicParsing="false" onAction="#removeRegionAction" text=" &lt; " />
       				               </children>
       				            </VBox>
-      				            <ListView  prefHeight="100.0" prefWidth="100.0" />
+      				            <ListView  fx:id="lvRegion2" prefHeight="100.0" prefWidth="100.0" />
       				         </children>
       				      </HBox>
                            </children>
