@@ -51,9 +51,9 @@
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
                         <VBox alignment="CENTER" spacing="5.0">
                            <children>
-                            <HBox alignment="CENTER" spacing="5.0">
+                            <HBox alignment="CENTER_LEFT" spacing="5.0">
       				         <children>
-      				            <ListView fx:id="lvState1" prefHeight="100.0" prefWidth="50.0" />
+      				            <ListView fx:id="lvState1" prefHeight="50.0" prefWidth="52.0" />
       				            <VBox alignment="CENTER" spacing="5.0">
       				               <children>
       				                  <Button fx:id="addAllStateBTN" mnemonicParsing="false" onAction="#addAllStateAction" text=" &gt;&gt; " />
@@ -62,7 +62,19 @@
       				                  <Button fx:id="removeStateBTN" mnemonicParsing="false" onAction="#removeStateAction" text=" &lt; " />
       				               </children>
       				            </VBox>
-      				            <ListView fx:id="lvState2" prefHeight="100.0" prefWidth="50.0" />
+      				            <ListView fx:id="lvState2" prefHeight="50.0" prefWidth="52.0" />
+                                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="150.0" spacing="5.0">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" text="Visited" />
+                                          <RadioButton mnemonicParsing="false" text="Not Visited" />
+                                          <RadioButton mnemonicParsing="false" text="All" />
+                                          <Button mnemonicParsing="false" text="SUBMIT" />
+                                          <Button mnemonicParsing="false" text="RESET" />
+                                       </children>
+                                       <padding>
+                                          <Insets left="50.0" />
+                                       </padding>
+                                    </VBox>
       				         </children>
       				      </HBox>
       				      <Separator orientation="HORIZONTAL" prefWidth="200.0" />
@@ -77,7 +89,7 @@
       				                  <Button fx:id="removeRegionBTN" mnemonicParsing="false" onAction="#removeRegionAction" text=" &lt; " />
       				               </children>
       				            </VBox>
-      				            <ListView  fx:id="lvRegion2" prefHeight="100.0" prefWidth="155.0" />
+      				            <ListView fx:id="lvRegion2" prefHeight="100.0" prefWidth="155.0" />
       				         </children>
       				      </HBox>
                            </children>
