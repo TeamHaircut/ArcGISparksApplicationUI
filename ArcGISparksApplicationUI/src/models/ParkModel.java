@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import entities.Designation;
+import entities.Region;
 import entities.Site;
 import entities.State;
 import jpa.ParkJPA;
@@ -329,6 +330,90 @@ public class ParkModel {
 		}
 		public State getStateProp2(){
 			return stateProp2.getValue();
+		}
+		
+/*
+ *  region ARLV
+ */
+		public void addAllRegion() {
+		}
+		
+		public void removeAllRegion() {
+		}
+		
+		public void addRegion() {
+			if(getRegionProp()!=null) {
+				Region e = getRegionProp();
+				lvRegion1Prop.get().remove(e);
+				lvRegion2Prop.get().add(e);
+			}
+		}
+		
+		public void removeRegion() {
+			if(getRegionProp2()!=null) {
+				Region e = getRegionProp2();
+				lvRegion2Prop.get().remove(e);
+				lvRegion1Prop.get().add(e);
+			}
+		}
+		
+		public List<Region> myRegionRecordList = new ArrayList<Region>();
+		public List<Region> getRegionRecordList(){
+				if(myJPA != null)
+				myRegionRecordList = myJPA.getDBRegionRecords();
+			return myRegionRecordList;
+		}
+		
+		ObjectProperty<ObservableList<Region>> lvRegion1Prop = new SimpleObjectProperty<ObservableList<Region>>();
+		public ObjectProperty<ObservableList<Region>> lvRegion1Property() {
+			lvRegion1Prop.setValue(FXCollections.observableList(getRegionRecordList()));
+			return lvRegion1Prop;
+		}
+		
+		public void setlvRegion1Prop(ObservableList<Region> newProp){
+			lvRegion1Prop.setValue(newProp);	
+		}
+		
+		public ObservableList<Region> getlvRegion1Prop(){
+			return lvRegion1Prop.getValue();
+		}
+		
+		
+		ObjectProperty<ObservableList<Region>> lvRegion2Prop = new SimpleObjectProperty<ObservableList<Region>>();
+		public ObjectProperty<ObservableList<Region>> lvRegion2Property() {
+			lvRegion2Prop.setValue(FXCollections.observableList(new ArrayList<Region>()));
+			return lvRegion2Prop;
+		}
+		
+		public void setlvRegion2Prop(ObservableList<Region> newProp){
+			lvRegion2Prop.setValue(newProp);	
+		}
+		
+		public ObservableList<Region> getlvRegion2Prop(){
+			return lvRegion2Prop.getValue();
+		}
+		
+		
+		ObjectProperty<Region> regionProp = new SimpleObjectProperty<Region>();
+		public ObjectProperty<Region> RegionProperty(){
+			return regionProp;
+		}
+		public void setRegionProp(Region newRegion){
+			regionProp.setValue(newRegion);
+		}
+		public Region getRegionProp(){
+			return regionProp.getValue();
+		}
+		
+		ObjectProperty<Region> regionProp2 = new SimpleObjectProperty<Region>();
+		public ObjectProperty<Region> RegionProperty2(){
+			return regionProp2;
+		}
+		public void setRegionProp2(Region newRegion){
+			regionProp2.setValue(newRegion);
+		}
+		public Region getRegionProp2(){
+			return regionProp2.getValue();
 		}
 						
 	
