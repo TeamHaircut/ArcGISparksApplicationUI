@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import entities.Designation;
+import entities.Region;
 import entities.Site;
 import entities.State;
 
@@ -74,6 +75,19 @@ public class ParkJPA {
 			q = em.createQuery("select x from State x");
 			@SuppressWarnings("unchecked")
 			List<State>myRecordList = q.getResultList();
+			recordList.addAll(myRecordList);
+		}
+		return recordList;
+	}
+	
+	public List<Region> getDBRegionRecords(){
+		List<Region> recordList = new ArrayList<Region>();
+		if(em.isOpen())
+		{
+			Query q;
+			q = em.createQuery("select x from Region x");
+			@SuppressWarnings("unchecked")
+			List<Region>myRecordList = q.getResultList();
 			recordList.addAll(myRecordList);
 		}
 		return recordList;
