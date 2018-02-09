@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javafx.collections.ObservableList;
 import entities.Designation;
+import entities.Region;
 import entities.State;
 import entities.Site;
 
@@ -61,9 +62,6 @@ public class QueryState {
 			query = query.substring(0, query.lastIndexOf(" "));
 		}
 		
-		
-		System.out.println(query);
-		
 		return query;
 		
 	}
@@ -90,4 +88,30 @@ public class QueryState {
 		}
 		return query;
 	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static String buildQuery2(Map queryDataMap) {
+		String query = "";
+		
+		if(!((ObservableList<Region>)queryDataMap.get("regionList")).isEmpty()) {
+			
+			query = "select s.state_id from State s where s.region_id in (";
+			String regionIdString = "";
+			for(	Region s: ((ObservableList<Region>)queryDataMap.get("regionList"))	) {
+				regionIdString = regionIdString.concat(""+s.getRegion_id()+",");
+				
+			}
+			regionIdString = regionIdString.substring(0, regionIdString.length()-1);
+			query = query.concat(""+regionIdString+")");
+			//'North Atlantic','Midwest')))
+		}
+		else {
+			if(!query.equals(""))
+			query = query.substring(0, query.lastIndexOf(" "));
+			else query = null;
+		}
+		return query;
+	}
+	
+	
 }

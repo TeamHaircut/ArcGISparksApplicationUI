@@ -109,6 +109,14 @@ public class ParkJPA {
 		return myQuery1;
 	}
 	
+	private String myQuery2;
+	public void setMyQuery2(String newQuery2) {
+		myQuery2 = newQuery2;
+	}
+	private String getMyQuery2() {
+		return myQuery2;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Site> getDBSites(){
 		
@@ -117,9 +125,6 @@ public class ParkJPA {
 		{
 			Query q0;
 			q0 = em.createQuery(getMyQuery());
-			
-			
-			
 			
 			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q0.getResultList();
@@ -131,6 +136,26 @@ public class ParkJPA {
 				q1 = em.createQuery(getMyQuery1());
 				myResultList = q1.getResultList();
 				entityList.addAll(myResultList);
+			}
+			
+			if(getMyQuery2() != null) {
+				Query qSite;
+				Query qState;
+				String query = getMyQuery2();
+				List<Site> mySiteResultsList;
+				List<State> myStateResultsList;
+				
+				qState = em.createQuery(query);
+				
+				//q2 = em.createQuery(getMyQuery2());
+				myStateResultsList = qState.getResultList();
+				
+				query = "Select x from Site x where x.state_id in ("+myStateResultsList+")";
+				query = query.replace('[', ' ').replace(']', ' ');
+				qSite = em.createQuery(query);
+				mySiteResultsList = qSite.getResultList();
+				
+				entityList.addAll(mySiteResultsList);
 			}
 		}
 		return entityList;

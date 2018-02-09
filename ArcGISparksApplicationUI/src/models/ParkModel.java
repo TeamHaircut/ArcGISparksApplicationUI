@@ -37,6 +37,7 @@ public class ParkModel {
 			queryDataMap.put("regionList", getlvRegion2Prop());
 			myJPA.setMyQuery(QueryState.buildQuery(queryDataMap));
 			myJPA.setMyQuery1(QueryState.buildQuery1(queryDataMap));
+			myJPA.setMyQuery2(QueryState.buildQuery2(queryDataMap));
 	}
 	
 	public List<Site> queryDB() {
