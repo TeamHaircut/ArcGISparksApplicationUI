@@ -3,12 +3,14 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
+import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
 import com.esri.arcgisruntime.mapping.view.MapView;
@@ -181,6 +183,16 @@ public class ParkController {
 								Accordion acc = (Accordion) view0.getChildren().get(0);
 								titledpane2 = acc.getPanes().get(1);
 								ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+							    // create an initial extent envelope
+								Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
+								Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
+								Envelope initialExtent = new Envelope(leftPoint, rightPoint);
+								
+								// create a viewpoint from envelope
+								Viewpoint viewPoint = new Viewpoint(initialExtent);
+							
+							    // set initial ArcGISMap extent
+							    map.setInitialViewpoint(viewPoint);
 								MapView mapView = new MapView();
 								GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
 								mapView.getGraphicsOverlays().add(graphicsOverlay);
