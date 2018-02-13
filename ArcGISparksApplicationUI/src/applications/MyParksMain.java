@@ -8,8 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import com.esri.arcgisruntime.geometry.Envelope;
+import com.esri.arcgisruntime.geometry.Point;
+import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
+import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.MapView;
 
 import controllers.ParkController;
@@ -26,11 +30,21 @@ public class MyParksMain extends Application {
 	      Scene scene = new Scene(view0);
 	      stage.setTitle("Test JDBC ArcGIS JavaFX Application with MVC");
 	      stage.setWidth(1366);
-	      stage.setHeight(768);
+	      stage.setHeight(750);
 	      stage.setScene(scene);
 	      stage.show();
 	
 	      ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+	   // create an initial extent envelope
+	      Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
+	      Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
+	      Envelope initialExtent = new Envelope(leftPoint, rightPoint);
+
+	      // create a viewpoint from envelope
+	      Viewpoint viewPoint = new Viewpoint(initialExtent);
+
+	      // set initial ArcGISMap extent
+	      map.setInitialViewpoint(viewPoint);
 	      mapView = new MapView();
 	      mapView.setMap(map);
 	      view0.setCenter(mapView);
