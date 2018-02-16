@@ -174,15 +174,10 @@ public class ParkController {
 			Accordion acc = (Accordion) view0.getChildren().get(0);
 			titledpane2 = acc.getPanes().get(1);
 			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-		    // create an initial extent envelope
 			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
 			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
 			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
-			
-			// create a viewpoint from envelope
 			Viewpoint viewPoint = new Viewpoint(initialExtent);
-		
-		    // set initial ArcGISMap extent
 		    map.setInitialViewpoint(viewPoint);
 			MapView mapView = new MapView();
 			GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
@@ -208,7 +203,6 @@ public class ParkController {
 		    group.selectedToggleProperty().addListener((observable, oldVal, newVal) 
 		    		-> parkModel.setRadioGroupSelection(newVal));
 			
-
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
@@ -218,6 +212,7 @@ public class ParkController {
 						hyperlink.setText(arg2.getSite_name());
 				}
 			});
+			
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
 			
 			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
@@ -228,6 +223,7 @@ public class ParkController {
 						parkModel.setSitePropQ(arg2);
 				}	
 	        });
+			
 	        lvSite1.itemsProperty().bindBidirectional(parkModel.lvSite1Property());
 	        
 	        lvSite2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
@@ -238,6 +234,7 @@ public class ParkController {
 					parkModel.setSiteProp2(arg2);
 				}	
 	        });
+	        
 	        lvSite2.itemsProperty().bindBidirectional(parkModel.lvSite2Property());
 	        
 	        lvSite1.setCellFactory(new Callback<ListView<Site>, ListCell<Site>>() {
@@ -275,176 +272,175 @@ public class ParkController {
 	                };
 	            }
 	        });
-				//
 				
-				lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+				@Override
+				public void changed(ObservableValue<? extends Designation> arg0,
+						Designation arg1, Designation arg2) {
+						parkModel.setDesignationProp(arg2);
+				}	
+	        });
+	        lvDes1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
+	        
+	        lvDes2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+				@Override
+				public void changed(ObservableValue<? extends Designation> arg0,
+						Designation arg1, Designation arg2) {
+					parkModel.setDesignationProp2(arg2);
+				}	
+	        });
+	        
+	        lvDes2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
+	        
+	        lvDes1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+	            @Override
+	            public ListCell<Designation> call(ListView<Designation> p) {
+	                return new ListCell<Designation>() {
+	                    @Override
+	                    protected void updateItem(Designation item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
+	        
+	        lvDes2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
+	            @Override
+	            public ListCell<Designation> call(ListView<Designation> p) {
+	                return new ListCell<Designation>() {
+	                    @Override
+	                    protected void updateItem(Designation item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
+	        
+	        lvState1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
+				@Override
+				public void changed(ObservableValue<? extends State> arg0,
+						State arg1, State arg2) {
+						parkModel.setStateProp(arg2);
+				}	
+	        });
+	        
+	        lvState1.itemsProperty().bindBidirectional(parkModel.lvState1Property());
+	        
+	        lvState2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
+				@Override
+				public void changed(ObservableValue<? extends State> arg0,
+						State arg1, State arg2) {
+					parkModel.setStateProp2(arg2);
+				}	
+	        });
+	        
+	        lvState2.itemsProperty().bindBidirectional(parkModel.lvState2Property());
+	        
+	        lvState1.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
+	            @Override
+	            public ListCell<State> call(ListView<State> p) {
+	                return new ListCell<State>() {
+	                    @Override
+	                    protected void updateItem(State item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
+	        
+	        lvState2.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
+	            @Override
+	            public ListCell<State> call(ListView<State> p) {
+	                return new ListCell<State>() {
+	                    @Override
+	                    protected void updateItem(State item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
 
-					@Override
-					public void changed(ObservableValue<? extends Designation> arg0,
-							Designation arg1, Designation arg2) {
-							parkModel.setDesignationProp(arg2);
-					}	
-		        });
-		        lvDes1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
-		        
-		        lvDes2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+	        lvRegion1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
+				@Override
+				public void changed(ObservableValue<? extends Region> arg0,
+						Region arg1, Region arg2) {
+						parkModel.setRegionProp(arg2);
+				}	
+	        });
+	        
+	        lvRegion1.itemsProperty().bindBidirectional(parkModel.lvRegion1Property());
+	        
+	        lvRegion2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
 
-					@Override
-					public void changed(ObservableValue<? extends Designation> arg0,
-							Designation arg1, Designation arg2) {
-						parkModel.setDesignationProp2(arg2);
-					}	
-		        });
-		        lvDes2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
-		        
-		        lvDes1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
-		            @Override
-		            public ListCell<Designation> call(ListView<Designation> p) {
-		                return new ListCell<Designation>() {
-		                    @Override
-		                    protected void updateItem(Designation item, boolean empty) {
-		                        super.updateItem(item, empty);
-		                        if (empty) {
-		                            setText(null);
-		                        } else {
-		                            setText(item == null ? "null" : item.toString());
-		                            setFont(Font.font(10));
-		                        }
-		                    }
-		                };
-		            }
-		        });
-		        
-		        lvDes2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
-		            @Override
-		            public ListCell<Designation> call(ListView<Designation> p) {
-		                return new ListCell<Designation>() {
-		                    @Override
-		                    protected void updateItem(Designation item, boolean empty) {
-		                        super.updateItem(item, empty);
-		                        if (empty) {
-		                            setText(null);
-		                        } else {
-		                            setText(item == null ? "null" : item.toString());
-		                            setFont(Font.font(10));
-		                        }
-		                    }
-		                };
-		            }
-		        });
-		        //
-		        lvState1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
-
-					@Override
-					public void changed(ObservableValue<? extends State> arg0,
-							State arg1, State arg2) {
-							parkModel.setStateProp(arg2);
-					}	
-		        });
-		        lvState1.itemsProperty().bindBidirectional(parkModel.lvState1Property());
-		        
-		        lvState2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
-
-					@Override
-					public void changed(ObservableValue<? extends State> arg0,
-							State arg1, State arg2) {
-						parkModel.setStateProp2(arg2);
-					}	
-		        });
-		        lvState2.itemsProperty().bindBidirectional(parkModel.lvState2Property());
-		        
-		        lvState1.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
-		            @Override
-		            public ListCell<State> call(ListView<State> p) {
-		                return new ListCell<State>() {
-		                    @Override
-		                    protected void updateItem(State item, boolean empty) {
-		                        super.updateItem(item, empty);
-		                        if (empty) {
-		                            setText(null);
-		                        } else {
-		                            setText(item == null ? "null" : item.toString());
-		                            setFont(Font.font(10));
-		                        }
-		                    }
-		                };
-		            }
-		        });
-		        
-		        lvState2.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
-		            @Override
-		            public ListCell<State> call(ListView<State> p) {
-		                return new ListCell<State>() {
-		                    @Override
-		                    protected void updateItem(State item, boolean empty) {
-		                        super.updateItem(item, empty);
-		                        if (empty) {
-		                            setText(null);
-		                        } else {
-		                            setText(item == null ? "null" : item.toString());
-		                            setFont(Font.font(10));
-		                        }
-		                    }
-		                };
-		            }
-		        });
-		        //
-		        lvRegion1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
-
-					@Override
-					public void changed(ObservableValue<? extends Region> arg0,
-							Region arg1, Region arg2) {
-							parkModel.setRegionProp(arg2);
-					}	
-		        });
-		        lvRegion1.itemsProperty().bindBidirectional(parkModel.lvRegion1Property());
-		        
-		        lvRegion2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
-
-					@Override
-					public void changed(ObservableValue<? extends Region> arg0,
-							Region arg1, Region arg2) {
-						parkModel.setRegionProp2(arg2);
-					}	
-		        });
-		        lvRegion2.itemsProperty().bindBidirectional(parkModel.lvRegion2Property());
-		        
-		        lvRegion1.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
-		            @Override
-		            public ListCell<Region> call(ListView<Region> p) {
-		                return new ListCell<Region>() {
-		                    @Override
-		                    protected void updateItem(Region item, boolean empty) {
-		                        super.updateItem(item, empty);
-		                        if (empty) {
-		                            setText(null);
-		                        } else {
-		                            setText(item == null ? "null" : item.toString());
-		                            setFont(Font.font(10));
-		                        }
-		                    }
-		                };
-		            }
-		        });
-		        
-		        lvRegion2.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
-		            @Override
-		            public ListCell<Region> call(ListView<Region> p) {
-		                return new ListCell<Region>() {
-		                    @Override
-		                    protected void updateItem(Region item, boolean empty) {
-		                        super.updateItem(item, empty);
-		                        if (empty) {
-		                            setText(null);
-		                        } else {
-		                            setText(item == null ? "null" : item.toString());
-		                            setFont(Font.font(10));
-		                        }
-		                    }
-		                };
-		            }
-		        });
-		        //
+				@Override
+				public void changed(ObservableValue<? extends Region> arg0,
+						Region arg1, Region arg2) {
+					parkModel.setRegionProp2(arg2);
+				}	
+	        });
+	        
+	        lvRegion2.itemsProperty().bindBidirectional(parkModel.lvRegion2Property());
+	        
+	        lvRegion1.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
+	            @Override
+	            public ListCell<Region> call(ListView<Region> p) {
+	                return new ListCell<Region>() {
+	                    @Override
+	                    protected void updateItem(Region item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
+	        
+	        lvRegion2.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
+	            @Override
+	            public ListCell<Region> call(ListView<Region> p) {
+	                return new ListCell<Region>() {
+	                    @Override
+	                    protected void updateItem(Region item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setText(null);
+	                        } else {
+	                            setText(item == null ? "null" : item.toString());
+	                            setFont(Font.font(10));
+	                        }
+	                    }
+	                };
+	            }
+	        });
+	        //
 		        
 		}
 	}
