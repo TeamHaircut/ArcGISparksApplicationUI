@@ -10,6 +10,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Toggle;
 import entities.Designation;
 import entities.Region;
 import entities.Site;
@@ -25,12 +26,10 @@ public class ParkModel {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void updateQueryState(Number id) {
-			//queryState.setVisited(id);
-			//queryState.setDesignationList(getlvDesignation2Prop());
-			
+	public void updateQueryState(Object o) {
+		
 			Map queryDataMap = new HashMap<>();
-			queryDataMap.put("visitId", id);
+			queryDataMap.put("visitId", getValue(o));
 			queryDataMap.put("siteList", getlvSite2Prop());
 			queryDataMap.put("desList", getlvDesignation2Prop());
 			queryDataMap.put("stateList", getlvState2Prop());
@@ -38,6 +37,19 @@ public class ParkModel {
 			myJPA.setMyQuery(QueryState.buildQuery(queryDataMap));
 			myJPA.setMyQuery1(QueryState.buildQuery1(queryDataMap));
 			myJPA.setMyQuery2(QueryState.buildQuery2(queryDataMap));
+	}
+	
+	private Number getValue(Object o) {
+		String str = o.toString();
+		if(str.equals("RadioButton[id=radio0BTN, styleClass=radio-button]'Visited'")) {
+			return 1;
+		}
+		else if (str.equals("RadioButton[id=radio1BTN, styleClass=radio-button]'Not Visited'")) {
+			return 0;
+		}
+		else {
+			return 2;
+		}
 	}
 	
 	public List<Site> queryDB() {
@@ -48,6 +60,7 @@ public class ParkModel {
 		listviewProperty();
 		return siteList;
 	}
+	
 	
 //Site property (object property)														Site property (object property)
 		ObjectProperty<Site> siteProp = new SimpleObjectProperty<Site>();
@@ -416,6 +429,14 @@ public class ParkModel {
 		}
 		public Region getRegionProp2(){
 			return regionProp2.getValue();
+		}
+
+		Object o = new Object();
+		public Object getRadioGroupSelection() {
+			return o;
+		}
+		public void setRadioGroupSelection(Toggle newVal) {
+			o = newVal;
 		}
 						
 	

@@ -19,16 +19,16 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
@@ -45,9 +45,14 @@ public class ParkController {
 	
 	@FXML private BorderPane view0;
 	@FXML private TitledPane titledpane2;
-	@FXML private ChoiceBox<String> choicebox1;
+	@FXML private Button submitBTN;
+	
 	@FXML private ListView<Site> listview1;	
 	@FXML private Hyperlink hyperlink;
+	
+	@FXML private RadioButton radio0BTN;
+	@FXML private RadioButton radio1BTN;
+	@FXML private RadioButton radio2BTN;
 	
 	@FXML private ListView<Site> lvSite1;
 	@FXML private ListView<Site> lvSite2;
@@ -161,49 +166,49 @@ public class ParkController {
 		parkModel.removeAllRegion();
 	}
 	
+	@FXML
+	private void submitAction() {
+		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
+		//** Query Action***************************************************
+			view0 = myViewList.get(0);
+			Accordion acc = (Accordion) view0.getChildren().get(0);
+			titledpane2 = acc.getPanes().get(1);
+			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+		    // create an initial extent envelope
+			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
+			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
+			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
+			
+			// create a viewpoint from envelope
+			Viewpoint viewPoint = new Viewpoint(initialExtent);
+		
+		    // set initial ArcGISMap extent
+		    map.setInitialViewpoint(viewPoint);
+			MapView mapView = new MapView();
+			GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
+			mapView.getGraphicsOverlays().add(graphicsOverlay);
+			showQueryResults(graphicsOverlay);
+			mapView.setMap(map);
+			view0.setCenter(mapView);
+		//******************************************************************
+	}
+	
 	@FXML void initialize(){
 		
 		if(listview1 != null)
 		{
 			parkModel.connect();
-			choicebox1.setItems(FXCollections.observableArrayList(
-				    "not visited", "visited","both (visited & not visited)")
-				);
 			
-			choicebox1.getSelectionModel().selectedIndexProperty().addListener(new 
-				ChangeListener<Number>() {
+			ToggleGroup group = new ToggleGroup();
+		    radio0BTN.setToggleGroup(group);
+		    radio2BTN.setSelected(true);
+		    radio1BTN.setToggleGroup(group);
+		    radio2BTN.setToggleGroup(group);
+		    
+		    group.selectedToggleProperty().addListener((observable, oldVal, newVal) 
+		    		-> parkModel.setRadioGroupSelection(newVal));
+			
 
-						@Override
-						public void changed(
-								ObservableValue<? extends Number> arg0,
-								Number arg1, Number arg2) {
-								parkModel.updateQueryState(arg2);
-							//** Query Action***************************************************
-								view0 = myViewList.get(0);
-								Accordion acc = (Accordion) view0.getChildren().get(0);
-								titledpane2 = acc.getPanes().get(1);
-								ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-							    // create an initial extent envelope
-								Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
-								Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
-								Envelope initialExtent = new Envelope(leftPoint, rightPoint);
-								
-								// create a viewpoint from envelope
-								Viewpoint viewPoint = new Viewpoint(initialExtent);
-							
-							    // set initial ArcGISMap extent
-							    map.setInitialViewpoint(viewPoint);
-								MapView mapView = new MapView();
-								GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
-								mapView.getGraphicsOverlays().add(graphicsOverlay);
-								showQueryResults(graphicsOverlay);
-								mapView.setMap(map);
-								view0.setCenter(mapView);
-							//******************************************************************
-						}
-				}
-			);
-			
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override

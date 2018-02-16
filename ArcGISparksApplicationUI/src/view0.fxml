@@ -72,11 +72,10 @@
             				            <ListView fx:id="lvState2" prefHeight="100.0" prefWidth="52.0" />
                                           <VBox alignment="CENTER_LEFT" prefWidth="150.0" spacing="5.0">
                                              <children>
-                                                <RadioButton mnemonicParsing="false" text="Visited" />
-                                                <RadioButton mnemonicParsing="false" text="Not Visited" />
-                                                <RadioButton mnemonicParsing="false" text="All" />
-                                                <Button mnemonicParsing="false" text="SUBMIT" />
-                                                <ChoiceBox fx:id="choicebox1" prefWidth="150.0" />
+                                                <RadioButton fx:id="radio0BTN" mnemonicParsing="false" text="Visited" />
+                                                <RadioButton fx:id="radio1BTN" mnemonicParsing="false" text="Not Visited" />
+                                                <RadioButton fx:id="radio2BTN" mnemonicParsing="false" text="All" />
+                                                <Button fx:id="submitBTN" mnemonicParsing="false" onAction="#submitAction" text="SUBMIT" />
                                              </children>
                                              <padding>
                                                 <Insets left="50.0" />
