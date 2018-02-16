@@ -126,7 +126,6 @@ public class ParkJPA {
 			Query q0;
 			q0 = em.createQuery(getMyQuery());
 			
-			@SuppressWarnings("unchecked")
 			List<Site>myResultList = q0.getResultList();
 			entityList.addAll(myResultList);
 			
