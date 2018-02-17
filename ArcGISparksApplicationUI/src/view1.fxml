@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox fx:id="view1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FlowPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label text="arrowhead.png" />
+            <Label text="National Park Service" />
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label text="image.png" />
+         </children>
+      </FlowPane>
+      <FlowPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="park name" />
+                  <Label text="park designation" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="map" />
+                        <Label text="photos" />
+                        <Label text="stamps" />
+                        <Label text="patch" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+   </children>
+</VBox>
