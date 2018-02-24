@@ -31,11 +31,11 @@ public class MyParksMain extends Application {
 	      BorderPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
 	      view0.setVisible(true);
 	      
-	      VBox view1 = FXMLLoader.load(getClass().getResource("/view1.fxml"));
-	      view1.setVisible(true);
+	      //VBox view1 = FXMLLoader.load(getClass().getResource("/view1.fxml"));
+	     // view1.setVisible(true);
 	      
-	      FlowPane fp = ((FlowPane)((TitledPane)((Accordion)view0.getChildren().get(0)).getPanes().get(1)).getContent());
-	      fp.getChildren().add(view1);
+	      //FlowPane fp = ((FlowPane)((TitledPane)((Accordion)view0.getChildren().get(0)).getPanes().get(1)).getContent());
+	     // fp.getChildren().add(view1);
 	      
 	      Scene scene = new Scene(view0);
 	      stage.setTitle("Test JDBC ArcGIS JavaFX Application with MVC");
