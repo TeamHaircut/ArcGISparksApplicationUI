@@ -7,7 +7,6 @@
 		<class>entities.Region</class>
 		<class>entities.Site</class>
 		<class>entities.State</class>
-		<class>entities.TestEntity</class>
 		<properties>
 			<property name="openjpa.ConnectionDriverName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
 			<property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
