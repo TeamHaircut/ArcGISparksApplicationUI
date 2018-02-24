@@ -31,7 +31,10 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.util.Callback;
 import entities.Designation;
 import entities.Region;
@@ -49,6 +52,7 @@ public class ParkController {
 	
 	@FXML private ListView<Site> listview1;	
 	@FXML private Hyperlink hyperlink;
+	@FXML private Hyperlink hyperlink1;
 	
 	@FXML private RadioButton radio0BTN;
 	@FXML private RadioButton radio1BTN;
@@ -85,6 +89,8 @@ public class ParkController {
 	@FXML private Button removeAllRegionBTN;
 	@FXML private Button addRegionBTN;
 	@FXML private Button removeRegionBTN;
+	
+	@FXML private WebView webview1;
 	
 	@FXML
 	private void addSiteAction() {
@@ -190,6 +196,7 @@ public class ParkController {
 	
 	@FXML void initialize(){
 		
+		
 		if(listview1 != null)
 		{
 			parkModel.connect();
@@ -202,6 +209,9 @@ public class ParkController {
 		    
 		    group.selectedToggleProperty().addListener((observable, oldVal, newVal) 
 		    		-> parkModel.setRadioGroupSelection(newVal));
+		    
+		    final WebEngine webEngine = webview1.getEngine();
+			webEngine.load("https://www.nps.gov/common/uploads/banner_image/imr/homepage/51D13BEA-1DD8-B71B-0B786860A6FE90FC.jpg");
 			
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
@@ -209,7 +219,8 @@ public class ParkController {
 				public void changed(ObservableValue<? extends Site> arg0,
 						Site arg1, Site arg2) {
 						parkModel.setSiteProp(arg2);
-						hyperlink.setText(arg2.getSite_name());
+						hyperlink1.setText(arg2.getSite_name());
+						
 				}
 			});
 			
