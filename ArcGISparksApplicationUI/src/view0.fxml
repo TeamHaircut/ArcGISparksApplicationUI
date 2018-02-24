@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -113,12 +116,64 @@
           </TitledPane>
           <TitledPane fx:id="titledpane2" animated="false" text="0 Parks Found">
                <content>
-                  <FlowPane prefHeight="200.0" prefWidth="200.0">
+                  <HBox>
                      <children>
-                        <ListView fx:id="listview1" minWidth="300.0" prefHeight="200.0" />
-                        <Hyperlink fx:id="hyperlink" onAction="#hyperlinkAction" text="Hyperlink" />
+                        <ListView fx:id="listview1" prefWidth="300.0" />
+					      <VBox fx:id="view1">
+					         <children>
+					            <FlowPane prefWidth="1050.0" style="-fx-background-color: BLACK;">
+					               <padding>
+					                  <Insets bottom="10.0" left="10.0" top="10.0" />
+					               </padding>
+                                 <children>
+                                    <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                    	<image>
+      	      								<Image url="@arrowhead.png" />
+      	   								</image>
+                                    </ImageView>
+                                    <Label text="National Park Service" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+					            </FlowPane>
+                              <AnchorPane>
+                                 <children>
+                                    <WebView fx:id="webview1" prefHeight="310.0" prefWidth="1050.0" />
+                                    <FlowPane layoutY="253.0" prefHeight="57.0" prefWidth="1050.0" style="-fx-background-color: #00000095;">
+                                       <children>
+      					                  <Hyperlink fx:id="hyperlink1" text="Hyperlink" textFill="WHITE" underline="true">
+                                             <font>
+                                                <Font name="System Bold" size="30.0" />
+                                             </font>
+                                          </Hyperlink>
+            					            <FlowPane>
+            					               <children>
+            					                  <HBox>
+            					                     <children>
+            					                        <Label text="park name" textFill="#fcfcfc" />
+            					                        <Label text="park designation" textFill="WHITE" />
+            					                        <HBox>
+            					                           <children>
+            					                              <Label text="map" textFill="WHITE" />
+            					                              <Label text="photos" textFill="WHITE" />
+            					                              <Label text="stamps" textFill="WHITE" />
+            					                              <Label text="patch" textFill="WHITE" />
+            					                           </children>
+            					                        </HBox>
+            					                     </children>
+            					                  </HBox>
+            					               </children>
+            					            </FlowPane>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </AnchorPane>
+					         </children>
+					      </VBox>
                      </children>
-                  </FlowPane>
+                  </HBox>
                </content>
           </TitledPane>
         </panes>
