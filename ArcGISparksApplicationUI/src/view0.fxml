@@ -148,20 +148,17 @@
                                                 <Font name="System Bold" size="30.0" />
                                              </font>
                                           </Hyperlink>
-            					            <FlowPane>
+            					            <FlowPane alignment="CENTER_LEFT">
             					               <children>
-            					                  <HBox>
+            					                  <HBox alignment="TOP_CENTER">
             					                     <children>
-            					                        <Label text="park name" textFill="#fcfcfc" />
-            					                        <Label text="park designation" textFill="WHITE" />
-            					                        <HBox>
-            					                           <children>
-            					                              <Label text="map" textFill="WHITE" />
-            					                              <Label text="photos" textFill="WHITE" />
-            					                              <Label text="stamps" textFill="WHITE" />
-            					                              <Label text="patch" textFill="WHITE" />
-            					                           </children>
-            					                        </HBox>
+            					                        <Label fx:id="designationLabel" text="park designation" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="20.0" right="20.0" />
+                                                         </padding></Label>
             					                     </children>
             					                  </HBox>
             					               </children>
@@ -170,6 +167,40 @@
                                     </FlowPane>
                                  </children>
                               </AnchorPane>
+                              <FlowPane alignment="TOP_RIGHT" prefHeight="70.0" style="-fx-background-color: black;">
+                                 <children>
+					                        <HBox spacing="50.0">
+					                           <children>
+					                              <Label text="MAP" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+					                              <Label text="PHOTOS" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+					                              <Label text="STAMPS" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+					                              <Label text="PATCH" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+					                           </children>
+                                       <FlowPane.margin>
+                                          <Insets right="200.0" top="10.0" />
+                                       </FlowPane.margin>
+					                        </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </FlowPane>
 					         </children>
 					      </VBox>
                      </children>
