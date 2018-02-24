@@ -438,6 +438,10 @@ public class ParkModel {
 		public void setRadioGroupSelection(Toggle newVal) {
 			o = newVal;
 		}
+
+		public Designation getSiteDesignation(Site site) {
+			return myJPA.getDBSiteDesignation(site);
+		}
 						
 	
 
