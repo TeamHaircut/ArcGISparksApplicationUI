@@ -160,4 +160,18 @@ public class ParkJPA {
 		return entityList;
 	}
 
+	public Designation getDBSiteDesignation(Site site) {
+		Designation record = new Designation();
+		if(em.isOpen())
+		{
+			Query q;
+			q = em.createQuery("select x from Designation x where x.designation_id =" +site.getDesignation_id());
+			@SuppressWarnings("unchecked")
+			List<Designation>myRecord = q.getResultList();
+			record = myRecord.get(0);
+			//recordList.addAll(myRecordList);
+		}
+		return record;
+	}
+
 }
