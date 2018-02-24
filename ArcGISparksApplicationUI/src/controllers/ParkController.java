@@ -24,6 +24,7 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
@@ -91,6 +92,7 @@ public class ParkController {
 	@FXML private Button removeRegionBTN;
 	
 	@FXML private WebView webview1;
+	@FXML private Label designationLabel;
 	
 	@FXML
 	private void addSiteAction() {
@@ -220,6 +222,7 @@ public class ParkController {
 						Site arg1, Site arg2) {
 						parkModel.setSiteProp(arg2);
 						hyperlink1.setText(arg2.getSite_name());
+						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
 						
 				}
 			});
