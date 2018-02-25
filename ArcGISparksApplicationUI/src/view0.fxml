@@ -168,26 +168,26 @@
                                     </FlowPane>
                                  </children>
                               </AnchorPane>
-                              <FlowPane alignment="TOP_RIGHT" prefHeight="71.0" style="-fx-background-color: Black;">
+                              <FlowPane alignment="TOP_RIGHT" prefHeight="73.0" style="-fx-background-color: Black;">
                                  <children>
 					                        <HBox spacing="5.0">
 					                           <children>
-                                          <Button fx:id="mapBTN" alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="MAP" textFill="WHITE">
+                                          <Button fx:id="mapBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="MAP" textFill="WHITE" wrapText="true">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Button>
-                                          <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="PHOTOS" textFill="WHITE">
+                                          <Button fx:id="photoBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="PHOTOS" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Button>
-                                          <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="STAMPS" textFill="WHITE">
+                                          <Button fx:id="stampBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="STAMPS" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Button>
-                                          <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="PATCH" textFill="WHITE">
+                                          <Button fx:id="patchBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="PATCH" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
