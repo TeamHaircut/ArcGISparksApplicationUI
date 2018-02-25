@@ -1,0 +1,13 @@
+.mapBTN {
+
+-fx-background-color: #000000;
+-fx-background-radius: 0;
+
+}
+
+.mapBTN:hover {
+
+-fx-background-color: #4C4C4C;
+-fx-background-radius: 0;
+
+}
