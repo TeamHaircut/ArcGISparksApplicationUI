@@ -31,8 +31,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Callback;
@@ -92,6 +94,10 @@ public class ParkController {
 	
 	@FXML private WebView webview1;
 	@FXML private Label designationLabel;
+	@FXML private Button mapBTN;
+	@FXML private Button photoBTN;
+	@FXML private Button stampBTN;
+	@FXML private Button patchBTN;
 	
 	@FXML
 	private void addSiteAction() {
@@ -201,7 +207,26 @@ public class ParkController {
 		if(listview1 != null)
 		{
 			parkModel.connect();
-			
+			mapBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
+			mapBTN.setWrapText(true);
+			mapBTN.setText("MAP");
+			mapBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("map.png"))));
+			//
+			photoBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
+			photoBTN.setWrapText(true);
+			photoBTN.setText("PHOTOS");
+			photoBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("photo.png"))));
+			//
+			stampBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
+			stampBTN.setWrapText(true);
+			stampBTN.setText("STAMPS");
+			stampBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("stamp.png"))));
+			//
+			patchBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
+			patchBTN.setWrapText(true);
+			patchBTN.setText("PATCH");
+			patchBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("patch.png"))));
+			//
 			ToggleGroup group = new ToggleGroup();
 		    radio0BTN.setToggleGroup(group);
 		    radio2BTN.setSelected(true);
