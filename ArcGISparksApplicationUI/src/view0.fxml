@@ -168,7 +168,7 @@
                                     </FlowPane>
                                  </children>
                               </AnchorPane>
-                              <FlowPane alignment="TOP_RIGHT" prefHeight="70.0" style="-fx-background-color: Black;">
+                              <FlowPane alignment="TOP_RIGHT" prefHeight="71.0" style="-fx-background-color: Black;">
                                  <children>
 					                        <HBox spacing="5.0">
 					                           <children>
