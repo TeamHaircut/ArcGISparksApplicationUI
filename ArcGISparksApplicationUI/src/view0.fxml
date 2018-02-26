@@ -138,11 +138,14 @@
                                        </font>
                                     </Label>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets left="1.0" />
+                                 </VBox.margin>
 					            </FlowPane>
-                              <AnchorPane>
+                              <AnchorPane style="-fx-background-color: black;">
                                  <children>
-                                    <WebView fx:id="webview1" prefHeight="310.0" prefWidth="1050.0" />
-                                    <FlowPane layoutY="253.0" prefHeight="57.0" prefWidth="1050.0" style="-fx-background-color: #00000095;">
+                                    <WebView fx:id="webview1" prefHeight="310.0" prefWidth="1064.0" />
+                                    <FlowPane layoutX="1.0" layoutY="253.0" prefHeight="57.0" prefWidth="1063.0" style="-fx-background-color: #00000095;">
                                        <children>
       					                  <Hyperlink fx:id="hyperlink1" textFill="WHITE" underline="true">
                                              <font>
@@ -199,7 +202,7 @@
 					                        </HBox>
                                  </children>
                                  <VBox.margin>
-                                    <Insets />
+                                    <Insets left="1.0" />
                                  </VBox.margin>
                               </FlowPane>
 					         </children>
