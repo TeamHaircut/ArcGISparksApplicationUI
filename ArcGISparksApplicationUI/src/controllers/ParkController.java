@@ -1,5 +1,12 @@
 package controllers;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,7 +208,7 @@ public class ParkController {
 		//******************************************************************
 	}
 	
-	@FXML void initialize(){
+	@FXML void initialize() throws IOException{
 		
 		
 		if(listview1 != null)
@@ -237,8 +244,10 @@ public class ParkController {
 		    		-> parkModel.setRadioGroupSelection(newVal));
 		    
 		    final WebEngine webEngine = webview1.getEngine();
-			webEngine.load("https://www.nps.gov/common/uploads/banner_image/imr/homepage/51D13BEA-1DD8-B71B-0B786860A6FE90FC.jpg");
-			
+			//webEngine.load("https://www.nps.gov/common/uploads/banner_image/imr/homepage/51D13BEA-1DD8-B71B-0B786860A6FE90FC.jpg");
+			//System.out.println(getImageTest("https://www.nps.gov/acad/index.htm"));
+			webEngine.load(getImageTest("https://www.nps.gov/acad/index.htm"));
+
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
@@ -247,6 +256,12 @@ public class ParkController {
 						parkModel.setSiteProp(arg2);
 						hyperlink1.setText(arg2.getSite_name());
 						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
+						try {
+							webEngine.load(getImageTest(arg2.getWebsite()));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						
 				}
 			});
@@ -526,6 +541,35 @@ public class ParkController {
 	    	  alert.show();
 	      }
       });
+	}
+	
+	private String getImageTest(String url) throws IOException {
+		String imageURL = "";
+		//
+		URL website = new URL(url);
+		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+		FileOutputStream fos = new FileOutputStream("information.txt");
+		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		
+		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
+		try {
+		    StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+
+		    while (line != null && imageURL.equals("")) {
+		        line = br.readLine();
+		        if(line.matches("^.*<meta property=\"og:image\".*$")) {
+		        	int indexStart = line.indexOf("https");
+		        	int indexEnd = line.indexOf(" />");
+		        	imageURL = line.substring(indexStart, indexEnd-1);
+		        }
+		        
+		    }
+		} finally {
+		    br.close();
+		}
+		//
+		return imageURL;
 	}
 	
 }
