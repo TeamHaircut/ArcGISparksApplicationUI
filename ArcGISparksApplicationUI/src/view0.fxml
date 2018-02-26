@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-stylesheet style.css?>
 
+
 <BorderPane fx:id="view0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
    <bottom>
       <Accordion BorderPane.alignment="CENTER">
@@ -162,7 +163,8 @@
                                                          </font>
                                                          <padding>
                                                             <Insets left="20.0" right="20.0" />
-                                                         </padding></Label>
+                                                         </padding>
+                                                      </Label>
             					                     </children>
             					                  </HBox>
             					               </children>
