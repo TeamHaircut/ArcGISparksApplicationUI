@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
@@ -30,17 +31,11 @@ public class MyParksMain extends Application {
 		      
 	      BorderPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
 	      view0.setVisible(true);
-	      
-	      //VBox view1 = FXMLLoader.load(getClass().getResource("/view1.fxml"));
-	     // view1.setVisible(true);
-	      
-	      //FlowPane fp = ((FlowPane)((TitledPane)((Accordion)view0.getChildren().get(0)).getPanes().get(1)).getContent());
-	     // fp.getChildren().add(view1);
-	      
+	      	      
 	      Scene scene = new Scene(view0);
 	      stage.setTitle("Test JDBC ArcGIS JavaFX Application with MVC");
-	      stage.setWidth(1366);
-	      stage.setHeight(750);
+	      stage.setMaximized(true);
+	      stage.setFullScreen(true);
 	      stage.setScene(scene);
 	      stage.show();
 	
