@@ -144,7 +144,7 @@
                                     <WebView fx:id="webview1" prefHeight="310.0" prefWidth="1050.0" />
                                     <FlowPane layoutY="253.0" prefHeight="57.0" prefWidth="1050.0" style="-fx-background-color: #00000095;">
                                        <children>
-      					                  <Hyperlink fx:id="hyperlink1" text="Hyperlink" textFill="WHITE" underline="true">
+      					                  <Hyperlink fx:id="hyperlink1" textFill="WHITE" underline="true">
                                              <font>
                                                 <Font name="System Bold" size="30.0" />
                                              </font>
@@ -153,7 +153,7 @@
             					               <children>
             					                  <HBox alignment="TOP_CENTER">
             					                     <children>
-            					                        <Label fx:id="designationLabel" text="park designation" textFill="WHITE">
+            					                        <Label fx:id="designationLabel" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
