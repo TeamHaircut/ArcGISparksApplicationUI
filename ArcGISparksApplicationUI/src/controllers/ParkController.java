@@ -260,6 +260,20 @@ public class ParkController {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						//
+						ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+						Point siteLeft = new Point(arg2.getLat()-0.1, arg2.getLon()+0.1, SpatialReferences.getWgs84());
+						Point siteRight = new Point(arg2.getLat()+0.1, arg2.getLon()-0.1, SpatialReferences.getWgs84());
+						Envelope initialExtent = new Envelope(siteLeft, siteRight);
+						Viewpoint viewPoint = new Viewpoint(initialExtent);
+					    map.setInitialViewpoint(viewPoint);
+						MapView mapView = new MapView();
+						GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
+						mapView.getGraphicsOverlays().add(graphicsOverlay);
+						showQueryResults(graphicsOverlay);
+						mapView.setMap(map);
+						view0.setCenter(mapView);
+						//
 						
 				}
 			});
