@@ -244,9 +244,7 @@ public class ParkController {
 		    		-> parkModel.setRadioGroupSelection(newVal));
 		    
 		    final WebEngine webEngine = webview1.getEngine();
-			//webEngine.load("https://www.nps.gov/common/uploads/banner_image/imr/homepage/51D13BEA-1DD8-B71B-0B786860A6FE90FC.jpg");
-			//System.out.println(getImageTest("https://www.nps.gov/acad/index.htm"));
-			webEngine.load(getImageTest("https://www.nps.gov/acad/index.htm"));
+			webEngine.load(getImageTest("https://www.nps.gov/index.htm"));
 
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
