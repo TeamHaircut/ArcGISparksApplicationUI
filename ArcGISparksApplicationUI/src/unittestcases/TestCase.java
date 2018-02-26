@@ -46,7 +46,6 @@ public class TestCase {
 		        	int indexEnd = line.indexOf(" />");
 		        	imageURL = line.substring(indexStart, indexEnd-1);
 		        	System.out.println(imageURL);
-		        	break;
 		        }
 		        
 		    }
