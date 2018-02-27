@@ -113,9 +113,14 @@ public class ParkController {
 	
 	@FXML
 	private void pictureCloseBTNAction() {
-		System.out.println("button pressed");
 		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
 		stackpane.setVisible(false);
+	}
+	
+	@FXML
+	private void photoBTNAction() {
+		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
+		stackpane.setVisible(true);
 	}
 	
 	@FXML
