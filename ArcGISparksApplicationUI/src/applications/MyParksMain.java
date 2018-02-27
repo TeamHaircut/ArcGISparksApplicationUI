@@ -29,7 +29,7 @@ public class MyParksMain extends Application {
 	  @Override
 	  public void start(Stage stage) throws IOException {
 		      
-	      BorderPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
+	      StackPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
 	      view0.setVisible(true);
 	      	      
 	      Scene scene = new Scene(view0);
@@ -52,9 +52,14 @@ public class MyParksMain extends Application {
 	      map.setInitialViewpoint(viewPoint);
 	      mapView = new MapView();
 	      mapView.setMap(map);
-	      view0.setCenter(mapView);
 	      
-	      ParkController.myViewList.add(view0);
+	      BorderPane borderPane = (BorderPane) view0.getChildren().get(0);
+	      //view0.setCenter(mapView);
+	      borderPane.setCenter(mapView);
+
+	      //ParkController.myViewList.add(view0);
+	      ParkController.myViewList.add(borderPane);
+
 	  }
 	
 	  @Override
