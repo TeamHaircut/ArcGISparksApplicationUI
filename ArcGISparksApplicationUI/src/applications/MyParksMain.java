@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.FlowPane;
@@ -29,7 +30,7 @@ public class MyParksMain extends Application {
 	  @Override
 	  public void start(Stage stage) throws IOException {
 		      
-	      StackPane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
+	      Pane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
 	      view0.setVisible(true);
 	      	      
 	      Scene scene = new Scene(view0);
@@ -53,7 +54,7 @@ public class MyParksMain extends Application {
 	      mapView = new MapView();
 	      mapView.setMap(map);
 	      
-	      BorderPane borderPane = (BorderPane) view0.getChildren().get(0);
+	      BorderPane borderPane = (BorderPane) ((StackPane) view0.getChildren().get(0)).getChildren().get(0);
 	      //view0.setCenter(mapView);
 	      borderPane.setCenter(mapView);
 
