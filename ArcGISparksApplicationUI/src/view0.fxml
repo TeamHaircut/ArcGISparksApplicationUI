@@ -14,7 +14,7 @@
    <children>
       <StackPane layoutX="10.0">
          <children>
-            <BorderPane fx:id="view0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@style.css">
+            <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@style.css">
                <bottom>
                   <Accordion BorderPane.alignment="CENTER">
                     <panes>
