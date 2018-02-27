@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-stylesheet style.css?>
 
-<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
+<Pane prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
    <children>
       <StackPane layoutX="10.0">
          <children>
             <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@style.css">
                <bottom>
-                  <Accordion BorderPane.alignment="CENTER">
+                  <Accordion maxWidth="1366.0" BorderPane.alignment="CENTER">
                     <panes>
-                      <TitledPane animated="false" text="Search Database">
+                      <TitledPane animated="false" prefWidth="1366.0" text="Search Database">
                            <content>
                               <FlowPane alignment="TOP_CENTER" rowValignment="TOP">
             				   <children>
@@ -119,7 +119,7 @@
             				</FlowPane>
                            </content>
                       </TitledPane>
-                      <TitledPane fx:id="titledpane2" animated="false" text="0 Parks Found">
+                      <TitledPane fx:id="titledpane2" animated="false" prefWidth="1366.0" text="0 Parks Found">
                            <content>
                               <HBox>
                                  <children>
@@ -222,15 +222,55 @@
             </BorderPane>
          </children>
       </StackPane>
-      <StackPane prefHeight="500.0" prefWidth="500.0" visible="false">
+      <StackPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #00000095;" visible="false">
          <children>
-            <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+            <FlowPane alignment="CENTER">
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: white;">
+                  <BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-border-color: black; -fx-background-color: white;">
                      <center>
                         <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="397.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="509.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="622.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="734.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="397.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="509.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="622.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../Desktop/icon%20folder/photo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="225.0" fitWidth="400.0" layoutX="734.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../Desktop/icon%20folder/photo.png" />
                                  </image>
