@@ -27,6 +27,7 @@ import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -40,6 +41,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.web.WebEngine;
@@ -52,10 +55,10 @@ import entities.State;
 
 public class ParkController {
 	
-	public static ArrayList<BorderPane> myViewList = new ArrayList<BorderPane>();
+	public static ArrayList<Node> myViewList = new ArrayList<Node>();
 	public static ParkModel parkModel = new ParkModel();
 	
-	@FXML private BorderPane view0;
+	@FXML private BorderPane borderPane;
 	@FXML private TitledPane titledpane2;
 	@FXML private Button submitBTN;
 	
@@ -105,6 +108,15 @@ public class ParkController {
 	@FXML private Button photoBTN;
 	@FXML private Button stampBTN;
 	@FXML private Button patchBTN;
+	
+	@FXML private Button pictureCloseBTN;
+	
+	@FXML
+	private void pictureCloseBTNAction() {
+		System.out.println("button pressed");
+		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
+		stackpane.setVisible(false);
+	}
 	
 	@FXML
 	private void addSiteAction() {
@@ -190,8 +202,8 @@ public class ParkController {
 	private void submitAction() {
 		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
 		//** Query Action***************************************************
-			view0 = myViewList.get(0);
-			Accordion acc = (Accordion) view0.getChildren().get(0);
+			borderPane = (BorderPane) myViewList.get(0);
+			Accordion acc = (Accordion) borderPane.getChildren().get(0);
 			titledpane2 = acc.getPanes().get(1);
 			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
 			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
@@ -204,7 +216,7 @@ public class ParkController {
 			mapView.getGraphicsOverlays().add(graphicsOverlay);
 			showQueryResults(graphicsOverlay);
 			mapView.setMap(map);
-			view0.setCenter(mapView);
+			borderPane.setCenter(mapView);
 		//******************************************************************
 	}
 	
@@ -272,7 +284,7 @@ public class ParkController {
 						mapView.getGraphicsOverlays().add(graphicsOverlay);
 						showQueryResults(graphicsOverlay);
 						mapView.setMap(map);
-						view0.setCenter(mapView);
+						borderPane.setCenter(mapView);
 						//
 						
 				}
