@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-stylesheet style.css?>
 
-
 <Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
    <children>
       <StackPane layoutX="10.0">
@@ -186,7 +185,7 @@
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button fx:id="photoBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="PHOTOS" textFill="WHITE">
+                                                      <Button fx:id="photoBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#photoBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="mapBTN" text="PHOTOS" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
@@ -223,7 +222,7 @@
             </BorderPane>
          </children>
       </StackPane>
-      <StackPane prefHeight="500.0" prefWidth="500.0">
+      <StackPane prefHeight="500.0" prefWidth="500.0" visible="false">
          <children>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
