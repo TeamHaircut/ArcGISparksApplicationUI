@@ -60,6 +60,8 @@ public class MyParksMain extends Application {
 
 	      //ParkController.myViewList.add(view0);
 	      ParkController.myViewList.add(borderPane);
+	      ParkController.myViewList.add(view0);
+	      
 
 	  }
 	
