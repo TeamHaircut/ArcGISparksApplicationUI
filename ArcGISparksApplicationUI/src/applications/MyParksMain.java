@@ -5,13 +5,9 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Accordion;
-import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import com.esri.arcgisruntime.geometry.Envelope;
@@ -41,28 +37,19 @@ public class MyParksMain extends Application {
 	      stage.show();
 	
 	      ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-	   // create an initial extent envelope
 	      Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
 	      Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
 	      Envelope initialExtent = new Envelope(leftPoint, rightPoint);
-
-	      // create a viewpoint from envelope
 	      Viewpoint viewPoint = new Viewpoint(initialExtent);
-
-	      // set initial ArcGISMap extent
 	      map.setInitialViewpoint(viewPoint);
 	      mapView = new MapView();
 	      mapView.setMap(map);
 	      
 	      BorderPane borderPane = (BorderPane) ((StackPane) view0.getChildren().get(0)).getChildren().get(0);
-	      //view0.setCenter(mapView);
 	      borderPane.setCenter(mapView);
-
-	      //ParkController.myViewList.add(view0);
 	      ParkController.myViewList.add(borderPane);
 	      ParkController.myViewList.add(view0);
 	      
-
 	  }
 	
 	  @Override
