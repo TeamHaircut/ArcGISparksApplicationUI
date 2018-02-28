@@ -227,7 +227,6 @@ public class ParkController {
 	
 	@FXML void initialize() throws IOException{
 		
-		
 		if(listview1 != null)
 		{
 			parkModel.connect();
@@ -235,22 +234,22 @@ public class ParkController {
 			mapBTN.setWrapText(true);
 			mapBTN.setText("MAP");
 			mapBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("map.png"))));
-			//
+			
 			photoBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
 			photoBTN.setWrapText(true);
 			photoBTN.setText("PHOTOS");
 			photoBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("photo.png"))));
-			//
+			
 			stampBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
 			stampBTN.setWrapText(true);
 			stampBTN.setText("STAMPS");
 			stampBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("stamp.png"))));
-			//
+			
 			patchBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
 			patchBTN.setWrapText(true);
 			patchBTN.setText("PATCH");
 			patchBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("patch.png"))));
-			//
+			
 			ToggleGroup group = new ToggleGroup();
 		    radio0BTN.setToggleGroup(group);
 		    radio2BTN.setSelected(true);
@@ -274,10 +273,9 @@ public class ParkController {
 						try {
 							webEngine.load(getImageTest(arg2.getWebsite()));
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						//
+						
 						ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
 						Point siteLeft = new Point(arg2.getLat()-0.1, arg2.getLon()+0.1, SpatialReferences.getWgs84());
 						Point siteRight = new Point(arg2.getLat()+0.1, arg2.getLon()-0.1, SpatialReferences.getWgs84());
@@ -290,8 +288,7 @@ public class ParkController {
 						showQueryResults(graphicsOverlay);
 						mapView.setMap(map);
 						borderPane.setCenter(mapView);
-						//
-						
+
 				}
 			});
 			
