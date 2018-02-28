@@ -1,6 +1,17 @@
+/*
+ * <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true">
+      <image>
+           <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
+      </image>
+   </ImageView>
+ */
+
 package controllers;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,11 +47,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
@@ -118,9 +132,31 @@ public class ParkController {
 	}
 	
 	@FXML
-	private void photoBTNAction() {
+	private void photoBTNAction() throws FileNotFoundException {
 		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
+		
+		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
+		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
+		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
+		AnchorPane apane = (AnchorPane) spane.getContent();
+		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
+		
+		
+		for(int i = 1; i < new File("C:\\Users\\..\\Desktop\\projectImages\\everglades").listFiles().length+1; i++) {
+			FileInputStream input = new FileInputStream("C:\\Users\\..\\Desktop\\projectImages\\everglades\\"+i+".jpg");
+			Image image = new Image(input);
+			ImageView imageView = new ImageView(image);
+			imageView.setFitHeight(image.getHeight()/4);
+			imageView.setFitWidth(image.getWidth()/4);
+			imageView.setPickOnBounds(true);
+			fpane.getChildren().add(imageView);
+		}
+		
 		stackpane.setVisible(true);
+		
+		
+		
+		
 	}
 	
 	@FXML
