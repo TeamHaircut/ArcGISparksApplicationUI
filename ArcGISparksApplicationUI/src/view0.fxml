@@ -244,71 +244,7 @@
                                  <children>
                                     <FlowPane alignment="CENTER" hgap="5.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: black;" vgap="5.0">
                                        <children>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo1.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo1.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo1.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo1.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo1.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
-                                          <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-                                             </image>
-                                          </ImageView>
+                                          
                                        </children>
                                     </FlowPane>
                                  </children>
