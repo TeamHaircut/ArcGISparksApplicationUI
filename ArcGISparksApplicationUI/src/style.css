@@ -128,6 +128,9 @@
         linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),
         linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
         linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);
+        
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
 }
 
 
