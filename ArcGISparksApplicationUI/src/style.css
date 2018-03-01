@@ -11,3 +11,24 @@
 -fx-background-radius: 0;
 
 }
+
+.list-view .list-cell {
+-fx-background-color: #252525;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-font-size: 14;
+}
+
+.list-view .list-cell:hover {
+-fx-background-color: #436023;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-font-size: 14;
+}
+
+.list-view .list-cell:selected {
+-fx-background-color: black;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-font-size: 14;
+}
