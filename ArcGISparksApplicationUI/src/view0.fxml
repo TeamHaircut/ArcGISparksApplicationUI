@@ -119,9 +119,9 @@
             				</FlowPane>
                            </content>
                       </TitledPane>
-                      <TitledPane fx:id="titledpane2" animated="false" prefWidth="1366.0" text="0 Parks Found">
+                      <TitledPane fx:id="titledpane2" animated="false" prefWidth="1366.0" style="-fx-background-color: black;" text="0 Parks Found" textFill="WHITE">
                            <content>
-                              <HBox>
+                              <HBox style="-fx-background-color: #436023;">
                                  <children>
                                     <ListView fx:id="listview1" prefWidth="300.0" />
             					      <VBox fx:id="view1">
@@ -211,8 +211,14 @@
                                              </VBox.margin>
                                           </FlowPane>
             					         </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
             					      </VBox>
                                  </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
                               </HBox>
                            </content>
                       </TitledPane>
