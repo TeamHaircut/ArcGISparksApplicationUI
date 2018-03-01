@@ -59,6 +59,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.web.WebEngine;
@@ -332,6 +333,25 @@ public class ParkController {
 			});
 			
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
+			
+//			listview1.setCellFactory(new Callback<ListView<Site>, ListCell<Site>>() {
+//	            @Override
+//	            public ListCell<Site> call(ListView<Site> p) {
+//	                return new ListCell<Site>() {
+//	                    @Override
+//	                    protected void updateItem(Site item, boolean empty) {
+//	                        super.updateItem(item, empty);
+//	                        if (empty) {
+//	                            setText(null);
+//	                        } else {
+//	                            setText(item == null ? "null" : item.toString());
+//	                            setFont(Font.font(18));
+//	                            setStyle("-fx-font-weight: bold");
+//	                        }
+//	                    }
+//	                };
+//	            }
+//	        });
 			
 			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
