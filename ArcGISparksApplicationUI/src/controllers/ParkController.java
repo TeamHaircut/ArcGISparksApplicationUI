@@ -146,7 +146,7 @@ public class ParkController {
 		AnchorPane apane = (AnchorPane) spane.getContent();
 		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
 		fpane.getChildren().clear();
-		String dir = "acad";
+		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
 		
 		for(int i = 1; i < new File("projectImages\\"+dir).listFiles().length+1; i++) {
 			FileInputStream input = new FileInputStream("projectImages\\"+dir+"\\"+i+".jpg");
@@ -157,13 +157,8 @@ public class ParkController {
 			imageView.setPickOnBounds(true);
 			observableList.add(imageView);
 		}
-		
 		fpane.getChildren().addAll(observableList);
-		
 		stackpane.setVisible(true);
-		
-		
-		
 		
 	}
 	
