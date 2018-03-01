@@ -37,6 +37,8 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
@@ -133,14 +135,17 @@ public class ParkController {
 	
 	@FXML
 	private void photoBTNAction() throws FileNotFoundException {
-		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
 		
+		List<ImageView> list = new ArrayList<ImageView>();
+		ObservableList<ImageView> observableList = FXCollections.observableList(list);
+		
+		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
 		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
 		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
 		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
 		AnchorPane apane = (AnchorPane) spane.getContent();
 		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
-		
+		fpane.getChildren().clear();
 		
 		for(int i = 1; i < new File("C:\\Users\\..\\Desktop\\projectImages\\everglades").listFiles().length+1; i++) {
 			FileInputStream input = new FileInputStream("C:\\Users\\..\\Desktop\\projectImages\\everglades\\"+i+".jpg");
@@ -149,8 +154,10 @@ public class ParkController {
 			imageView.setFitHeight(image.getHeight()/4);
 			imageView.setFitWidth(image.getWidth()/4);
 			imageView.setPickOnBounds(true);
-			fpane.getChildren().add(imageView);
+			observableList.add(imageView);
 		}
+		
+		fpane.getChildren().addAll(observableList);
 		
 		stackpane.setVisible(true);
 		
