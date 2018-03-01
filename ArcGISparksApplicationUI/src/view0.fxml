@@ -222,7 +222,7 @@
             </BorderPane>
          </children>
       </StackPane>
-      <StackPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #00000095;">
+      <StackPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #00000095;" visible="false">
          <children>
             <FlowPane alignment="CENTER">
                <children>
