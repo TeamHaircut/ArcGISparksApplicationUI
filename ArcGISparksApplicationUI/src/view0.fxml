@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.*?>
 <?scenebuilder-stylesheet style.css?>
 
-<Pane prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
+<Pane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParkController">
    <children>
-      <StackPane layoutX="10.0">
+      <StackPane>
          <children>
             <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@style.css">
                <bottom>
