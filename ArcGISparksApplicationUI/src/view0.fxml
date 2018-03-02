@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -23,7 +24,7 @@
             				   <children>
                                     <VBox spacing="5.0" styleClass="groupLV">
                                        <children>
-                                          <Label styleClass="groupText" text="Test" />
+                                          <Label styleClass="groupText" text="Sites" />
                   				   	<HBox alignment="CENTER" spacing="5.0">
                   				         <children>
                   				            <ListView fx:id="lvSite1" prefHeight="250.0" prefWidth="180.0" />
@@ -78,10 +79,10 @@
                         				            <ListView fx:id="lvState2" prefHeight="100.0" prefWidth="52.0" />
                                                       <VBox alignment="CENTER_LEFT" prefWidth="150.0" spacing="5.0">
                                                          <children>
-                                                            <RadioButton fx:id="radio0BTN" mnemonicParsing="false" text="Visited" />
-                                                            <RadioButton fx:id="radio1BTN" mnemonicParsing="false" text="Not Visited" />
-                                                            <RadioButton fx:id="radio2BTN" mnemonicParsing="false" text="All" />
-                                                            <Button fx:id="submitBTN" mnemonicParsing="false" onAction="#submitAction" text="SUBMIT" />
+                                                            <RadioButton fx:id="radio0BTN" mnemonicParsing="false" styleClass="groupText" text="Visited" />
+                                                            <RadioButton fx:id="radio1BTN" mnemonicParsing="false" styleClass="groupText" text="Not Visited" />
+                                                            <RadioButton fx:id="radio2BTN" mnemonicParsing="false" styleClass="groupText" text="All" />
+                                                            <Button fx:id="submitBTN" mnemonicParsing="false" onAction="#submitAction" styleClass="groupText" text="SUBMIT" />
                                                          </children>
                                                          <padding>
                                                             <Insets left="50.0" />
@@ -226,13 +227,13 @@
             </BorderPane>
          </children>
       </StackPane>
-      <StackPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #00000095;" visible="false">
+      <StackPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #000000dc;">
          <children>
             <FlowPane alignment="CENTER">
                <children>
-                  <BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-border-color: black; -fx-background-color: white;">
+                  <BorderPane prefHeight="600.0" prefWidth="1021.0" style="-fx-border-color: black; -fx-background-color: black;">
                      <top>
-                        <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <ToolBar nodeOrientation="RIGHT_TO_LEFT" BorderPane.alignment="CENTER">
                           <items>
                             <Button fx:id="pictureCloseBTN" mnemonicParsing="false" onAction="#pictureCloseBTNAction" text="X" textAlignment="CENTER">
                                  <font>
@@ -242,11 +243,11 @@
                         </ToolBar>
                      </top>
                      <center>
-                        <ScrollPane prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                        <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="600.0" prefWidth="1017.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                           <content>
-                            <AnchorPane prefHeight="600.0" prefWidth="1000.0">
+                            <AnchorPane prefHeight="600.0" prefWidth="1017.0">
                                  <children>
-                                    <FlowPane alignment="CENTER" hgap="5.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: black;" vgap="5.0">
+                                    <FlowPane alignment="CENTER" hgap="5.0" prefHeight="600.0" prefWidth="1017.0" style="-fx-background-color: black;" vgap="5.0">
                                        <children>
                                           
                                        </children>
