@@ -123,7 +123,7 @@
                            <content>
                               <HBox style="-fx-background-color: #436023;">
                                  <children>
-                                    <ListView fx:id="listview1" prefWidth="300.0" />
+                                    <ListView fx:id="listview1" styleClass="mainLV" prefWidth="300.0" />
             					      <VBox fx:id="view1">
             					         <children>
             					            <FlowPane prefWidth="1050.0" style="-fx-background-color: BLACK;">
