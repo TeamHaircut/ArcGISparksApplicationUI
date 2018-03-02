@@ -112,6 +112,7 @@
  -fx-background-insets: 0 4 0 4;
  -fx-background-radius: 2em;
 }
+
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
  -fx-background-color: rgb(231,231,231);
@@ -180,6 +181,8 @@
     -fx-font-weight: bold;
     -fx-font-size: 14;
 }
+
+
 
 
 
