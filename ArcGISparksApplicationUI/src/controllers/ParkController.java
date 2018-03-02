@@ -334,25 +334,6 @@ public class ParkController {
 			
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
 			
-//			listview1.setCellFactory(new Callback<ListView<Site>, ListCell<Site>>() {
-//	            @Override
-//	            public ListCell<Site> call(ListView<Site> p) {
-//	                return new ListCell<Site>() {
-//	                    @Override
-//	                    protected void updateItem(Site item, boolean empty) {
-//	                        super.updateItem(item, empty);
-//	                        if (empty) {
-//	                            setText(null);
-//	                        } else {
-//	                            setText(item == null ? "null" : item.toString());
-//	                            setFont(Font.font(18));
-//	                            setStyle("-fx-font-weight: bold");
-//	                        }
-//	                    }
-//	                };
-//	            }
-//	        });
-			
 			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
@@ -374,43 +355,7 @@ public class ParkController {
 	        });
 	        
 	        lvSite2.itemsProperty().bindBidirectional(parkModel.lvSite2Property());
-	        
-	        lvSite1.setCellFactory(new Callback<ListView<Site>, ListCell<Site>>() {
-	            @Override
-	            public ListCell<Site> call(ListView<Site> p) {
-	                return new ListCell<Site>() {
-	                    @Override
-	                    protected void updateItem(Site item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
-	        
-	        lvSite2.setCellFactory(new Callback<ListView<Site>, ListCell<Site>>() {
-	            @Override
-	            public ListCell<Site> call(ListView<Site> p) {
-	                return new ListCell<Site>() {
-	                    @Override
-	                    protected void updateItem(Site item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
-				
+	        	
 			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 				@Override
 				public void changed(ObservableValue<? extends Designation> arg0,
@@ -429,42 +374,6 @@ public class ParkController {
 	        });
 	        
 	        lvDes2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
-	        
-	        lvDes1.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
-	            @Override
-	            public ListCell<Designation> call(ListView<Designation> p) {
-	                return new ListCell<Designation>() {
-	                    @Override
-	                    protected void updateItem(Designation item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
-	        
-	        lvDes2.setCellFactory(new Callback<ListView<Designation>, ListCell<Designation>>() {
-	            @Override
-	            public ListCell<Designation> call(ListView<Designation> p) {
-	                return new ListCell<Designation>() {
-	                    @Override
-	                    protected void updateItem(Designation item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
 	        
 	        lvState1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
 				@Override
@@ -486,42 +395,6 @@ public class ParkController {
 	        
 	        lvState2.itemsProperty().bindBidirectional(parkModel.lvState2Property());
 	        
-	        lvState1.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
-	            @Override
-	            public ListCell<State> call(ListView<State> p) {
-	                return new ListCell<State>() {
-	                    @Override
-	                    protected void updateItem(State item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
-	        
-	        lvState2.setCellFactory(new Callback<ListView<State>, ListCell<State>>() {
-	            @Override
-	            public ListCell<State> call(ListView<State> p) {
-	                return new ListCell<State>() {
-	                    @Override
-	                    protected void updateItem(State item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
-
 	        lvRegion1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
 				@Override
 				public void changed(ObservableValue<? extends Region> arg0,
@@ -543,41 +416,6 @@ public class ParkController {
 	        
 	        lvRegion2.itemsProperty().bindBidirectional(parkModel.lvRegion2Property());
 	        
-	        lvRegion1.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
-	            @Override
-	            public ListCell<Region> call(ListView<Region> p) {
-	                return new ListCell<Region>() {
-	                    @Override
-	                    protected void updateItem(Region item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
-	        
-	        lvRegion2.setCellFactory(new Callback<ListView<Region>, ListCell<Region>>() {
-	            @Override
-	            public ListCell<Region> call(ListView<Region> p) {
-	                return new ListCell<Region>() {
-	                    @Override
-	                    protected void updateItem(Region item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setText(null);
-	                        } else {
-	                            setText(item == null ? "null" : item.toString());
-	                            setFont(Font.font(10));
-	                        }
-	                    }
-	                };
-	            }
-	        });
 	        //
 		        
 		}
