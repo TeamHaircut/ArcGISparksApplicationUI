@@ -384,6 +384,11 @@ public class ParkController {
 			patchBTN.setText("PATCH");
 			patchBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("patch.png"))));
 			
+			campBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
+			campBTN.setWrapText(true);
+			campBTN.setText("CAMP");
+			campBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("camp.png"))));
+			
 			ToggleGroup group = new ToggleGroup();
 		    radio0BTN.setToggleGroup(group);
 		    radio2BTN.setSelected(true);
