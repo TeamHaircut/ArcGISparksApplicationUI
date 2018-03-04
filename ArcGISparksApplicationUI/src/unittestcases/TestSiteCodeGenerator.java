@@ -13,7 +13,9 @@ public class TestSiteCodeGenerator {
 		List<String> data = codeGenerator();
 		
 		for(String code : data) {
-			new File("TempFolder312018\\"+code).mkdirs();
+			new File("TempFolder312018\\"+code+"\\photos").mkdirs();
+			new File("TempFolder312018\\"+code+"\\stamps").mkdirs();
+			new File("TempFolder312018\\"+code+"\\patches").mkdirs();
 		}
 		
 	}
