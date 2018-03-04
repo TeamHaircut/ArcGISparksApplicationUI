@@ -3,10 +3,12 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import supportclasses.WebCrawler;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import jpa.ParkJPA;
 
 public class CampAppModel {
 
@@ -25,13 +27,14 @@ public class CampAppModel {
 				return listviewProp.getValue();
 			}
 			
+			public static WebCrawler myWebCrawler;
+			
 	//list view (getList())																list view (getList())
 			public List<String> myList = new ArrayList<String>();
 			public List<String> getList(){
-				myList.add("item 1");
-				myList.add("item 2");
-				myList.add("item 3");
-				myList.add("item 4");
+				
+				myList = myWebCrawler.crawl();
+				
 				return myList;
 			}
 	
