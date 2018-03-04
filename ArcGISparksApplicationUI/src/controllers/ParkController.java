@@ -21,6 +21,8 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
 
+import supportclasses.CampAppPane;
+
 import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
@@ -46,7 +48,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
@@ -59,12 +60,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.util.Callback;
 import entities.Designation;
 import entities.Region;
 import entities.Site;
@@ -228,7 +227,7 @@ public class ParkController {
 	}
 	
 	@FXML
-	private void campBTNAction() throws FileNotFoundException {
+	private void campBTNAction() throws IOException {
 		
 		List<ImageView> list = new ArrayList<ImageView>();
 		ObservableList<ImageView> observableList = FXCollections.observableList(list);
@@ -240,6 +239,10 @@ public class ParkController {
 		AnchorPane apane = (AnchorPane) spane.getContent();
 		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
 		fpane.getChildren().clear();
+		CampAppPane cap = new CampAppPane();
+		cap.setFpane(fpane);
+		cap.setSite(parkModel.getSiteProp());
+		cap.getFpane();
 //		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
 //		
 //		for(int i = 1; i < new File("projectImages\\"+dir+"\\patches\\").listFiles().length+1; i++) {
@@ -251,7 +254,7 @@ public class ParkController {
 //			imageView.setPickOnBounds(true);
 //			observableList.add(imageView);
 //		}
-		fpane.getChildren().addAll(observableList);
+		//fpane.getChildren().add(CampAppPane.getFpane());
 		stackpane.setVisible(true);
 		
 	}
