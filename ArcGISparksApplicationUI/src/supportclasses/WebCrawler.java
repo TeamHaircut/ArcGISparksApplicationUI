@@ -19,31 +19,26 @@ public class WebCrawler {
 		
 		Site s = ParkModel.getMySite();
 		int code = NPMap.npMap.get(s.getSite_name());
-		//int code = 2554;
 		
 		ArrayList<String> myList = new ArrayList<String>();
-		
 		String testURL0 = "https://www.recreation.gov/recreationalAreaDetails.do?contractCode=NRSO&recAreaId="+code+"&agencyCode=70904";
 		myList = getCampGroundList(testURL0);
 		
 		return myList;
-		
 	}
 	
 	@SuppressWarnings("finally")
 	private static ArrayList<String> getCampGroundList(String url) throws IOException {
 		ParserState parserState = ParserState.NONE;
-		//
 		ArrayList<String> dataList = new ArrayList<String>();
-		//
 		URL website = new URL(url);
 		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 		FileOutputStream fos = new FileOutputStream("information.txt");
 		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		fos.close();
 		
 		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
 		try {
-		    StringBuilder sb = new StringBuilder();
 		    String line = br.readLine();
 
 		    while (line != null) {
@@ -55,7 +50,6 @@ public class WebCrawler {
 		        }
 		        if(parserState == ParserState.CAMPGROUND) {
 		        	if(line.matches("^.*\\d'    >.*$")) {
-		        		
 		        		int index = 0;
 		        		int indexStart = 0;
 		        		int indexEnd = 0;
