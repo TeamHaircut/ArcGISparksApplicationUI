@@ -103,7 +103,6 @@ public class QueryState {
 			}
 			regionIdString = regionIdString.substring(0, regionIdString.length()-1);
 			query = query.concat(""+regionIdString+")");
-			//'North Atlantic','Midwest')))
 		}
 		else {
 			if(!query.equals(""))
