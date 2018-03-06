@@ -410,6 +410,7 @@ public class ParkController {
 				public void changed(ObservableValue<? extends Site> arg0,
 						Site arg1, Site arg2) {
 						parkModel.setSiteProp(arg2);
+						ParkModel.setMySite(arg2);
 						hyperlink1.setText(arg2.getSite_name());
 						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
 						try {
