@@ -14,24 +14,24 @@ public class CampAppController {
 	public static CampAppModel campAppModel = new CampAppModel();
 	@FXML private ListView<String> listview;
 	
-@FXML void initialize() throws IOException{
-		
-		if(listview != null)
-		{
-			NPMap.initializeMap();
-			listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
-
-				@Override
-				public void changed(ObservableValue<? extends String> arg0,
-						String arg1, String arg2) {
-					System.out.println("Button Pressed");
+	@FXML void initialize() throws IOException{
+			
+			if(listview != null)
+			{
+				NPMap.initializeMap();
+				listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+	
+					@Override
+					public void changed(ObservableValue<? extends String> arg0,
+							String arg1, String arg2) {
+						System.out.println("Button Pressed");
+						
+					}
 					
-				}
-				
-			});
-
-			listview.itemsProperty().bindBidirectional(campAppModel.listviewProperty());
-		}
-}
+				});
+	
+				listview.itemsProperty().bindBidirectional(campAppModel.listviewProperty());
+			}
+	}
 
 }
