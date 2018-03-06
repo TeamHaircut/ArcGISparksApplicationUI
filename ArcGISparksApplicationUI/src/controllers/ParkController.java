@@ -1,11 +1,3 @@
-/*
- * <ImageView fitHeight="225.0" fitWidth="400.0" pickOnBounds="true">
-      <image>
-           <Image url="@../../../../Desktop/icon%20folder/photo0.jpg" />
-      </image>
-   </ImageView>
- */
-
 package controllers;
 
 import java.io.BufferedReader;
@@ -164,8 +156,7 @@ public class ParkController {
 			observableList.add(imageView);
 		}
 		fpane.getChildren().addAll(observableList);
-		stackpane.setVisible(true);
-		
+		stackpane.setVisible(true);	
 	}
 	
 	@FXML
@@ -193,8 +184,7 @@ public class ParkController {
 			observableList.add(imageView);
 		}
 		fpane.getChildren().addAll(observableList);
-		stackpane.setVisible(true);
-		
+		stackpane.setVisible(true);	
 	}
 	
 	@FXML
@@ -223,15 +213,10 @@ public class ParkController {
 		}
 		fpane.getChildren().addAll(observableList);
 		stackpane.setVisible(true);
-		
 	}
 	
 	@FXML
 	private void campBTNAction() throws IOException {
-		
-		List<ImageView> list = new ArrayList<ImageView>();
-		ObservableList<ImageView> observableList = FXCollections.observableList(list);
-		
 		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
 		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
 		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
@@ -243,20 +228,7 @@ public class ParkController {
 		cap.setFpane(fpane);
 		cap.setSite(parkModel.getSiteProp());
 		cap.getFpane();
-//		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
-//		
-//		for(int i = 1; i < new File("projectImages\\"+dir+"\\patches\\").listFiles().length+1; i++) {
-//			FileInputStream input = new FileInputStream("projectImages\\"+dir+"\\patches\\"+i+".jpg");
-//			Image image = new Image(input);
-//			ImageView imageView = new ImageView(image);
-//			imageView.setFitHeight(image.getHeight()/4);
-//			imageView.setFitWidth(image.getWidth()/4);
-//			imageView.setPickOnBounds(true);
-//			observableList.add(imageView);
-//		}
-		//fpane.getChildren().add(CampAppPane.getFpane());
-		stackpane.setVisible(true);
-		
+		stackpane.setVisible(true);	
 	}
 	
 	
@@ -518,9 +490,7 @@ public class ParkController {
 	        });
 	        
 	        lvRegion2.itemsProperty().bindBidirectional(parkModel.lvRegion2Property());
-	        
-	        //
-		        
+    
 		}
 	}
 	
@@ -571,17 +541,15 @@ public class ParkController {
 	
 	private String getImageTest(String url) throws IOException {
 		String imageURL = "";
-		//
 		URL website = new URL(url);
 		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 		FileOutputStream fos = new FileOutputStream("information.txt");
 		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		fos.close();
 		
 		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
 		try {
-		    StringBuilder sb = new StringBuilder();
 		    String line = br.readLine();
-
 		    while (line != null && imageURL.equals("")) {
 		        line = br.readLine();
 		        if(line.matches("^.*<meta property=\"og:image\".*$")) {
@@ -594,7 +562,6 @@ public class ParkController {
 		} finally {
 		    br.close();
 		}
-		//
 		return imageURL;
 	}
 	
