@@ -145,8 +145,6 @@ public class ParkJPA {
 				List<State> myStateResultsList;
 				
 				qState = em.createQuery(query);
-				
-				//q2 = em.createQuery(getMyQuery2());
 				myStateResultsList = qState.getResultList();
 				
 				query = "Select x from Site x where x.state_id in ("+myStateResultsList+")";
@@ -169,7 +167,6 @@ public class ParkJPA {
 			@SuppressWarnings("unchecked")
 			List<Designation>myRecord = q.getResultList();
 			record = myRecord.get(0);
-			//recordList.addAll(myRecordList);
 		}
 		return record;
 	}
