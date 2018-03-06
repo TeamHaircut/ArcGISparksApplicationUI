@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import entities.Site;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 
@@ -36,17 +35,10 @@ public class CampAppPane {
 	
 	public FlowPane createCampAppPane() throws IOException {
 		FlowPane root = new FlowPane();
-		
 		Pane view1 = FXMLLoader.load(getClass().getResource("/view1.fxml"));
 	    view1.setVisible(true);
-		
 		root.getChildren().add(view1);
-		
-		
 		return root;
 	}
-
-	
-	
 
 }
