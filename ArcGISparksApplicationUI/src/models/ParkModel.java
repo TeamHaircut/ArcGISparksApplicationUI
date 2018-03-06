@@ -90,7 +90,18 @@ public class ParkModel {
 			return listviewProp.getValue();
 		}
 		
-//list view (getList())																list view (getList())
+		public static Site mySite;
+		
+		public static Site getMySite() {
+			return mySite;
+		}
+
+		public static void setMySite(Site mySite) {
+			ParkModel.mySite = mySite;
+		}
+
+
+		//list view (getList())																list view (getList())
 		public static ParkJPA myJPA;
 		public List<Site> myList = new ArrayList<Site>();
 		public List<Site> getList(){
