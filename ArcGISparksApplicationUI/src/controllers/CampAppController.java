@@ -1,5 +1,8 @@
 package controllers;
 
+import java.io.IOException;
+
+import supportclasses.NPMap;
 import models.CampAppModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,10 +14,11 @@ public class CampAppController {
 	public static CampAppModel campAppModel = new CampAppModel();
 	@FXML private ListView<String> listview;
 	
-@FXML void initialize(){
+@FXML void initialize() throws IOException{
 		
 		if(listview != null)
 		{
+			NPMap.initializeMap();
 			listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
 				@Override
