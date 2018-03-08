@@ -146,12 +146,12 @@ public class ParkController {
 		fpane.getChildren().clear();
 		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
 		
-		for(int i = 1; i < new File("projectImages\\"+dir+"\\photos\\").listFiles().length+1; i++) {
-			FileInputStream input = new FileInputStream("projectImages\\"+dir+"\\photos\\"+i+".jpg");
+		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\photos\\").listFiles().length+1; i++) {
+			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\photos\\1 ("+i+").jpg");
 			Image image = new Image(input);
 			ImageView imageView = new ImageView(image);
-			imageView.setFitHeight(image.getHeight()/4);
-			imageView.setFitWidth(image.getWidth()/4);
+			imageView.setFitHeight(image.getHeight()/16);
+			imageView.setFitWidth(image.getWidth()/16);
 			imageView.setPickOnBounds(true);
 			observableList.add(imageView);
 		}
