@@ -132,7 +132,7 @@ public class ParkController {
 	}
 	
 	@FXML
-	private void photoBTNAction() throws FileNotFoundException {
+	private void photoBTNAction() throws IOException {
 		
 		List<ImageView> list = new ArrayList<ImageView>();
 		ObservableList<ImageView> observableList = FXCollections.observableList(list);
