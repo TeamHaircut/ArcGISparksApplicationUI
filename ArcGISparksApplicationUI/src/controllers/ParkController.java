@@ -124,6 +124,12 @@ public class ParkController {
 	private void pictureCloseBTNAction() {
 		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
 		stackpane.setVisible(false);
+		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
+		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
+		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
+		AnchorPane apane = (AnchorPane) spane.getContent();
+		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
+		fpane.getChildren().clear();
 	}
 	
 	@FXML
@@ -149,9 +155,22 @@ public class ParkController {
 		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\photos\\").listFiles().length+1; i++) {
 			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\photos\\1 ("+i+").jpg");
 			Image image = new Image(input, 300, 0, true, false);
-			ImageView imageView = new ImageView(image);
-			imageView.setPickOnBounds(true);
-			observableList.add(imageView);
+			//if horizontal
+			if(image.getWidth() > image.getHeight()) {
+				ImageView imageView = new ImageView(image);
+				imageView.setPickOnBounds(true);
+				observableList.add(imageView);
+				
+			}
+			//else vertical
+			else {
+				ImageView imageView = new ImageView(image);
+				imageView.setFitWidth(250);
+		        imageView.setPreserveRatio(true);
+				imageView.setPickOnBounds(true);
+				observableList.add(imageView);
+				
+			}
 		}
 		fpane.getChildren().addAll(observableList);
 		stackpane.setVisible(true);	
