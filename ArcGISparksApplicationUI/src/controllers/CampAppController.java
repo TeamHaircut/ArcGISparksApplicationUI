@@ -18,7 +18,7 @@ public class CampAppController {
 			
 			if(listview != null)
 			{
-				NPMap.initializeMap();
+				NPMap.initializeNPMap();
 				listview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 	
 					@Override
