@@ -1,12 +1,23 @@
 package supportclasses;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import entities.Site;
+import javafx.scene.image.Image;
 
 public class NPMap {
 	public static Map<String, Integer> npMap = new HashMap<String, Integer>();
 	
-	public static void initializeMap() {
+	public static void initializeNPMap() {
 		npMap.put("Acadia",2554);
 		npMap.put("Arches",2573);
 		npMap.put("Badlands",2578);
@@ -66,6 +77,43 @@ public class NPMap {
 		npMap.put("Yosemite",2991);
 		npMap.put("Zion",2994);
 		npMap.put("Grand Teton",13525);
+	}
+	
+	public static Map<String, Image> bannerMap = new HashMap<String, Image>();
+	public static boolean isInitialized = false;
+	
+	public static void initializeBannerMap(List<Site> listofsites) throws IOException {
+		isInitialized = true;
+		for(Site s: listofsites) {
+			bannerMap.put(s.getSite_name(),new Image(getImageURL(s.getWebsite())));
+
+		}
+	}
+	
+	private static String getImageURL(String url) throws IOException {
+		String imageURL = "";
+		URL website = new URL(url);
+		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+		FileOutputStream fos = new FileOutputStream("information.txt");
+		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+		fos.close();
+		
+		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
+		try {
+		    String line = br.readLine();
+		    while (line != null && imageURL.equals("")) {
+		        line = br.readLine();
+		        if(line.matches("^.*<meta property=\"og:image\".*$")) {
+		        	int indexStart = line.indexOf("https");
+		        	int indexEnd = line.indexOf(" />");
+		        	imageURL = line.substring(indexStart, indexEnd-1);
+		        }
+		        
+		    }
+		} finally {
+		    br.close();
+		}
+		return imageURL;
 	}
 
 }
