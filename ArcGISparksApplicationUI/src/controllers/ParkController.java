@@ -12,17 +12,13 @@ import supportclasses.CampAppPane;
 import supportclasses.CustomMap;
 import supportclasses.NPMap;
 
-import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.loadable.LoadStatus;
-import com.esri.arcgisruntime.mapping.ArcGISMap;
-import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.Graphic;
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay;
-import com.esri.arcgisruntime.mapping.view.MapView;
 import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 
 import models.ParkModel;
@@ -59,18 +55,10 @@ import entities.State;
 public class ParkController {
 	
 	CustomMap mapControl = CustomMap.getInstance();
+	private static GraphicsOverlay graphicsOverlay;
 	
 	public static ArrayList<Node> myViewList = new ArrayList<Node>();
 	public static ParkModel parkModel = new ParkModel();
-	
-	public static MapView mapView = new MapView();
-	public static ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-	public static Point siteLeft;
-	public static Point siteRight;
-	public static Envelope initialExtent;
-	public static Viewpoint viewPoint;
-	public static GraphicsOverlay graphicsOverlay;
-	
 	
 	@FXML private BorderPane borderPane;
 	@FXML private TitledPane titledpane2;
@@ -341,34 +329,20 @@ public class ParkController {
 	private void submitAction() {
 		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
 		//** Query Action***************************************************
-//			borderPane = (BorderPane) myViewList.get(0);
-//			Accordion acc = (Accordion) borderPane.getChildren().get(0);
-//			titledpane2 = acc.getPanes().get(1);
-//			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-//			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
-//			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
-//			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
-//			Viewpoint viewPoint = new Viewpoint(initialExtent);
-//		    map.setInitialViewpoint(viewPoint);
-//			MapView mapView = new MapView();
-//			GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
-//			mapView.getGraphicsOverlays().add(graphicsOverlay);
-//			showQueryResults(graphicsOverlay);
-//			mapView.setMap(map);
-//			borderPane.setCenter(mapView);
 			borderPane = (BorderPane) myViewList.get(0);
 			Accordion acc = (Accordion) borderPane.getChildren().get(0);
 			titledpane2 = acc.getPanes().get(1);
-//			//ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+//			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
 //			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
 //			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
 //			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
 //			Viewpoint viewPoint = new Viewpoint(initialExtent);
 //		    mapControl.getMap().setInitialViewpoint(viewPoint);
 //			MapView mapView = new MapView();
-			GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
+			graphicsOverlay = new GraphicsOverlay();
+			mapControl.getMapView().getGraphicsOverlays().clear();
 			mapControl.getMapView().getGraphicsOverlays().add(graphicsOverlay);
-			showQueryResults(graphicsOverlay);
+			showQueryResults();
 			mapControl.getMapView().setMap(mapControl.getMap());
 			borderPane.setCenter(mapControl.getMapView());
 		//******************************************************************
@@ -414,7 +388,7 @@ public class ParkController {
 		    		-> parkModel.setRadioGroupSelection(newVal));
 		    
 		    if(NPMap.isInitialized == false) {
-		    	NPMap.initializeBannerMap(parkModel.getSiteRecordList());
+		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
 		    }
 			
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
@@ -536,7 +510,7 @@ public class ParkController {
 		} 
 	}
 	
-	private void showQueryResults(GraphicsOverlay graphicsOverlay) {
+	private void showQueryResults() {
 		
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
 		
@@ -545,14 +519,14 @@ public class ParkController {
 		
 		Image newImage = new Image("arrowhead.png");
 		PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
-		
+		graphicsOverlay.getGraphics().clear();
 		for(Site site :resultSet) {
-			placePictureMarkerSymbol(parkSymbol, new Point(site.getLat(), site.getLon(), SPATIAL_REFERENCE), graphicsOverlay);	
+			placePictureMarkerSymbol(parkSymbol, new Point(site.getLat(), site.getLon(), SPATIAL_REFERENCE));	
 		}
 	    
 	}
 	
-	private void placePictureMarkerSymbol(PictureMarkerSymbol markerSymbol, Point graphicPoint, GraphicsOverlay graphicsOverlay) {
+	private void placePictureMarkerSymbol(PictureMarkerSymbol markerSymbol, Point graphicPoint) {
 		
 	    markerSymbol.setHeight(30);
 	    markerSymbol.setWidth(30);
