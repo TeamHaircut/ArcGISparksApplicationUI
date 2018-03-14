@@ -1,19 +1,16 @@
 package controllers;
 
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
 
 import supportclasses.CampAppPane;
+import supportclasses.CustomMap;
+import supportclasses.NPMap;
 
 import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
@@ -54,8 +51,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import entities.Designation;
 import entities.Region;
 import entities.Site;
@@ -63,8 +58,19 @@ import entities.State;
 
 public class ParkController {
 	
+	CustomMap mapControl = CustomMap.getInstance();
+	
 	public static ArrayList<Node> myViewList = new ArrayList<Node>();
 	public static ParkModel parkModel = new ParkModel();
+	
+	public static MapView mapView = new MapView();
+	public static ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+	public static Point siteLeft;
+	public static Point siteRight;
+	public static Envelope initialExtent;
+	public static Viewpoint viewPoint;
+	public static GraphicsOverlay graphicsOverlay;
+	
 	
 	@FXML private BorderPane borderPane;
 	@FXML private TitledPane titledpane2;
@@ -110,7 +116,9 @@ public class ParkController {
 	@FXML private Button addRegionBTN;
 	@FXML private Button removeRegionBTN;
 	
-	@FXML private WebView webview1;
+	@FXML private ImageView webview1;
+	@FXML private Image webImage;
+	
 	@FXML private Label designationLabel;
 	@FXML private Button mapBTN;
 	@FXML private Button photoBTN;
@@ -333,21 +341,36 @@ public class ParkController {
 	private void submitAction() {
 		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
 		//** Query Action***************************************************
+//			borderPane = (BorderPane) myViewList.get(0);
+//			Accordion acc = (Accordion) borderPane.getChildren().get(0);
+//			titledpane2 = acc.getPanes().get(1);
+//			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+//			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
+//			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
+//			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
+//			Viewpoint viewPoint = new Viewpoint(initialExtent);
+//		    map.setInitialViewpoint(viewPoint);
+//			MapView mapView = new MapView();
+//			GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
+//			mapView.getGraphicsOverlays().add(graphicsOverlay);
+//			showQueryResults(graphicsOverlay);
+//			mapView.setMap(map);
+//			borderPane.setCenter(mapView);
 			borderPane = (BorderPane) myViewList.get(0);
 			Accordion acc = (Accordion) borderPane.getChildren().get(0);
 			titledpane2 = acc.getPanes().get(1);
-			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
-			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
-			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
-			Viewpoint viewPoint = new Viewpoint(initialExtent);
-		    map.setInitialViewpoint(viewPoint);
-			MapView mapView = new MapView();
+//			//ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+//			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
+//			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
+//			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
+//			Viewpoint viewPoint = new Viewpoint(initialExtent);
+//		    mapControl.getMap().setInitialViewpoint(viewPoint);
+//			MapView mapView = new MapView();
 			GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
-			mapView.getGraphicsOverlays().add(graphicsOverlay);
+			mapControl.getMapView().getGraphicsOverlays().add(graphicsOverlay);
 			showQueryResults(graphicsOverlay);
-			mapView.setMap(map);
-			borderPane.setCenter(mapView);
+			mapControl.getMapView().setMap(mapControl.getMap());
+			borderPane.setCenter(mapControl.getMapView());
 		//******************************************************************
 	}
 	
@@ -390,9 +413,10 @@ public class ParkController {
 		    group.selectedToggleProperty().addListener((observable, oldVal, newVal) 
 		    		-> parkModel.setRadioGroupSelection(newVal));
 		    
-		    final WebEngine webEngine = webview1.getEngine();
-			webEngine.load(getImageTest("https://www.nps.gov/index.htm"));
-
+		    if(NPMap.isInitialized == false) {
+		    	NPMap.initializeBannerMap(parkModel.getSiteRecordList());
+		    }
+			
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
@@ -402,24 +426,12 @@ public class ParkController {
 						ParkModel.setMySite(arg2);
 						hyperlink1.setText(arg2.getSite_name());
 						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
-						try {
-							webEngine.load(getImageTest(arg2.getWebsite()));
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
 						
-						ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-						Point siteLeft = new Point(arg2.getLat()-0.1, arg2.getLon()+0.1, SpatialReferences.getWgs84());
-						Point siteRight = new Point(arg2.getLat()+0.1, arg2.getLon()-0.1, SpatialReferences.getWgs84());
-						Envelope initialExtent = new Envelope(siteLeft, siteRight);
-						Viewpoint viewPoint = new Viewpoint(initialExtent);
-					    map.setInitialViewpoint(viewPoint);
-						MapView mapView = new MapView();
-						GraphicsOverlay graphicsOverlay = new GraphicsOverlay();
-						mapView.getGraphicsOverlays().add(graphicsOverlay);
-						showQueryResults(graphicsOverlay);
-						mapView.setMap(map);
-						borderPane.setCenter(mapView);
+						webview1.setImage(	NPMap.bannerMap.get(arg2.getSite_name())	);
+
+						Point centerPoint = new Point(arg2.getLat(), arg2.getLon(), SpatialReferences.getWgs84());
+				        Viewpoint viewpoint = new Viewpoint(centerPoint, 150000);
+				        mapControl.getMapView().setViewpointAsync(viewpoint, 7);
 
 				}
 			});
@@ -554,32 +566,6 @@ public class ParkController {
 	    	  alert.show();
 	      }
       });
-	}
-	
-	private String getImageTest(String url) throws IOException {
-		String imageURL = "";
-		URL website = new URL(url);
-		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-		FileOutputStream fos = new FileOutputStream("information.txt");
-		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-		fos.close();
-		
-		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
-		try {
-		    String line = br.readLine();
-		    while (line != null && imageURL.equals("")) {
-		        line = br.readLine();
-		        if(line.matches("^.*<meta property=\"og:image\".*$")) {
-		        	int indexStart = line.indexOf("https");
-		        	int indexEnd = line.indexOf(" />");
-		        	imageURL = line.substring(indexStart, indexEnd-1);
-		        }
-		        
-		    }
-		} finally {
-		    br.close();
-		}
-		return imageURL;
 	}
 	
 }
