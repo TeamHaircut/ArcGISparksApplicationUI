@@ -2,6 +2,7 @@ package applications;
 
 import java.io.IOException;
 
+import supportclasses.CustomMap;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,15 +14,12 @@ import javafx.stage.Stage;
 import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
-import com.esri.arcgisruntime.mapping.ArcGISMap;
-import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
-import com.esri.arcgisruntime.mapping.view.MapView;
 
 import controllers.ParkController;
 
 public class MyParksMain extends Application {
-	private MapView mapView;
+	CustomMap map = CustomMap.getInstance();
 
 	  @Override
 	  public void start(Stage stage) throws IOException {
@@ -35,18 +33,16 @@ public class MyParksMain extends Application {
 	      stage.setFullScreen(true);
 	      stage.setScene(scene);
 	      stage.show();
-	
-	      ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
+	      
 	      Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
 	      Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
 	      Envelope initialExtent = new Envelope(leftPoint, rightPoint);
 	      Viewpoint viewPoint = new Viewpoint(initialExtent);
-	      map.setInitialViewpoint(viewPoint);
-	      mapView = new MapView();
-	      mapView.setMap(map);
+	      map.getMap().setInitialViewpoint(viewPoint);
+	      map.getMapView().setMap(map.getMap());
 	      
 	      BorderPane borderPane = (BorderPane) ((StackPane) view0.getChildren().get(0)).getChildren().get(0);
-	      borderPane.setCenter(mapView);
+	      borderPane.setCenter(map.getMapView());
 	      ParkController.myViewList.add(borderPane);
 	      ParkController.myViewList.add(view0);
 	      
@@ -54,8 +50,8 @@ public class MyParksMain extends Application {
 	
 	  @Override
 	  public void stop() throws Exception {
-		  if (mapView != null) {
-			  mapView.dispose();
+		  if (map.getMapView() != null) {
+			  map.getMapView().dispose();
 		  }
 	  }
 	
