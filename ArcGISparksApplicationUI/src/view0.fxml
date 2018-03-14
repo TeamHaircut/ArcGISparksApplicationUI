@@ -147,7 +147,11 @@
             					            </FlowPane>
                                           <AnchorPane style="-fx-background-color: black;">
                                              <children>
-                                                <WebView fx:id="webview1" prefHeight="310.0" prefWidth="1063.0" />
+                                                <ImageView fx:id="webview1" fitHeight="310.0" fitWidth="1063.0">
+                                                <image>
+                  	      								<Image url="@arrowhead.png" />
+                  	   								</image>
+                  	   							</ImageView>
                                                 <FlowPane layoutY="253.0" prefHeight="57.0" prefWidth="1063.0" style="-fx-background-color: #00000095;">
                                                    <children>
                   					                  <Hyperlink fx:id="hyperlink1" textFill="WHITE" underline="true">
