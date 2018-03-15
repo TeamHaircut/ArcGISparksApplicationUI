@@ -330,8 +330,10 @@ public class ParkController {
 		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
 		//** Query Action***************************************************
 			borderPane = (BorderPane) myViewList.get(0);
-			Accordion acc = (Accordion) borderPane.getChildren().get(0);
-			titledpane2 = acc.getPanes().get(1);
+		    Pane pane = (Pane)borderPane.getChildren().get(1);
+		    StackPane sPane = (StackPane)(pane).getChildren().get(0);
+//			Accordion acc = (Accordion) borderPane.getChildren().get(0);
+//			titledpane2 = acc.getPanes().get(1);
 //			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
 //			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
 //			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
@@ -344,7 +346,8 @@ public class ParkController {
 			mapControl.getMapView().getGraphicsOverlays().add(graphicsOverlay);
 			showQueryResults();
 			mapControl.getMapView().setMap(mapControl.getMap());
-			borderPane.setCenter(mapControl.getMapView());
+//			borderPane.setCenter(mapControl.getMapView());
+			//sPane.getChildren().add(mapControl.getMapView());
 		//******************************************************************
 	}
 	
