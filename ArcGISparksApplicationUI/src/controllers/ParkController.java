@@ -332,22 +332,11 @@ public class ParkController {
 			borderPane = (BorderPane) myViewList.get(0);
 		    Pane pane = (Pane)borderPane.getChildren().get(1);
 		    StackPane sPane = (StackPane)(pane).getChildren().get(0);
-//			Accordion acc = (Accordion) borderPane.getChildren().get(0);
-//			titledpane2 = acc.getPanes().get(1);
-//			ArcGISMap map = new ArcGISMap(Basemap.createNavigationVector());
-//			Point leftPoint = new Point(-13983303, 2649490, SpatialReferences.getWebMercator());
-//			Point rightPoint = new Point(-7301655, 6347819, SpatialReferences.getWebMercator());
-//			Envelope initialExtent = new Envelope(leftPoint, rightPoint);
-//			Viewpoint viewPoint = new Viewpoint(initialExtent);
-//		    mapControl.getMap().setInitialViewpoint(viewPoint);
-//			MapView mapView = new MapView();
 			graphicsOverlay = new GraphicsOverlay();
 			mapControl.getMapView().getGraphicsOverlays().clear();
 			mapControl.getMapView().getGraphicsOverlays().add(graphicsOverlay);
 			showQueryResults();
 			mapControl.getMapView().setMap(mapControl.getMap());
-//			borderPane.setCenter(mapControl.getMapView());
-			//sPane.getChildren().add(mapControl.getMapView());
 		//******************************************************************
 	}
 	
