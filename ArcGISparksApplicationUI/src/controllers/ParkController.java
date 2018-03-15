@@ -36,6 +36,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -62,6 +63,7 @@ public class ParkController {
 	
 	@FXML private BorderPane borderPane;
 	@FXML private TitledPane titledpane2;
+	@FXML private Tab resultsTab;
 	@FXML private Button submitBTN;
 	
 	@FXML private ListView<Site> listview1;	
@@ -331,7 +333,6 @@ public class ParkController {
 		//** Query Action***************************************************
 			borderPane = (BorderPane) myViewList.get(0);
 		    Pane pane = (Pane)borderPane.getChildren().get(1);
-		    StackPane sPane = (StackPane)(pane).getChildren().get(0);
 			graphicsOverlay = new GraphicsOverlay();
 			mapControl.getMapView().getGraphicsOverlays().clear();
 			mapControl.getMapView().getGraphicsOverlays().add(graphicsOverlay);
@@ -507,7 +508,8 @@ public class ParkController {
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
 		
 		List<Site> resultSet = parkModel.queryDB();
-		titledpane2.setText(resultSet.size()+" Parks Found");
+		titledpane2.setText("Explore Result Set ("+resultSet.size()+" Parks Found)");
+		resultsTab.setText("Result Set ("+resultSet.size()+" Parks Found)");
 		
 		Image newImage = new Image("arrowhead.png");
 		PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
