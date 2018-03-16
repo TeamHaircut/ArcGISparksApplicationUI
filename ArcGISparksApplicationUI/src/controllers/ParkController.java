@@ -61,6 +61,8 @@ public class ParkController {
 	public static ArrayList<Node> myViewList = new ArrayList<Node>();
 	public static ParkModel parkModel = new ParkModel();
 	
+	@FXML private TitledPane titledpane1;
+	
 	@FXML private BorderPane borderPane;
 	@FXML private TitledPane titledpane2;
 	@FXML private Tab resultsTab;
@@ -382,6 +384,28 @@ public class ParkController {
 		    if(NPMap.isInitialized == false) {
 		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
 		    }
+		    
+		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> arg0,
+						Boolean arg1, Boolean arg2) {
+					if(arg2 == true) {
+						titledpane2.setExpanded(false);
+					}	
+				}
+		    });
+		    
+		    titledpane2.expandedProperty().addListener(new ChangeListener<Boolean>() {
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> arg0,
+						Boolean arg1, Boolean arg2) {
+					if(arg2 == true) {
+						titledpane1.setExpanded(false);
+					}	
+				}
+		    });
 			
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
