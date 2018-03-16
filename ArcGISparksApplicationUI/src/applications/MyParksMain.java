@@ -42,7 +42,10 @@ public class MyParksMain extends Application {
 	      map.getMapView().setMap(map.getMap());
 	      
 	      BorderPane borderPane = (BorderPane) ((StackPane) view0.getChildren().get(0)).getChildren().get(0);
-	      borderPane.setCenter(map.getMapView());
+	      Pane pane = (Pane)borderPane.getChildren().get(0);
+	      StackPane sPane = (StackPane)(pane).getChildren().get(0);
+	      sPane.getChildren().add(map.getMapView());
+	      //borderPane.setCenter(map.getMapView());
 	      ParkController.myViewList.add(borderPane);
 	      ParkController.myViewList.add(view0);
 	      
