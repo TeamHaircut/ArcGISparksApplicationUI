@@ -26,13 +26,11 @@
         linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
         linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);
     -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 10;
     -fx-padding: 12 30 12 30;
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-padding: 5 10 5 10;
-    -fx-effect: dropshadow( gaussian , rgba(0.4,0.4,0.4,0.4) , 0,0,-5.0,10.0 );
 }
 
 .list-view {
