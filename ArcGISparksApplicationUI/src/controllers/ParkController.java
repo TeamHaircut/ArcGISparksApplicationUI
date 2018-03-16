@@ -66,7 +66,8 @@ public class ParkController {
 	@FXML private Tab resultsTab;
 	@FXML private Button submitBTN;
 	
-	@FXML private ListView<Site> listview1;	
+	@FXML private ListView<Site> listview1;
+	@FXML private ListView<Site> listview2;
 	@FXML private Hyperlink hyperlink;
 	@FXML private Hyperlink hyperlink1;
 	
@@ -402,6 +403,27 @@ public class ParkController {
 			});
 			
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
+			
+			listview2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
+
+				@Override
+				public void changed(ObservableValue<? extends Site> arg0,
+						Site arg1, Site arg2) {
+						parkModel.setSiteProp(arg2);
+						ParkModel.setMySite(arg2);
+						hyperlink1.setText(arg2.getSite_name());
+						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
+						
+						webview1.setImage(	NPMap.bannerMap.get(arg2.getSite_name())	);
+
+						Point centerPoint = new Point(arg2.getLat(), arg2.getLon(), SpatialReferences.getWgs84());
+				        Viewpoint viewpoint = new Viewpoint(centerPoint, 150000);
+				        mapControl.getMapView().setViewpointAsync(viewpoint, 7);
+
+				}
+			});
+			
+			listview2.itemsProperty().bindBidirectional(parkModel.listviewProperty());
 			
 			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
