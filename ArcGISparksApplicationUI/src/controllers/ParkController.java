@@ -331,8 +331,6 @@ public class ParkController {
 	private void submitAction() {
 		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
 		//** Query Action***************************************************
-			borderPane = (BorderPane) myViewList.get(0);
-		    Pane pane = (Pane)borderPane.getChildren().get(1);
 			graphicsOverlay = new GraphicsOverlay();
 			mapControl.getMapView().getGraphicsOverlays().clear();
 			mapControl.getMapView().getGraphicsOverlays().add(graphicsOverlay);
