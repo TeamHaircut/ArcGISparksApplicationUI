@@ -38,6 +38,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -66,7 +67,6 @@ public class ParkController {
 	@FXML private BorderPane borderPane;
 	@FXML private TitledPane titledpane2;
 	@FXML private Tab resultsTab;
-	@FXML private Button submitBTN;
 	
 	@FXML private ListView<Site> listview1;
 	@FXML private ListView<Site> listview2;
@@ -77,8 +77,8 @@ public class ParkController {
 	@FXML private RadioButton radio1BTN;
 	@FXML private RadioButton radio2BTN;
 	
-	@FXML private ListView<Site> lvSite1;
-	@FXML private ListView<Site> lvSite2;
+//	@FXML private ListView<Site> lvSite1;
+//	@FXML private ListView<Site> lvSite2;
 	
 	@FXML private Button addAllSiteBTN;
 	@FXML private Button removeAllSiteBTN;
@@ -338,7 +338,6 @@ public class ParkController {
 		parkModel.removeAllRegion();
 	}
 	
-	@FXML
 	private void submitAction() {
 		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
 		//** Query Action***************************************************
@@ -386,8 +385,17 @@ public class ParkController {
 		    radio1BTN.setToggleGroup(group);
 		    radio2BTN.setToggleGroup(group);
 		    
-		    group.selectedToggleProperty().addListener((observable, oldVal, newVal) 
-		    		-> parkModel.setRadioGroupSelection(newVal));
+		    group.selectedToggleProperty().addListener((new ChangeListener<Toggle>(){
+
+				@Override
+				public void changed(ObservableValue<? extends Toggle> arg0,
+						Toggle arg1, Toggle arg2) {
+					parkModel.setRadioGroupSelection(arg2);
+					submitAction();
+					
+				}
+
+		    }));
 		    
 		    if(NPMap.isInitialized == false) {
 		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
@@ -459,27 +467,27 @@ public class ParkController {
 			
 			listview2.itemsProperty().bindBidirectional(parkModel.listviewProperty());
 			
-			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
-
-				@Override
-				public void changed(ObservableValue<? extends Site> arg0,
-						Site arg1, Site arg2) {
-						parkModel.setSitePropQ(arg2);
-				}	
-	        });
+//			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
+//
+//				@Override
+//				public void changed(ObservableValue<? extends Site> arg0,
+//						Site arg1, Site arg2) {
+//						parkModel.setSitePropQ(arg2);
+//				}	
+//	        });
 			
-	        lvSite1.itemsProperty().bindBidirectional(parkModel.lvSite1Property());
+//	        lvSite1.itemsProperty().bindBidirectional(parkModel.lvSite1Property());
 	        
-	        lvSite2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
-
-				@Override
-				public void changed(ObservableValue<? extends Site> arg0,
-						Site arg1, Site arg2) {
-					parkModel.setSiteProp2(arg2);
-				}	
-	        });
+//	        lvSite2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
+//
+//				@Override
+//				public void changed(ObservableValue<? extends Site> arg0,
+//						Site arg1, Site arg2) {
+//					parkModel.setSiteProp2(arg2);
+//				}	
+//	        });
 	        
-	        lvSite2.itemsProperty().bindBidirectional(parkModel.lvSite2Property());
+//	        lvSite2.itemsProperty().bindBidirectional(parkModel.lvSite2Property());
 	        	
 			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 				@Override
