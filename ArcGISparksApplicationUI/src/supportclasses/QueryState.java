@@ -67,31 +67,32 @@ public class QueryState {
 	}
 	
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static String buildQuery1(Map queryDataMap) {
-		String query = "";
-		
-		if(!((ObservableList<Site>)queryDataMap.get("siteList")).isEmpty()) {
-			query = "Select x from Site x where";
-			String siteIdString = "";
-			for(	Site s: ((ObservableList<Site>)queryDataMap.get("siteList"))	) {
-				siteIdString = siteIdString.concat(""+s.getSite_id()+",");
-			}
-			siteIdString = siteIdString.substring(0, siteIdString.length()-1);
-			
-			query = query.concat(" x.site_id in ("+siteIdString+")");
-		}
-		else {
-			if(!query.equals(""))
-			query = query.substring(0, query.lastIndexOf(" "));
-			else query = null;
-		}
-		return query;
-	}
+//	@SuppressWarnings({ "rawtypes", "unchecked" })
+//	public static String buildQuery1(Map queryDataMap) {
+//		String query = "";
+//		
+//		if(!((ObservableList<Site>)queryDataMap.get("siteList")).isEmpty()) {
+//			query = "Select x from Site x where";
+//			String siteIdString = "";
+//			for(	Site s: ((ObservableList<Site>)queryDataMap.get("siteList"))	) {
+//				siteIdString = siteIdString.concat(""+s.getSite_id()+",");
+//			}
+//			siteIdString = siteIdString.substring(0, siteIdString.length()-1);
+//			
+//			query = query.concat(" x.site_id in ("+siteIdString+")");
+//		}
+//		else {
+//			if(!query.equals(""))
+//			query = query.substring(0, query.lastIndexOf(" "));
+//			else query = null;
+//		}
+//		return query;
+//	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static String buildQuery2(Map queryDataMap) {
 		String query = "";
+		
 		
 		if(!((ObservableList<Region>)queryDataMap.get("regionList")).isEmpty()) {
 			
