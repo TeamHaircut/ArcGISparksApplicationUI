@@ -18,6 +18,24 @@
 -fx-font-size: 14;
 }
 
+.tab {
+-fx-background-color: #9C9D9C;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.tab:selected {
+-fx-background-color: #757575;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
 .groupLV {
 -fx-background-color: 
         linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
