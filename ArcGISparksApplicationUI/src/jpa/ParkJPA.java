@@ -152,6 +152,8 @@ public class ParkJPA {
 				qSite = em.createQuery(query);
 				mySiteResultsList = qSite.getResultList();
 				
+				entityList.clear();
+				
 				entityList.addAll(mySiteResultsList);
 			}
 		}
