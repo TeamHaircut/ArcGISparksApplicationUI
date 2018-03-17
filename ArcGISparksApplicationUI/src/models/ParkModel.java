@@ -27,7 +27,6 @@ public class ParkModel {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void updateQueryState(Object o) {
-		
 			Map queryDataMap = new HashMap<>();
 			queryDataMap.put("visitId", getValue(o));
 			queryDataMap.put("siteList", getlvSite2Prop());
@@ -35,16 +34,16 @@ public class ParkModel {
 			queryDataMap.put("stateList", getlvState2Prop());
 			queryDataMap.put("regionList", getlvRegion2Prop());
 			myJPA.setMyQuery(QueryState.buildQuery(queryDataMap));
-			myJPA.setMyQuery1(QueryState.buildQuery1(queryDataMap));
+//			myJPA.setMyQuery1(QueryState.buildQuery1(queryDataMap));
 			myJPA.setMyQuery2(QueryState.buildQuery2(queryDataMap));
 	}
 	
 	private Number getValue(Object o) {
 		String str = o.toString();
-		if(str.equals("RadioButton[id=radio0BTN, styleClass=radio-button]'Visited'")) {
+		if(str.equals("RadioButton[id=radio0BTN, styleClass=radio-button groupText]'Visited'")) {
 			return 1;
 		}
-		else if (str.equals("RadioButton[id=radio1BTN, styleClass=radio-button]'Not Visited'")) {
+		else if (str.equals("RadioButton[id=radio1BTN, styleClass=radio-button groupText]'Not Visited'")) {
 			return 0;
 		}
 		else {
@@ -69,7 +68,6 @@ public class ParkModel {
 		}
 		public void setSiteProp(Site newSite){
 			siteProp.setValue(newSite);
-			System.out.println(getSiteProp());
 		}
 		public Site getSiteProp(){
 			return siteProp.getValue();
