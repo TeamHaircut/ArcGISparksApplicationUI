@@ -31,33 +31,6 @@
                                                    <children>
                                                       <TabPane tabClosingPolicy="UNAVAILABLE">
                                                         <tabs>
-                                                          <Tab text="Site">
-                                                            <content>
-                                                              <AnchorPane>
-                                                                     <children>
-                                                                        <VBox spacing="5.0" styleClass="groupLV">
-                                                                           <children>
-                                                                              <Label styleClass="groupText" text="filter result set by site" />
-                                                                              <HBox alignment="CENTER" spacing="5.0">
-                                                                                 <children>
-                                                                                    <ListView fx:id="lvSite1" prefHeight="100.0" prefWidth="195.0" />
-                                                                                    <VBox alignment="CENTER" spacing="5.0">
-                                                                                       <children>
-                                                                                          <Button fx:id="addAllSiteBTN" mnemonicParsing="false" onAction="#addAllSiteAction" text=" &gt;&gt; " />
-                                                                                          <Button fx:id="removeAllSiteBTN" mnemonicParsing="false" onAction="#removeAllSiteAction" text=" &lt;&lt; " />
-                                                                                          <Button fx:id="addSiteBTN" mnemonicParsing="false" onAction="#addSiteAction" text=" &gt; " />
-                                                                                          <Button fx:id="removeSiteBTN" mnemonicParsing="false" onAction="#removeSiteAction" text=" &lt; " />
-                                                                                       </children>
-                                                                                    </VBox>
-                                                                                    <ListView fx:id="lvSite2" prefHeight="100.0" prefWidth="195.0" />
-                                                                                 </children>
-                                                                              </HBox>
-                                                                           </children>
-                                                                        </VBox>
-                                                                     </children>
-                                                                  </AnchorPane>
-                                                            </content>
-                                                          </Tab>
                                                           <Tab text="Designation">
                                                             <content>
                                                               <AnchorPane>
@@ -139,7 +112,7 @@
                                                                   </AnchorPane>
                                                               </content>
                                                             </Tab>
-                                                            <Tab fx:id="resultsTab" text="Result Set (59 parks found)">
+                                                            <Tab fx:id="resultsTab" text="Result Set (0 parks found)">
                                                               <content>
                                                                 <AnchorPane>
                                                                      <children>
@@ -150,12 +123,11 @@
                                                             </Tab>
                                                         </tabs>
                                                       </TabPane>
-                                                      <HBox alignment="TOP_CENTER">
+                                                      <HBox alignment="TOP_CENTER" spacing="10.0">
                                                          <children>
                                                             <RadioButton fx:id="radio0BTN" mnemonicParsing="false" styleClass="groupText" text="Visited" />
-                                                            <RadioButton fx:id="radio2BTN" mnemonicParsing="false" styleClass="groupText" text="All" />
                                                             <RadioButton fx:id="radio1BTN" mnemonicParsing="false" styleClass="groupText" text="Not Visited" />
-                                                            <Button fx:id="submitBTN" mnemonicParsing="false" onAction="#submitAction" styleClass="groupText" text="SUBMIT" />
+                                                            <RadioButton fx:id="radio2BTN" mnemonicParsing="false" styleClass="groupText" text="All" />
                                                          </children>
                                                       </HBox>
                                                    </children>
@@ -176,7 +148,7 @@
                      <children>
                         <Accordion maxWidth="1366.0">
                           <panes>
-                            <TitledPane fx:id="titledpane2" animated="false" prefWidth="1366.0" style="-fx-background-color: black;" text="Explore Result Set (59 Parks Found)" textFill="WHITE">
+                            <TitledPane fx:id="titledpane2" animated="false" prefWidth="1366.0" style="-fx-background-color: black;" text="Explore Result Set (0 Parks Found)" textFill="WHITE">
                                  <content>
                                     <HBox style="-fx-background-color: #436023;">
                                        <children>
