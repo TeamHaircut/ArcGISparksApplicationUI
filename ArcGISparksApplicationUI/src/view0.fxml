@@ -23,11 +23,11 @@
                            <children>
                               <Accordion maxHeight="720.0">
                                 <panes>
-                                  <TitledPane animated="false" prefWidth="440.0" text="Search Database" textFill="WHITE">
-                                    <content>
-                                      <AnchorPane>
+                                  <TitledPane fx:id="titledpane1" animated="false" text="Search Database" textFill="WHITE">
+                                       <content>
+                                          <Pane prefWidth="468.0" styleClass="groupLV">
                                              <children>
-                                                <VBox alignment="CENTER">
+                                                <VBox alignment="CENTER" spacing="10.0" >
                                                    <children>
                                                       <TabPane tabClosingPolicy="UNAVAILABLE">
                                                         <tabs>
@@ -161,8 +161,8 @@
                                                    </children>
                                                 </VBox>
                                              </children>
-                                          </AnchorPane>
-                                    </content>
+                                          </Pane>
+                                       </content>
                                   </TitledPane>
                                 </panes>
                               </Accordion>
