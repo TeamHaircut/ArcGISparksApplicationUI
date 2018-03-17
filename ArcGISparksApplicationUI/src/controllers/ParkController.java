@@ -253,11 +253,13 @@ public class ParkController {
 	@FXML
 	private void addSiteAction() {
 		parkModel.addSite();
+		submitAction();
 	}
 	
 	@FXML 
 	private void removeSiteAction() {
 		parkModel.removeSite();
+		submitAction();
 	}
 	
 	@FXML
@@ -273,11 +275,13 @@ public class ParkController {
 	@FXML
 	private void addDesAction() {
 		parkModel.add();
+		submitAction();
 	}
 	
 	@FXML 
 	private void removeDesAction() {
 		parkModel.remove();
+		submitAction();
 	}
 	
 	@FXML
@@ -293,11 +297,13 @@ public class ParkController {
 	@FXML
 	private void addStateAction() {
 		parkModel.addState();
+		submitAction();
 	}
 	
 	@FXML 
 	private void removeStateAction() {
 		parkModel.removeState();
+		submitAction();
 	}
 	
 	@FXML
@@ -313,11 +319,13 @@ public class ParkController {
 	@FXML
 	private void addRegionAction() {
 		parkModel.addRegion();
+		submitAction();
 	}
 	
 	@FXML 
 	private void removeRegionAction() {
 		parkModel.removeRegion();
+		submitAction();
 	}
 	
 	@FXML
@@ -414,7 +422,9 @@ public class ParkController {
 						Site arg1, Site arg2) {
 						parkModel.setSiteProp(arg2);
 						ParkModel.setMySite(arg2);
-						hyperlink1.setText(arg2.getSite_name());
+						if(arg2.getSite_name() != null) {
+							hyperlink1.setText(arg2.getSite_name());
+						}
 						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
 						
 						webview1.setImage(	NPMap.bannerMap.get(arg2.getSite_name())	);
