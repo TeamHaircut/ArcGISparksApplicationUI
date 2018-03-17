@@ -396,7 +396,7 @@ public class ParkController {
 		    }));
 		    
 		    if(NPMap.isInitialized == false) {
-		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
+		    	NPMap.initializeBannerMap(parkModel.getSiteRecordList());
 		    }
 		    
 		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
@@ -428,9 +428,7 @@ public class ParkController {
 						Site arg1, Site arg2) {
 						parkModel.setSiteProp(arg2);
 						ParkModel.setMySite(arg2);
-						if(arg2.getSite_name() != null) {
-							hyperlink1.setText(arg2.getSite_name());
-						}
+						hyperlink1.setText(arg2.getSite_name());
 						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
 						
 						webview1.setImage(	NPMap.bannerMap.get(arg2.getSite_name())	);
