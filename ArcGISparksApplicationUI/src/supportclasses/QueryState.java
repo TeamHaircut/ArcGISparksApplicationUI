@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import entities.Designation;
 import entities.Region;
 import entities.State;
-import entities.Site;
 
 public class QueryState {
 	
