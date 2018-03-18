@@ -137,13 +137,7 @@ public class ParkController {
 		List<ImageView> list = new ArrayList<ImageView>();
 		ObservableList<ImageView> observableList = FXCollections.observableList(list);
 		
-		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
-		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
-		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
-		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
-		AnchorPane apane = (AnchorPane) spane.getContent();
-		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
-		fpane.getChildren().clear();
+		getExplorerFlowPane().getChildren().clear();
 		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
 		
 		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\photos\\").listFiles().length+1; i++) {
@@ -166,8 +160,74 @@ public class ParkController {
 				
 			}
 		}
-		fpane.getChildren().addAll(observableList);
-		stackpane.setVisible(true);	
+		getExplorerFlowPane().getChildren().addAll(observableList);
+		getExplorerStackPane().setVisible(true);	
+	}
+	
+	@FXML
+	private void stampBTNAction() throws FileNotFoundException {
+		
+		List<ImageView> list = new ArrayList<ImageView>();
+		ObservableList<ImageView> observableList = FXCollections.observableList(list);
+		
+		getExplorerFlowPane().getChildren().clear();
+		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
+		
+		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\stamps\\").listFiles().length+1; i++) {
+			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\stamps\\1 ("+i+").jpg");
+			Image image = new Image(input, 300, 0, true, false);
+			//if horizontal
+			if(image.getWidth() > image.getHeight()) {
+				ImageView imageView = new ImageView(image);
+				imageView.setPickOnBounds(true);
+				observableList.add(imageView);
+				
+			}
+			//else vertical
+			else {
+				ImageView imageView = new ImageView(image);
+				imageView.setFitWidth(250);
+		        imageView.setPreserveRatio(true);
+				imageView.setPickOnBounds(true);
+				observableList.add(imageView);
+				
+			}
+		}
+		getExplorerFlowPane().getChildren().addAll(observableList);
+		getExplorerStackPane().setVisible(true);
+	}
+	
+	@FXML
+	private void patchBTNAction() throws FileNotFoundException {
+		
+		List<ImageView> list = new ArrayList<ImageView>();
+		ObservableList<ImageView> observableList = FXCollections.observableList(list);
+		
+		getExplorerFlowPane().getChildren().clear();
+		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
+		
+		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\patches\\").listFiles().length+1; i++) {
+			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\patches\\1 ("+i+").jpg");
+			Image image = new Image(input, 300, 0, true, false);
+			//if horizontal
+			if(image.getWidth() > image.getHeight()) {
+				ImageView imageView = new ImageView(image);
+				imageView.setPickOnBounds(true);
+				observableList.add(imageView);
+				
+			}
+			//else vertical
+			else {
+				ImageView imageView = new ImageView(image);
+				imageView.setFitWidth(250);
+		        imageView.setPreserveRatio(true);
+				imageView.setPickOnBounds(true);
+				observableList.add(imageView);
+				
+			}
+		}
+		getExplorerFlowPane().getChildren().addAll(observableList);
+		getExplorerStackPane().setVisible(true);
 	}
 	
 	private StackPane getExplorerStackPane() {
@@ -187,75 +247,23 @@ public class ParkController {
 	}
 	
 	@FXML
-	private void stampBTNAction() throws FileNotFoundException {
-		
-		List<ImageView> list = new ArrayList<ImageView>();
-		ObservableList<ImageView> observableList = FXCollections.observableList(list);
-		
-		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
-		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
-		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
-		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
-		AnchorPane apane = (AnchorPane) spane.getContent();
-		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
-		fpane.getChildren().clear();
-		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
-		
-		for(int i = 1; i < new File("projectImages\\"+dir+"\\stamps\\").listFiles().length+1; i++) {
-			FileInputStream input = new FileInputStream("projectImages\\"+dir+"\\stamps\\"+i+".jpg");
-			Image image = new Image(input);
-			ImageView imageView = new ImageView(image);
-			imageView.setFitHeight(image.getHeight()/4);
-			imageView.setFitWidth(image.getWidth()/4);
-			imageView.setPickOnBounds(true);
-			observableList.add(imageView);
-		}
-		fpane.getChildren().addAll(observableList);
-		stackpane.setVisible(true);	
-	}
-	
-	@FXML
-	private void patchBTNAction() throws FileNotFoundException {
-		
-		List<ImageView> list = new ArrayList<ImageView>();
-		ObservableList<ImageView> observableList = FXCollections.observableList(list);
-		
-		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
-		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
-		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
-		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
-		AnchorPane apane = (AnchorPane) spane.getContent();
-		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
-		fpane.getChildren().clear();
-		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
-		
-		for(int i = 1; i < new File("projectImages\\"+dir+"\\patches\\").listFiles().length+1; i++) {
-			FileInputStream input = new FileInputStream("projectImages\\"+dir+"\\patches\\"+i+".jpg");
-			Image image = new Image(input);
-			ImageView imageView = new ImageView(image);
-			imageView.setFitHeight(image.getHeight()/4);
-			imageView.setFitWidth(image.getWidth()/4);
-			imageView.setPickOnBounds(true);
-			observableList.add(imageView);
-		}
-		fpane.getChildren().addAll(observableList);
-		stackpane.setVisible(true);
-	}
-	
-	@FXML
 	private void campBTNAction() throws IOException {
-		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
-		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
-		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
-		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
-		AnchorPane apane = (AnchorPane) spane.getContent();
-		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
-		fpane.getChildren().clear();
+//		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
+//		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
+//		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
+//		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
+//		AnchorPane apane = (AnchorPane) spane.getContent();
+//		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
+//		fpane.getChildren().clear();
+		getExplorerFlowPane().getChildren().clear();
 		CampAppPane cap = new CampAppPane();
-		cap.setFpane(fpane);
+//		cap.setFpane(fpane);
+		cap.setFpane(getExplorerFlowPane());
 		cap.setSite(parkModel.getSiteProp());
 		cap.getFpane();
-		stackpane.setVisible(true);	
+//		stackpane.setVisible(true);	
+		getExplorerStackPane().setVisible(true);
+
 	}
 	
 	
