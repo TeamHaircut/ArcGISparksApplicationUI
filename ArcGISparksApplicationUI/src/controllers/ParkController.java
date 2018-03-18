@@ -37,14 +37,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import entities.Designation;
 import entities.Region;
 import entities.Site;
 import entities.State;
 
 public class ParkController {
+	private static final boolean INIT_BANNERS = false;//for testing only
 	
 	private CustomMap mapControl = CustomMap.getInstance();
 	
@@ -243,8 +242,8 @@ public class ParkController {
 		if(listview1 != null)
 		{
 			parkModel.connect();
-			if(NPMap.isInitialized == false) {
-		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
+			if(NPMap.isInitialized == false && INIT_BANNERS) {
+		    	NPMap.initializeBannerMap(parkModel.getSiteRecordList());
 		    }
 			
 			mapBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("map.png"))));
