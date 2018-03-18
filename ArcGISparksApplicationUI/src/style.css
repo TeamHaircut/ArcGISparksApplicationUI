@@ -1,15 +1,13 @@
-.mapBTN {
-
+.exploreButtonGroup {
 -fx-background-color: #000000;
 -fx-background-radius: 0;
-
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-font-size: 14;
 }
 
-.mapBTN:hover {
-
+.exploreButtonGroup:hover {
 -fx-background-color: #4C4C4C;
--fx-background-radius: 0;
-
 }
 
 .groupText {
@@ -97,12 +95,6 @@
 -fx-font-size: 14;
 }
 
-
-
-
-
-
-
 .scroll-bar{
  -fx-background-color: rgb(96,96,96);
 }
@@ -176,15 +168,6 @@
  -fx-background-color: transparent,rgb(96,96,96),rgb(96,96,96);
 }
 
-
-
-
-
-
-
-
-
-
 .titled-pane > .title 
 {
     -fx-background-color: -fx-box-border, -fx-inner-border,
@@ -197,17 +180,3 @@
     -fx-font-weight: bold;
     -fx-font-size: 14;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
