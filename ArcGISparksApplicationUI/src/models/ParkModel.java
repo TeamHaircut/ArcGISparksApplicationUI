@@ -183,6 +183,16 @@ public class ParkModel {
 /*
  * ARLV
  */
+		//TODO
+		public void addAll(String str) {
+			
+		}
+		
+		//TODO
+		public void removeAll(String str) {
+			
+		}
+		
 		public void add(String str) {
 			switch(str) {
 			case "addDesBTN":
