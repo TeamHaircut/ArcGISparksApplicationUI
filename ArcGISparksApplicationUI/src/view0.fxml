@@ -43,10 +43,10 @@
                                                                                     <ListView fx:id="lvDes1" prefHeight="100.0" prefWidth="195.0" />
                                                                                     <VBox alignment="CENTER" spacing="5.0">
                                                                                        <children>
-                                                                                          <Button fx:id="addAllDesBTN" mnemonicParsing="false" onAction="#addAllActionPerformed" text=" &gt;&gt; " />
-                                                                                          <Button fx:id="removeAllDesBTN" mnemonicParsing="false" onAction="#removeAllActionPerformed" text=" &lt;&lt; " />
-                                                                                          <Button fx:id="addDesBTN" mnemonicParsing="false" onAction="#addActionPerformed" text=" &gt; " />
-                                                                                          <Button fx:id="removeDesBTN" mnemonicParsing="false" onAction="#removeActionPerformed" text=" &lt; " />
+                                                                                          <Button fx:id="addAllDesBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &gt;&gt; " />
+                                                                                          <Button fx:id="removeAllDesBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &lt;&lt; " />
+                                                                                          <Button fx:id="addDesBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &gt; " />
+                                                                                          <Button fx:id="removeDesBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &lt; " />
                                                                                        </children>
                                                                                     </VBox>
                                                                                     <ListView fx:id="lvDes2" prefHeight="100.0" prefWidth="195.0" />
@@ -70,10 +70,10 @@
                                                                                     <ListView fx:id="lvState1" prefHeight="100.0" prefWidth="195.0" />
                                                                                     <VBox alignment="CENTER" spacing="5.0">
                                                                                        <children>
-                                                                                          <Button fx:id="addAllStateBTN" mnemonicParsing="false" onAction="#addAllActionPerformed" text=" &gt;&gt; " />
-                                                                                          <Button fx:id="removeAllStateBTN" mnemonicParsing="false" onAction="#removeAllActionPerformed" text=" &lt;&lt; " />
-                                                                                          <Button fx:id="addStateBTN" mnemonicParsing="false" onAction="#addActionPerformed" text=" &gt; " />
-                                                                                          <Button fx:id="removeStateBTN" mnemonicParsing="false" onAction="#removeActionPerformed" text=" &lt; " />
+                                                                                          <Button fx:id="addAllStateBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &gt;&gt; " />
+                                                                                          <Button fx:id="removeAllStateBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &lt;&lt; " />
+                                                                                          <Button fx:id="addStateBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &gt; " />
+                                                                                          <Button fx:id="removeStateBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &lt; " />
                                                                                        </children>
                                                                                     </VBox>
                                                                                     <ListView fx:id="lvState2" prefHeight="100.0" prefWidth="195.0" />
@@ -97,10 +97,10 @@
                                                                                     <ListView fx:id="lvRegion1" prefHeight="100.0" prefWidth="195.0" />
                                                                                     <VBox alignment="CENTER" spacing="5.0">
                                                                                        <children>
-                                                                                          <Button fx:id="addAllRegionBTN" mnemonicParsing="false" onAction="#addAllActionPerformed" text=" &gt;&gt; " />
-                                                                                          <Button fx:id="removeAllRegionBTN" mnemonicParsing="false" onAction="#removeAllActionPerformed" text=" &lt;&lt; " />
-                                                                                          <Button fx:id="addRegionBTN" mnemonicParsing="false" onAction="#addActionPerformed" text=" &gt; " />
-                                                                                          <Button fx:id="removeRegionBTN" mnemonicParsing="false" onAction="#removeActionPerformed" text=" &lt; " />
+                                                                                          <Button fx:id="addAllRegionBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &gt;&gt; " />
+                                                                                          <Button fx:id="removeAllRegionBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &lt;&lt; " />
+                                                                                          <Button fx:id="addRegionBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &gt; " />
+                                                                                          <Button fx:id="removeRegionBTN" mnemonicParsing="false" onAction="#arlvActionPerformed" text=" &lt; " />
                                                                                        </children>
                                                                                     </VBox>
                                                                                     <ListView fx:id="lvRegion2" prefHeight="100.0" prefWidth="195.0" />
