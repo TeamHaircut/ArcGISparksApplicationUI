@@ -48,10 +48,9 @@ public class ParkController {
 	
 	private CustomMap mapControl = CustomMap.getInstance();
 	
+	private static GraphicsOverlay graphicsOverlay;
 	public static ArrayList<Node> myViewList = new ArrayList<Node>();
 	public static ParkModel parkModel = new ParkModel();
-	
-	private static GraphicsOverlay graphicsOverlay;
 	
 	@FXML private TitledPane titledpane1;
 	@FXML private TitledPane titledpane2;
@@ -244,29 +243,14 @@ public class ParkController {
 		if(listview1 != null)
 		{
 			parkModel.connect();
-			mapBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
-			mapBTN.setWrapText(true);
-			mapBTN.setText("MAP");
+			if(NPMap.isInitialized == false) {
+		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
+		    }
+			
 			mapBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("map.png"))));
-			
-			photoBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
-			photoBTN.setWrapText(true);
-			photoBTN.setText("PHOTOS");
 			photoBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("photo.png"))));
-			
-			stampBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
-			stampBTN.setWrapText(true);
-			stampBTN.setText("STAMPS");
 			stampBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("stamp.png"))));
-			
-			patchBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
-			patchBTN.setWrapText(true);
-			patchBTN.setText("PATCH");
 			patchBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("patch.png"))));
-			
-			campBTN.setFont(Font.font("System",FontWeight.BOLD, 14));
-			campBTN.setWrapText(true);
-			campBTN.setText("CAMP");
 			campBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("camp.png"))));
 			
 			ToggleGroup group = new ToggleGroup();
@@ -286,10 +270,6 @@ public class ParkController {
 				}
 
 		    }));
-		    
-		    if(NPMap.isInitialized == false) {
-		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
-		    }
 		    
 		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
 
