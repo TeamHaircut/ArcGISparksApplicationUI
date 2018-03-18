@@ -215,11 +215,11 @@
                   					                           <children>
                                                             <Button fx:id="mapBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#mapBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="MAP" textFill="WHITE" wrapText="true">
                                                             </Button>
-                                                            <Button fx:id="photoBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#photoBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="PHOTOS" textFill="WHITE">
+                                                            <Button fx:id="photos" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#albumActionPerformed" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="PHOTOS" textFill="WHITE">
                                                             </Button>
-                                                            <Button fx:id="stampBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#stampBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="STAMPS" textFill="WHITE">
+                                                            <Button fx:id="stamps" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#albumActionPerformed" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="STAMPS" textFill="WHITE">
                                                             </Button>
-                                                            <Button fx:id="patchBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#patchBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="PATCH" textFill="WHITE">
+                                                            <Button fx:id="patches" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#albumActionPerformed" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="PATCH" textFill="WHITE">
                                                             </Button>
                                                             <Button fx:id="campBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#campBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="CAMP" textFill="WHITE">
                                                             </Button>
