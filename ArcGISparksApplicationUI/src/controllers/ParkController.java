@@ -1,7 +1,5 @@
 package controllers;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +7,7 @@ import java.util.List;
 
 import supportclasses.CampAppPane;
 import supportclasses.CustomMap;
+import supportclasses.ExplorerPane;
 import supportclasses.NPMap;
 
 import com.esri.arcgisruntime.geometry.Point;
@@ -23,8 +22,6 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -33,18 +30,13 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import entities.Designation;
@@ -114,8 +106,8 @@ public class ParkController {
 	
 	@FXML
 	private void pictureCloseBTNAction() {
-		getExplorerStackPane().setVisible(false);
-		getExplorerFlowPane().getChildren().clear();
+		ExplorerPane.getExplorerStackPane().setVisible(false);
+		ExplorerPane.getExplorerFlowPane().getChildren().clear();
 	}
 	
 	@FXML
@@ -125,62 +117,27 @@ public class ParkController {
 	
 	@FXML
 	private void photoBTNAction() throws IOException {
-		viewGallery("photos");	
+		ExplorerPane.viewGallery("photos");	
 	}
 	
 	@FXML
 	private void stampBTNAction() throws FileNotFoundException {
-		viewGallery("stamps");
+		ExplorerPane.viewGallery("stamps");
 	}
 	
 	@FXML
 	private void patchBTNAction() throws FileNotFoundException {
-		viewGallery("patches");
+		ExplorerPane.viewGallery("patches");
 	}
 	
 	@FXML
 	private void campBTNAction() throws IOException {
-		getExplorerFlowPane().getChildren().clear();
+		ExplorerPane.getExplorerFlowPane().getChildren().clear();
 		CampAppPane cap = new CampAppPane();
-		cap.setFpane(getExplorerFlowPane());
+		cap.setFpane(ExplorerPane.getExplorerFlowPane());
 		cap.setSite(parkModel.getSiteProp());
 		cap.getFpane();
-		getExplorerStackPane().setVisible(true);
-	}
-	
-	private StackPane getExplorerStackPane() {
-		return (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
-	}
-	
-	private FlowPane getExplorerFlowPane() {
-		return (FlowPane)(
-					(AnchorPane)(
-							(ScrollPane)(
-									(BorderPane)(
-											(FlowPane) (getExplorerStackPane()).getChildren().get(0))
-									.getChildren().get(0))
-							.getChildren().get(1))
-					.getContent())
-				.getChildren().get(0);
-	}
-	
-	private void viewGallery(String arg) throws FileNotFoundException {
-		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
-		ObservableList<ImageView> observableList = FXCollections.observableList(new ArrayList<ImageView>());
-		getExplorerFlowPane().getChildren().clear();
-		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\"+arg+"\\").listFiles().length+1; i++) {
-			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\"+arg+"\\1 ("+i+").jpg");
-			Image image = new Image(input, 300, 0, true, false);
-			ImageView imageView = new ImageView(image);
-			if(!(image.getWidth() > image.getHeight())) {
-				imageView.setFitWidth(250);
-		        imageView.setPreserveRatio(true);
-			}
-			imageView.setPickOnBounds(true);
-			observableList.add(imageView);
-		}
-		getExplorerFlowPane().getChildren().addAll(observableList);
-		getExplorerStackPane().setVisible(true);
+		ExplorerPane.getExplorerStackPane().setVisible(true);
 	}
 	
 	@FXML
