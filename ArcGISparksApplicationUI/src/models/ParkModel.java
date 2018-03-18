@@ -197,19 +197,55 @@ public class ParkModel {
 		public void removeAll() {
 		}
 		
-		public void add() {
-			if(getDesignationProp()!=null) {
-				Designation e = getDesignationProp();
-				lvDesignation1Prop.get().remove(e);
-				lvDesignation2Prop.get().add(e);
+		public void add(String str) {
+			switch(str) {
+			case "addDesBTN":
+				if(getDesignationProp()!=null) {
+					Designation e = getDesignationProp();
+					lvDesignation1Prop.get().remove(e);
+					lvDesignation2Prop.get().add(e);
+				}
+				break;
+			case "addStateBTN":
+				if(getStateProp()!=null) {
+					State e = getStateProp();
+					lvState1Prop.get().remove(e);
+					lvState2Prop.get().add(e);
+				}
+				break;
+			case "addRegionBTN":
+				if(getRegionProp()!=null) {
+					Region e = getRegionProp();
+					lvRegion1Prop.get().remove(e);
+					lvRegion2Prop.get().add(e);
+				}
+				break;
 			}
 		}
 		
-		public void remove() {
-			if(getDesignationProp2()!=null) {
-				Designation e = getDesignationProp2();
-				lvDesignation2Prop.get().remove(e);
-				lvDesignation1Prop.get().add(e);
+		public void remove(String str) {
+			switch(str) {
+			case "removeDesBTN":
+				if(getDesignationProp2()!=null) {
+					Designation e = getDesignationProp2();
+					lvDesignation2Prop.get().remove(e);
+					lvDesignation1Prop.get().add(e);
+				}
+				break;
+			case "removeStateBTN":
+				if(getStateProp2()!=null) {
+					State e = getStateProp2();
+					lvState2Prop.get().remove(e);
+					lvState1Prop.get().add(e);
+				}
+				break;
+			case "removeRegionBTN":
+				if(getRegionProp2()!=null) {
+					Region e = getRegionProp2();
+					lvRegion2Prop.get().remove(e);
+					lvRegion1Prop.get().add(e);
+				}
+				break;
 			}
 		}
 		
@@ -281,22 +317,6 @@ public class ParkModel {
 		public void removeAllState() {
 		}
 		
-		public void addState() {
-			if(getStateProp()!=null) {
-				State e = getStateProp();
-				lvState1Prop.get().remove(e);
-				lvState2Prop.get().add(e);
-			}
-		}
-		
-		public void removeState() {
-			if(getStateProp2()!=null) {
-				State e = getStateProp2();
-				lvState2Prop.get().remove(e);
-				lvState1Prop.get().add(e);
-			}
-		}
-		
 		public List<State> myStateRecordList = new ArrayList<State>();
 		public List<State> getStateRecordList(){
 				if(myJPA != null)
@@ -363,22 +383,6 @@ public class ParkModel {
 		}
 		
 		public void removeAllRegion() {
-		}
-		
-		public void addRegion() {
-			if(getRegionProp()!=null) {
-				Region e = getRegionProp();
-				lvRegion1Prop.get().remove(e);
-				lvRegion2Prop.get().add(e);
-			}
-		}
-		
-		public void removeRegion() {
-			if(getRegionProp2()!=null) {
-				Region e = getRegionProp2();
-				lvRegion2Prop.get().remove(e);
-				lvRegion1Prop.get().add(e);
-			}
 		}
 		
 		public List<Region> myRegionRecordList = new ArrayList<Region>();
