@@ -54,21 +54,23 @@ import entities.State;
 
 public class ParkController {
 	
-	CustomMap mapControl = CustomMap.getInstance();
-	private static GraphicsOverlay graphicsOverlay;
+	private CustomMap mapControl = CustomMap.getInstance();
 	
 	public static ArrayList<Node> myViewList = new ArrayList<Node>();
 	public static ParkModel parkModel = new ParkModel();
 	
+	private static GraphicsOverlay graphicsOverlay;
+	
 	@FXML private TitledPane titledpane1;
+	@FXML private TitledPane titledpane2;
 	
 	@FXML private BorderPane borderPane;
-	@FXML private TitledPane titledpane2;
+	
 	@FXML private Tab resultsTab;
 	
 	@FXML private ListView<Site> listview1;
 	@FXML private ListView<Site> listview2;
-	@FXML private Hyperlink hyperlink;
+	
 	@FXML private Hyperlink hyperlink1;
 	
 	@FXML private RadioButton radio0BTN;
@@ -78,10 +80,10 @@ public class ParkController {
 //	@FXML private ListView<Site> lvSite1;
 //	@FXML private ListView<Site> lvSite2;
 	
-	@FXML private Button addAllSiteBTN;
-	@FXML private Button removeAllSiteBTN;
-	@FXML private Button addSiteBTN;
-	@FXML private Button removeSiteBTN;
+//	@FXML private Button addAllSiteBTN;
+//	@FXML private Button removeAllSiteBTN;
+//	@FXML private Button addSiteBTN;
+//	@FXML private Button removeSiteBTN;
 	
 	@FXML private ListView<Designation> lvDes1;
 	@FXML private ListView<Designation> lvDes2;
@@ -108,7 +110,6 @@ public class ParkController {
 	@FXML private Button removeRegionBTN;
 	
 	@FXML private ImageView webview1;
-	@FXML private Image webImage;
 	
 	@FXML private Label designationLabel;
 	@FXML private Button mapBTN;
@@ -121,14 +122,8 @@ public class ParkController {
 	
 	@FXML
 	private void pictureCloseBTNAction() {
-		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
-		stackpane.setVisible(false);
-		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
-		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
-		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
-		AnchorPane apane = (AnchorPane) spane.getContent();
-		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
-		fpane.getChildren().clear();
+		getExplorerStackPane().setVisible(false);
+		getExplorerFlowPane().getChildren().clear();
 	}
 	
 	@FXML
@@ -173,6 +168,22 @@ public class ParkController {
 		}
 		fpane.getChildren().addAll(observableList);
 		stackpane.setVisible(true);	
+	}
+	
+	private StackPane getExplorerStackPane() {
+		return (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
+	}
+	
+	private FlowPane getExplorerFlowPane() {
+		return (FlowPane)(
+					(AnchorPane)(
+							(ScrollPane)(
+									(BorderPane)(
+											(FlowPane) (getExplorerStackPane()).getChildren().get(0))
+									.getChildren().get(0))
+							.getChildren().get(1))
+					.getContent())
+				.getChildren().get(0);
 	}
 	
 	@FXML
@@ -396,7 +407,7 @@ public class ParkController {
 		    }));
 		    
 		    if(NPMap.isInitialized == false) {
-		    	NPMap.initializeBannerMap(parkModel.getSiteRecordList());
+		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
 		    }
 		    
 		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
