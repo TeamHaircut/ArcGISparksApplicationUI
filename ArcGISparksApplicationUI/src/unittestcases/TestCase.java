@@ -3,11 +3,9 @@ package unittestcases;
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -20,9 +18,9 @@ public class TestCase {
 	@Test
 	public void test() throws IOException {
 		String testURL0 = "https://www.nps.gov/yell/index.htm";
-		String testURL1 = "https://www.nps.gov/grca/index.htm";
-		String testURL2 = "https://www.nps.gov/acad/index.htm";
-		String testURL3 = "https://www.nps.gov/index.htm";
+//		String testURL1 = "https://www.nps.gov/grca/index.htm";
+//		String testURL2 = "https://www.nps.gov/acad/index.htm";
+//		String testURL3 = "https://www.nps.gov/index.htm";
 		assertEquals("https://www.nps.gov/common/uploads/banner_image/imr/homepage/51D13BEA-1DD8-B71B-0B786860A6FE90FC.jpg",
 				getImageTest(testURL0));
 	}
@@ -37,7 +35,6 @@ public class TestCase {
 		
 		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
 		try {
-		    StringBuilder sb = new StringBuilder();
 		    String line = br.readLine();
 
 		    while (line != null) {
@@ -51,6 +48,7 @@ public class TestCase {
 		        
 		    }
 		} finally {
+			fos.close();
 		    br.close();
 		}
 		//
@@ -65,10 +63,8 @@ public class TestCase {
 			String name = getRecAreaIds(testURL0);
 			if(name.length()> 5 && name.endsWith("1") && name.contains("National Park")) {
 				System.out.println(i+" " +name.substring(0, name.length()-2));
-				//System.out.println("          "+getCampGroundList(testURL0));
 			}
-		}
-		
+		}	
 	}
 	
 	@SuppressWarnings("finally")
@@ -82,7 +78,6 @@ public class TestCase {
 		
 		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
 		try {
-		    StringBuilder sb = new StringBuilder();
 		    String line = br.readLine();
 
 		    while (line != null) {
@@ -95,14 +90,12 @@ public class TestCase {
 		        if(line.matches("^.*<span class='locationsubtitle'>National Park Service</span></div>.*$")) {
 		        	imageURL = imageURL+" 1";
 		        }
-		        //<span class='locationsubtitle'>National Park Service</span></div>
 		    }
 		} finally {
+			fos.close();
 		    br.close();
 		    return imageURL;
 		}
-		//
-		//return imageURL;
 	}
 	
 	@Test
@@ -137,7 +130,6 @@ public class TestCase {
 		
 		BufferedReader br = new BufferedReader(new FileReader("information.txt"));
 		try {
-		    StringBuilder sb = new StringBuilder();
 		    String line = br.readLine();
 
 		    while (line != null) {
@@ -164,11 +156,9 @@ public class TestCase {
 			        	parserState = ParserState.NONE;
 		        	}
 		        }
-		        
-		        
-		        
 		    }
 		} finally {
+			fos.close();
 		    br.close();
 		    return dataList;
 		}
