@@ -48,7 +48,7 @@ public class State {
 	
 	@Override
 	public String toString() {
-		return getState_abbreviation();
+		return getState_name();
 	}
 	
 
