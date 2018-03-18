@@ -69,7 +69,6 @@ public class ParkController {
 	
 	@FXML private ListView<Designation> lvDes1;
 	@FXML private ListView<Designation> lvDes2;
-	
 	@FXML private Button addAllDesBTN;
 	@FXML private Button removeAllDesBTN;
 	@FXML private Button addDesBTN;
@@ -77,7 +76,6 @@ public class ParkController {
 	
 	@FXML private ListView<State> lvState1;
 	@FXML private ListView<State> lvState2;
-	
 	@FXML private Button addAllStateBTN;
 	@FXML private Button removeAllStateBTN;
 	@FXML private Button addStateBTN;
@@ -85,7 +83,6 @@ public class ParkController {
 	
 	@FXML private ListView<Region> lvRegion1;
 	@FXML private ListView<Region> lvRegion2;
-	
 	@FXML private Button addAllRegionBTN;
 	@FXML private Button removeAllRegionBTN;
 	@FXML private Button addRegionBTN;
@@ -264,10 +261,8 @@ public class ParkController {
 				public void changed(ObservableValue<? extends Toggle> arg0,
 						Toggle arg1, Toggle arg2) {
 					parkModel.setRadioGroupSelection(arg2);
-					submitAction();
-					
+					submitAction();	
 				}
-
 		    }));
 		    
 		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
@@ -307,7 +302,6 @@ public class ParkController {
 						Point centerPoint = new Point(arg2.getLat(), arg2.getLon(), SpatialReferences.getWgs84());
 				        Viewpoint viewpoint = new Viewpoint(centerPoint, 150000);
 				        mapControl.getMapView().setViewpointAsync(viewpoint, 7);
-
 				}
 			});
 			
@@ -328,7 +322,6 @@ public class ParkController {
 						Point centerPoint = new Point(arg2.getLat(), arg2.getLon(), SpatialReferences.getWgs84());
 				        Viewpoint viewpoint = new Viewpoint(centerPoint, 150000);
 				        mapControl.getMapView().setViewpointAsync(viewpoint, 7);
-
 				}
 			});
 			
@@ -341,6 +334,7 @@ public class ParkController {
 						parkModel.setDesignationProp(arg2);
 				}	
 	        });
+			
 	        lvDes1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
 	        
 	        lvDes2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
