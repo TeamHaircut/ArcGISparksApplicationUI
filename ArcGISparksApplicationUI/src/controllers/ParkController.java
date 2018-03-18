@@ -22,6 +22,7 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import models.ParkModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -92,9 +93,9 @@ public class ParkController {
 	
 	@FXML private Label designationLabel;
 	@FXML private Button mapBTN;
-	@FXML private Button photoBTN;
-	@FXML private Button stampBTN;
-	@FXML private Button patchBTN;
+	@FXML private Button photos;
+	@FXML private Button stamps;
+	@FXML private Button patches;
 	@FXML private Button campBTN;
 	
 	@FXML private Button pictureCloseBTN;
@@ -111,18 +112,8 @@ public class ParkController {
 	}
 	
 	@FXML
-	private void photoBTNAction() throws IOException {
-		ExplorerPane.viewGallery("photos");	
-	}
-	
-	@FXML
-	private void stampBTNAction() throws FileNotFoundException {
-		ExplorerPane.viewGallery("stamps");
-	}
-	
-	@FXML
-	private void patchBTNAction() throws FileNotFoundException {
-		ExplorerPane.viewGallery("patches");
+	private void albumActionPerformed(ActionEvent event) throws FileNotFoundException {
+		ExplorerPane.viewGallery(((Button)event.getSource()).getId());
 	}
 	
 	@FXML
@@ -244,9 +235,9 @@ public class ParkController {
 		    }
 			
 			mapBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("map.png"))));
-			photoBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("photo.png"))));
-			stampBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("stamp.png"))));
-			patchBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("patch.png"))));
+			photos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("photo.png"))));
+			stamps.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("stamp.png"))));
+			patches.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("patch.png"))));
 			campBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("camp.png"))));
 			
 			ToggleGroup group = new ToggleGroup();
