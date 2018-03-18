@@ -126,26 +126,20 @@ public class ParkController {
 		ExplorerPane.getExplorerStackPane().setVisible(true);
 	}
 	
-	@FXML void addActionPerformed(ActionEvent event) {
-		parkModel.add(((Button)event.getSource()).getId());
+	@FXML void arlvActionPerformed(ActionEvent event) {
+		switch(((Button)event.getSource()).getId()) {
+		case "addDesBTN": case "addStateBTN": case "addRegionBTN":
+			parkModel.add(((Button)event.getSource()).getId()); break;
+		case "removeDesBTN": case "removeStateBTN": case "removeRegionBTN":
+			parkModel.remove(((Button)event.getSource()).getId()); break;
+		case "addAllDesBTN": case "addAllStateBTN": case "addAllRegionBTN":
+			parkModel.addAll(((Button)event.getSource()).getId()); break;
+		case "removeAllDesBTN": case "removeAllStateBTN": case "removeAllRegionBTN":
+			parkModel.removeAll(((Button)event.getSource()).getId()); break;
+		}
 		submitAction();
 	}
-	
-	@FXML void removeActionPerformed(ActionEvent event) {
-		parkModel.remove(((Button)event.getSource()).getId());
-		submitAction();
-	}
-	
-	@FXML void addAllActionPerformed(ActionEvent event) {
-		parkModel.addAll(((Button)event.getSource()).getId());
-		submitAction();
-	}
-	
-	@FXML void removeAllActionPerformed(ActionEvent event) {
-		parkModel.removeAll(((Button)event.getSource()).getId());
-		submitAction();
-	}
-	
+
 	private void submitAction() {
 		parkModel.updateQueryState(parkModel.getRadioGroupSelection());
 		//** Query Action***************************************************
