@@ -77,14 +77,6 @@ public class ParkController {
 	@FXML private RadioButton radio1BTN;
 	@FXML private RadioButton radio2BTN;
 	
-//	@FXML private ListView<Site> lvSite1;
-//	@FXML private ListView<Site> lvSite2;
-	
-//	@FXML private Button addAllSiteBTN;
-//	@FXML private Button removeAllSiteBTN;
-//	@FXML private Button addSiteBTN;
-//	@FXML private Button removeSiteBTN;
-	
 	@FXML private ListView<Designation> lvDes1;
 	@FXML private ListView<Designation> lvDes2;
 	
@@ -133,100 +125,26 @@ public class ParkController {
 	
 	@FXML
 	private void photoBTNAction() throws IOException {
-		
-		List<ImageView> list = new ArrayList<ImageView>();
-		ObservableList<ImageView> observableList = FXCollections.observableList(list);
-		
-		getExplorerFlowPane().getChildren().clear();
-		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
-		
-		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\photos\\").listFiles().length+1; i++) {
-			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\photos\\1 ("+i+").jpg");
-			Image image = new Image(input, 300, 0, true, false);
-			//if horizontal
-			if(image.getWidth() > image.getHeight()) {
-				ImageView imageView = new ImageView(image);
-				imageView.setPickOnBounds(true);
-				observableList.add(imageView);
-				
-			}
-			//else vertical
-			else {
-				ImageView imageView = new ImageView(image);
-				imageView.setFitWidth(250);
-		        imageView.setPreserveRatio(true);
-				imageView.setPickOnBounds(true);
-				observableList.add(imageView);
-				
-			}
-		}
-		getExplorerFlowPane().getChildren().addAll(observableList);
-		getExplorerStackPane().setVisible(true);	
+		viewGallery("photos");	
 	}
 	
 	@FXML
 	private void stampBTNAction() throws FileNotFoundException {
-		
-		List<ImageView> list = new ArrayList<ImageView>();
-		ObservableList<ImageView> observableList = FXCollections.observableList(list);
-		
-		getExplorerFlowPane().getChildren().clear();
-		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
-		
-		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\stamps\\").listFiles().length+1; i++) {
-			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\stamps\\1 ("+i+").jpg");
-			Image image = new Image(input, 300, 0, true, false);
-			//if horizontal
-			if(image.getWidth() > image.getHeight()) {
-				ImageView imageView = new ImageView(image);
-				imageView.setPickOnBounds(true);
-				observableList.add(imageView);
-				
-			}
-			//else vertical
-			else {
-				ImageView imageView = new ImageView(image);
-				imageView.setFitWidth(250);
-		        imageView.setPreserveRatio(true);
-				imageView.setPickOnBounds(true);
-				observableList.add(imageView);
-				
-			}
-		}
-		getExplorerFlowPane().getChildren().addAll(observableList);
-		getExplorerStackPane().setVisible(true);
+		viewGallery("stamps");
 	}
 	
 	@FXML
 	private void patchBTNAction() throws FileNotFoundException {
-		
-		List<ImageView> list = new ArrayList<ImageView>();
-		ObservableList<ImageView> observableList = FXCollections.observableList(list);
-		
+		viewGallery("patches");
+	}
+	
+	@FXML
+	private void campBTNAction() throws IOException {
 		getExplorerFlowPane().getChildren().clear();
-		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
-		
-		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\patches\\").listFiles().length+1; i++) {
-			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\patches\\1 ("+i+").jpg");
-			Image image = new Image(input, 300, 0, true, false);
-			//if horizontal
-			if(image.getWidth() > image.getHeight()) {
-				ImageView imageView = new ImageView(image);
-				imageView.setPickOnBounds(true);
-				observableList.add(imageView);
-				
-			}
-			//else vertical
-			else {
-				ImageView imageView = new ImageView(image);
-				imageView.setFitWidth(250);
-		        imageView.setPreserveRatio(true);
-				imageView.setPickOnBounds(true);
-				observableList.add(imageView);
-				
-			}
-		}
-		getExplorerFlowPane().getChildren().addAll(observableList);
+		CampAppPane cap = new CampAppPane();
+		cap.setFpane(getExplorerFlowPane());
+		cap.setSite(parkModel.getSiteProp());
+		cap.getFpane();
 		getExplorerStackPane().setVisible(true);
 	}
 	
@@ -246,26 +164,24 @@ public class ParkController {
 				.getChildren().get(0);
 	}
 	
-	@FXML
-	private void campBTNAction() throws IOException {
-//		StackPane stackpane = (StackPane) ((Pane) myViewList.get(1)).getChildren().get(1);
-//		FlowPane pane = (FlowPane) ((StackPane) ((Pane) myViewList.get(1)).getChildren().get(1)).getChildren().get(0);
-//		BorderPane bpane = (BorderPane) pane.getChildren().get(0);
-//		ScrollPane spane = (ScrollPane) bpane.getChildren().get(1);
-//		AnchorPane apane = (AnchorPane) spane.getContent();
-//		FlowPane fpane = (FlowPane) apane.getChildren().get(0);
-//		fpane.getChildren().clear();
+	private void viewGallery(String arg) throws FileNotFoundException {
+		String dir = parkModel.getSiteProp().getWebsite().substring(20, 24);
+		ObservableList<ImageView> observableList = FXCollections.observableList(new ArrayList<ImageView>());
 		getExplorerFlowPane().getChildren().clear();
-		CampAppPane cap = new CampAppPane();
-//		cap.setFpane(fpane);
-		cap.setFpane(getExplorerFlowPane());
-		cap.setSite(parkModel.getSiteProp());
-		cap.getFpane();
-//		stackpane.setVisible(true);	
+		for(int i = 1; i < new File("E:\\projectImages\\"+dir+"\\"+arg+"\\").listFiles().length+1; i++) {
+			FileInputStream input = new FileInputStream("E:\\projectImages\\"+dir+"\\"+arg+"\\1 ("+i+").jpg");
+			Image image = new Image(input, 300, 0, true, false);
+			ImageView imageView = new ImageView(image);
+			if(!(image.getWidth() > image.getHeight())) {
+				imageView.setFitWidth(250);
+		        imageView.setPreserveRatio(true);
+			}
+			imageView.setPickOnBounds(true);
+			observableList.add(imageView);
+		}
+		getExplorerFlowPane().getChildren().addAll(observableList);
 		getExplorerStackPane().setVisible(true);
-
 	}
-	
 	
 	@FXML
 	private void addSiteAction() {
@@ -398,9 +314,9 @@ public class ParkController {
 			
 			ToggleGroup group = new ToggleGroup();
 		    radio0BTN.setToggleGroup(group);
-		    radio2BTN.setSelected(true);
 		    radio1BTN.setToggleGroup(group);
 		    radio2BTN.setToggleGroup(group);
+		    radio2BTN.setSelected(true);
 		    
 		    group.selectedToggleProperty().addListener((new ChangeListener<Toggle>(){
 
@@ -481,28 +397,6 @@ public class ParkController {
 			});
 			
 			listview2.itemsProperty().bindBidirectional(parkModel.listviewProperty());
-			
-//			lvSite1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
-//
-//				@Override
-//				public void changed(ObservableValue<? extends Site> arg0,
-//						Site arg1, Site arg2) {
-//						parkModel.setSitePropQ(arg2);
-//				}	
-//	        });
-			
-//	        lvSite1.itemsProperty().bindBidirectional(parkModel.lvSite1Property());
-	        
-//	        lvSite2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
-//
-//				@Override
-//				public void changed(ObservableValue<? extends Site> arg0,
-//						Site arg1, Site arg2) {
-//					parkModel.setSiteProp2(arg2);
-//				}	
-//	        });
-	        
-//	        lvSite2.itemsProperty().bindBidirectional(parkModel.lvSite2Property());
 	        	
 			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
 				@Override
