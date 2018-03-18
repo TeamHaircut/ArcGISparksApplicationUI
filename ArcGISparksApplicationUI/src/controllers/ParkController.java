@@ -126,37 +126,13 @@ public class ParkController {
 		ExplorerPane.getExplorerStackPane().setVisible(true);
 	}
 	
-	@FXML
-	private void addSiteAction() {
-		parkModel.addSite();
+	@FXML void addActionPerformed(ActionEvent event) {
+		parkModel.add(((Button)event.getSource()).getId());
 		submitAction();
 	}
 	
-	@FXML 
-	private void removeSiteAction() {
-		parkModel.removeSite();
-		submitAction();
-	}
-	
-	@FXML
-	private void addAllSiteAction() {
-		parkModel.addAllSite();
-	}
-	
-	@FXML
-	private void removeAllSiteAction() {
-		parkModel.removeAllSite();
-	}
-	
-	@FXML
-	private void addDesAction() {
-		parkModel.add();
-		submitAction();
-	}
-	
-	@FXML 
-	private void removeDesAction() {
-		parkModel.remove();
+	@FXML void removeActionPerformed(ActionEvent event) {
+		parkModel.remove(((Button)event.getSource()).getId());
 		submitAction();
 	}
 	
@@ -171,18 +147,6 @@ public class ParkController {
 	}
 	
 	@FXML
-	private void addStateAction() {
-		parkModel.addState();
-		submitAction();
-	}
-	
-	@FXML 
-	private void removeStateAction() {
-		parkModel.removeState();
-		submitAction();
-	}
-	
-	@FXML
 	private void addAllStateAction() {
 		parkModel.addAllState();
 	}
@@ -190,18 +154,6 @@ public class ParkController {
 	@FXML
 	private void removeAllStateAction() {
 		parkModel.removeAllState();
-	}
-	
-	@FXML
-	private void addRegionAction() {
-		parkModel.addRegion();
-		submitAction();
-	}
-	
-	@FXML 
-	private void removeRegionAction() {
-		parkModel.removeRegion();
-		submitAction();
 	}
 	
 	@FXML
@@ -229,6 +181,7 @@ public class ParkController {
 		
 		if(listview1 != null)
 		{
+			
 			parkModel.connect();
 			if(NPMap.isInitialized == false && INIT_BANNERS) {
 		    	NPMap.initializeBannerMap(parkModel.getSiteRecordList());
