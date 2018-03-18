@@ -52,7 +52,6 @@ public class ParkModel {
 	}
 	
 	public List<Site> queryDB() {
-		
 		List<Site> siteList = new ArrayList<Site>();
 		siteList = myJPA.getDBSites();
 		myList = siteList;
@@ -97,8 +96,7 @@ public class ParkModel {
 		public static void setMySite(Site mySite) {
 			ParkModel.mySite = mySite;
 		}
-
-
+		
 		//list view (getList())																list view (getList())
 		public static ParkJPA myJPA;
 		public List<Site> myList = new ArrayList<Site>();
@@ -108,12 +106,6 @@ public class ParkModel {
 /*
  * ARLV
  */
-		public void addAllSite() {
-		}
-		
-		public void removeAllSite() {
-		}
-		
 		public void addSite() {
 			if(getSitePropQ()!=null) {
 				Site e = getSitePropQ();
@@ -191,12 +183,6 @@ public class ParkModel {
 /*
  * ARLV
  */
-		public void addAll() {
-		}
-		
-		public void removeAll() {
-		}
-		
 		public void add(String str) {
 			switch(str) {
 			case "addDesBTN":
@@ -270,7 +256,6 @@ public class ParkModel {
 			return lvDesignation1Prop.getValue();
 		}
 		
-		
 		ObjectProperty<ObservableList<Designation>> lvDesignation2Prop = new SimpleObjectProperty<ObservableList<Designation>>();
 		public ObjectProperty<ObservableList<Designation>> lvDesignation2Property() {
 			lvDesignation2Prop.setValue(FXCollections.observableList(new ArrayList<Designation>()));
@@ -284,7 +269,6 @@ public class ParkModel {
 		public ObservableList<Designation> getlvDesignation2Prop(){
 			return lvDesignation2Prop.getValue();
 		}
-		
 		
 		ObjectProperty<Designation> designationProp = new SimpleObjectProperty<Designation>();
 		public ObjectProperty<Designation> DesignationProperty(){
@@ -311,12 +295,6 @@ public class ParkModel {
 /*
  *  state ARLV
  */
-		public void addAllState() {
-		}
-		
-		public void removeAllState() {
-		}
-		
 		public List<State> myStateRecordList = new ArrayList<State>();
 		public List<State> getStateRecordList(){
 				if(myJPA != null)
@@ -353,7 +331,6 @@ public class ParkModel {
 			return lvState2Prop.getValue();
 		}
 		
-		
 		ObjectProperty<State> stateProp = new SimpleObjectProperty<State>();
 		public ObjectProperty<State> StateProperty(){
 			return stateProp;
@@ -379,12 +356,6 @@ public class ParkModel {
 /*
  *  region ARLV
  */
-		public void addAllRegion() {
-		}
-		
-		public void removeAllRegion() {
-		}
-		
 		public List<Region> myRegionRecordList = new ArrayList<Region>();
 		public List<Region> getRegionRecordList(){
 				if(myJPA != null)
@@ -406,7 +377,6 @@ public class ParkModel {
 			return lvRegion1Prop.getValue();
 		}
 		
-		
 		ObjectProperty<ObservableList<Region>> lvRegion2Prop = new SimpleObjectProperty<ObservableList<Region>>();
 		public ObjectProperty<ObservableList<Region>> lvRegion2Property() {
 			lvRegion2Prop.setValue(FXCollections.observableList(new ArrayList<Region>()));
@@ -420,7 +390,6 @@ public class ParkModel {
 		public ObservableList<Region> getlvRegion2Prop(){
 			return lvRegion2Prop.getValue();
 		}
-		
 		
 		ObjectProperty<Region> regionProp = new SimpleObjectProperty<Region>();
 		public ObjectProperty<Region> RegionProperty(){
@@ -455,7 +424,4 @@ public class ParkModel {
 		public Designation getSiteDesignation(Site site) {
 			return myJPA.getDBSiteDesignation(site);
 		}
-						
-	
-
 }
