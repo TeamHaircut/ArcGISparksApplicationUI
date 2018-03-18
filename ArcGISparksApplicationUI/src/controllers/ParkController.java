@@ -136,34 +136,14 @@ public class ParkController {
 		submitAction();
 	}
 	
-	@FXML
-	private void addAllDesAction() {
-		parkModel.addAll();
+	@FXML void addAllActionPerformed(ActionEvent event) {
+		parkModel.addAll(((Button)event.getSource()).getId());
+		submitAction();
 	}
 	
-	@FXML
-	private void removeAllDesAction() {
-		parkModel.removeAll();
-	}
-	
-	@FXML
-	private void addAllStateAction() {
-		parkModel.addAllState();
-	}
-	
-	@FXML
-	private void removeAllStateAction() {
-		parkModel.removeAllState();
-	}
-	
-	@FXML
-	private void addAllRegionAction() {
-		parkModel.addAllRegion();
-	}
-	
-	@FXML
-	private void removeAllRegionAction() {
-		parkModel.removeAllRegion();
+	@FXML void removeAllActionPerformed(ActionEvent event) {
+		parkModel.removeAll(((Button)event.getSource()).getId());
+		submitAction();
 	}
 	
 	private void submitAction() {
