@@ -173,27 +173,39 @@ public class ParkController {
 				}
 		    }));
 		    
-		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
-
-				@Override
-				public void changed(ObservableValue<? extends Boolean> arg0,
-						Boolean arg1, Boolean arg2) {
-					if(arg2 == true) {
-						titledpane2.setExpanded(false);
-					}	
+		    titledpane1.expandedProperty().addListener((observable, oldValue, newValue) -> {
+		    	if(newValue == true) {
+					titledpane2.setExpanded(false);
 				}
 		    });
 		    
-		    titledpane2.expandedProperty().addListener(new ChangeListener<Boolean>() {
-
-				@Override
-				public void changed(ObservableValue<? extends Boolean> arg0,
-						Boolean arg1, Boolean arg2) {
-					if(arg2 == true) {
-						titledpane1.setExpanded(false);
-					}	
+		    titledpane2.expandedProperty().addListener((observable, oldValue, newValue) -> {
+		    	if(newValue == true) {
+					titledpane1.setExpanded(false);
 				}
 		    });
+		    
+//		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
+//
+//				@Override
+//				public void changed(ObservableValue<? extends Boolean> arg0,
+//						Boolean arg1, Boolean arg2) {
+//					if(arg2 == true) {
+//						titledpane2.setExpanded(false);
+//					}	
+//				}
+//		    });
+//		    
+//		    titledpane2.expandedProperty().addListener(new ChangeListener<Boolean>() {
+//
+//				@Override
+//				public void changed(ObservableValue<? extends Boolean> arg0,
+//						Boolean arg1, Boolean arg2) {
+//					if(arg2 == true) {
+//						titledpane1.setExpanded(false);
+//					}	
+//				}
+//		    });
 			
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
