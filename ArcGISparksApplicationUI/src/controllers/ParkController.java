@@ -44,7 +44,7 @@ import entities.Site;
 import entities.State;
 
 public class ParkController {
-	private static final boolean INIT_BANNERS = false;//for testing only
+	private static final boolean INIT_BANNERS = true;//for testing only
 	
 	private CustomMap mapControl = CustomMap.getInstance();
 	
@@ -99,6 +99,7 @@ public class ParkController {
 	@FXML private Button campBTN;
 	
 	@FXML private Button pictureCloseBTN;
+	@FXML private ToggleGroup toggleGroup;
 	
 	@FXML
 	private void pictureCloseBTNAction() {
@@ -155,25 +156,14 @@ public class ParkController {
 		
 		if(listview1 != null)
 		{
-			
 			parkModel.connect();
 			if(NPMap.isInitialized == false && INIT_BANNERS) {
-		    	NPMap.initializeBannerMap(parkModel.getSiteRecordList());
+		    	//NPMap.initializeBannerMap(parkModel.getSiteRecordList());
 		    }
 			
-			mapBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("map.png"))));
-			photos.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("photo.png"))));
-			stamps.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("stamp.png"))));
-			patches.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("patch.png"))));
-			campBTN.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("camp.png"))));
-			
-			ToggleGroup group = new ToggleGroup();
-		    radio0BTN.setToggleGroup(group);
-		    radio1BTN.setToggleGroup(group);
-		    radio2BTN.setToggleGroup(group);
 		    radio2BTN.setSelected(true);
 		    
-		    group.selectedToggleProperty().addListener((new ChangeListener<Toggle>(){
+		    toggleGroup.selectedToggleProperty().addListener((new ChangeListener<Toggle>(){
 
 				@Override
 				public void changed(ObservableValue<? extends Toggle> arg0,
