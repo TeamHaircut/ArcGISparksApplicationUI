@@ -163,15 +163,20 @@ public class ParkController {
 			
 		    radio2BTN.setSelected(true);
 		    
-		    toggleGroup.selectedToggleProperty().addListener((new ChangeListener<Toggle>(){
-
-				@Override
-				public void changed(ObservableValue<? extends Toggle> arg0,
-						Toggle arg1, Toggle arg2) {
-					parkModel.setRadioGroupSelection(arg2);
-					submitAction();	
-				}
-		    }));
+		    toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+		    	parkModel.setRadioGroupSelection(newValue);
+				submitAction();
+		    });
+		    
+//		    toggleGroup.selectedToggleProperty().addListener((new ChangeListener<Toggle>(){
+//
+//				@Override
+//				public void changed(ObservableValue<? extends Toggle> arg0,
+//						Toggle arg1, Toggle arg2) {
+//					parkModel.setRadioGroupSelection(arg2);
+//					submitAction();	
+//				}
+//		    }));
 		    
 		    titledpane1.expandedProperty().addListener((observable, oldValue, newValue) -> {
 		    	if(newValue == true) {
@@ -185,28 +190,7 @@ public class ParkController {
 				}
 		    });
 		    
-//		    titledpane1.expandedProperty().addListener(new ChangeListener<Boolean>() {
-//
-//				@Override
-//				public void changed(ObservableValue<? extends Boolean> arg0,
-//						Boolean arg1, Boolean arg2) {
-//					if(arg2 == true) {
-//						titledpane2.setExpanded(false);
-//					}	
-//				}
-//		    });
-//		    
-//		    titledpane2.expandedProperty().addListener(new ChangeListener<Boolean>() {
-//
-//				@Override
-//				public void changed(ObservableValue<? extends Boolean> arg0,
-//						Boolean arg1, Boolean arg2) {
-//					if(arg2 == true) {
-//						titledpane1.setExpanded(false);
-//					}	
-//				}
-//		    });
-			
+		    
 			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
 
 				@Override
