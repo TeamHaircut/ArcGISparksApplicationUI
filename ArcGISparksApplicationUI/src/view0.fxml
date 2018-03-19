@@ -124,10 +124,13 @@
                                                         </tabs>
                                                       </TabPane>
                                                       <HBox alignment="TOP_CENTER" spacing="10.0">
+                                                      	 <fx:define>
+												      		<ToggleGroup fx:id="toggleGroup"/>
+												    	 </fx:define>
                                                          <children>
-                                                            <RadioButton fx:id="radio0BTN" mnemonicParsing="false" styleClass="groupText" text="Visited" />
-                                                            <RadioButton fx:id="radio1BTN" mnemonicParsing="false" styleClass="groupText" text="Not Visited" />
-                                                            <RadioButton fx:id="radio2BTN" mnemonicParsing="false" styleClass="groupText" text="All" />
+                                                            <RadioButton fx:id="radio0BTN" mnemonicParsing="false" styleClass="groupText" text="Visited" toggleGroup="$toggleGroup"/>
+                                                            <RadioButton fx:id="radio1BTN" mnemonicParsing="false" styleClass="groupText" text="Not Visited" toggleGroup="$toggleGroup"/>
+                                                            <RadioButton fx:id="radio2BTN" mnemonicParsing="false" styleClass="groupText" text="All" toggleGroup="$toggleGroup"/>
                                                          </children>
                                                       </HBox>
                                                    </children>
@@ -214,14 +217,49 @@
                   					                        <HBox spacing="5.0">
                   					                           <children>
                                                             <Button fx:id="mapBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#mapBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="MAP" textFill="WHITE" wrapText="true">
+                                                            <graphic>
+													        	<ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+													          		<image>
+													            		<Image url="@controllers\map.png" />
+													          		</image>
+													        	</ImageView>
+													      	</graphic>
                                                             </Button>
                                                             <Button fx:id="photos" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#albumActionPerformed" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="PHOTOS" textFill="WHITE">
+                                                            <graphic>
+													        	<ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+													          		<image>
+													            		<Image url="@controllers\photo.png" />
+													          		</image>
+													        	</ImageView>
+													      	</graphic>
                                                             </Button>
                                                             <Button fx:id="stamps" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#albumActionPerformed" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="STAMPS" textFill="WHITE">
+                                                            <graphic>
+													        	<ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+													          		<image>
+													            		<Image url="@controllers\stamp.png" />
+													          		</image>
+													        	</ImageView>
+													      	</graphic>
                                                             </Button>
                                                             <Button fx:id="patches" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#albumActionPerformed" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="PATCH" textFill="WHITE">
+                                                            <graphic>
+													        	<ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+													          		<image>
+													            		<Image url="@controllers\patch.png" />
+													          		</image>
+													        	</ImageView>
+													      	</graphic>
                                                             </Button>
                                                             <Button fx:id="campBTN" alignment="TOP_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#campBTNAction" prefHeight="70.0" prefWidth="80.0" styleClass="exploreButtonGroup" text="CAMP" textFill="WHITE">
+                                                            <graphic>
+													        	<ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+													          		<image>
+													            		<Image url="@controllers\camp.png" />
+													          		</image>
+													        	</ImageView>
+													      	</graphic>
                                                             </Button>
                   					                           </children>
                                                          <FlowPane.margin>
