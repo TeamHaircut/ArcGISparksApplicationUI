@@ -225,24 +225,15 @@ public class ParkController {
 	        
 	        lvState2.itemsProperty().bindBidirectional(parkModel.lvState2Property());
 	        
-	        lvRegion1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
-				@Override
-				public void changed(ObservableValue<? extends Region> arg0,
-						Region arg1, Region arg2) {
-						parkModel.setRegionProp(arg2);
-				}	
-	        });
+	        lvRegion1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+				parkModel.setRegionProp(newValue);
+			});
 	        
 	        lvRegion1.itemsProperty().bindBidirectional(parkModel.lvRegion1Property());
 	        
-	        lvRegion2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Region>(){
-
-				@Override
-				public void changed(ObservableValue<? extends Region> arg0,
-						Region arg1, Region arg2) {
-					parkModel.setRegionProp2(arg2);
-				}	
-	        });
+	        lvRegion2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+				parkModel.setRegionProp2(newValue);
+			});
 	        
 	        lvRegion2.itemsProperty().bindBidirectional(parkModel.lvRegion2Property());
     
