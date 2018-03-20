@@ -201,13 +201,18 @@ public class ParkController {
 			listview2.getSelectionModel().selectedItemProperty().addListener(listviewChangeListener);
 			listview2.itemsProperty().bindBidirectional(parkModel.listviewProperty());
 	        	
-			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
-				@Override
-				public void changed(ObservableValue<? extends Designation> arg0,
-						Designation arg1, Designation arg2) {
-						parkModel.setDesignationProp(arg2);
-				}	
-	        });
+			lvDes1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+				parkModel.setDesignationProp(newValue);
+			});
+			
+			
+//			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
+//				@Override
+//				public void changed(ObservableValue<? extends Designation> arg0,
+//						Designation arg1, Designation arg2) {
+//						parkModel.setDesignationProp(arg2);
+//				}	
+//	        });
 			
 	        lvDes1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
 	        
