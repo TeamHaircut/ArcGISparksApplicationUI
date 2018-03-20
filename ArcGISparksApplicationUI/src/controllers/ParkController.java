@@ -236,31 +236,14 @@ public class ParkController {
 			});
 	        
 	        lvRegion2.itemsProperty().bindBidirectional(parkModel.lvRegion2Property());
-    
 		}
 	}
 	
-	@FXML
-	private void hyperlinkAction() {
-		try{  
-			String command = 
-				"C:\\Program Files (x86)\\Google\\Chrome\\Application\\CHROME.EXE "
-			   + parkModel.getSiteProp().getWebsite(); 
-			@SuppressWarnings("unused")
-			Process link = Runtime.getRuntime().exec(command);
-		}catch(Exception ex){  
-			System.out.println("cannot execute command. " +ex);   
-		} 
-	}
-	
 	private void showQueryResults() {
-		
 		SpatialReference SPATIAL_REFERENCE = SpatialReferences.getWgs84();
-		
 		List<Site> resultSet = parkModel.queryDB();
 		titledpane2.setText("Explore Result Set ("+resultSet.size()+" Parks Found)");
 		resultsTab.setText("Result Set ("+resultSet.size()+" Parks Found)");
-		
 		Image newImage = new Image("arrowhead.png");
 		PictureMarkerSymbol parkSymbol = new PictureMarkerSymbol(newImage);
 		graphicsOverlay.getGraphics().clear();
@@ -271,7 +254,6 @@ public class ParkController {
 	}
 	
 	private void placePictureMarkerSymbol(PictureMarkerSymbol markerSymbol, Point graphicPoint) {
-		
 	    markerSymbol.setHeight(30);
 	    markerSymbol.setWidth(30);
 	    markerSymbol.loadAsync();
