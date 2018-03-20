@@ -33,7 +33,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -180,17 +179,6 @@ public class ParkController {
 				}
 		    });
 		    
-//		    listview1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//		    	parkModel.setSiteProp(newValue);
-//				ParkModel.setMySite(newValue);
-//				hyperlink1.setText(newValue.getSite_name());
-//				designationLabel.setText(parkModel.getSiteDesignation(newValue).getDesignation_name());
-//				webview1.setImage(NPMap.bannerMap.get(newValue.getSite_name()));
-//				Point centerPoint = new Point(newValue.getLat(), newValue.getLon(), SpatialReferences.getWgs84());
-//		        Viewpoint viewpoint = new Viewpoint(centerPoint, 150000);
-//		        mapControl.getMapView().setViewpointAsync(viewpoint, 7);
-//		    });
-		    
 		    ChangeListener<Site> listviewChangeListener = new ChangeListener<Site>() {
 		    	
 				@Override
@@ -208,47 +196,9 @@ public class ParkController {
 		    };
 		    
 		    listview1.getSelectionModel().selectedItemProperty().addListener(listviewChangeListener);
-		    listview2.getSelectionModel().selectedItemProperty().addListener(listviewChangeListener);
-
-		    
-//			listview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
-//
-//				@Override
-//				public void changed(ObservableValue<? extends Site> arg0,
-//						Site arg1, Site arg2) {
-//						parkModel.setSiteProp(arg2);
-//						ParkModel.setMySite(arg2);
-//						hyperlink1.setText(arg2.getSite_name());
-//						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
-//						
-//						webview1.setImage(	NPMap.bannerMap.get(arg2.getSite_name())	);
-//
-//						Point centerPoint = new Point(arg2.getLat(), arg2.getLon(), SpatialReferences.getWgs84());
-//				        Viewpoint viewpoint = new Viewpoint(centerPoint, 150000);
-//				        mapControl.getMapView().setViewpointAsync(viewpoint, 7);
-//				}
-//			});
-			
 			listview1.itemsProperty().bindBidirectional(parkModel.listviewProperty());
-			
-//			listview2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Site>(){
-//
-//				@Override
-//				public void changed(ObservableValue<? extends Site> arg0,
-//						Site arg1, Site arg2) {
-//						parkModel.setSiteProp(arg2);
-//						ParkModel.setMySite(arg2);
-//						hyperlink1.setText(arg2.getSite_name());
-//						designationLabel.setText(parkModel.getSiteDesignation(arg2).getDesignation_name());
-//						
-//						webview1.setImage(	NPMap.bannerMap.get(arg2.getSite_name())	);
-//
-//						Point centerPoint = new Point(arg2.getLat(), arg2.getLon(), SpatialReferences.getWgs84());
-//				        Viewpoint viewpoint = new Viewpoint(centerPoint, 150000);
-//				        mapControl.getMapView().setViewpointAsync(viewpoint, 7);
-//				}
-//			});
-			
+						
+			listview2.getSelectionModel().selectedItemProperty().addListener(listviewChangeListener);
 			listview2.itemsProperty().bindBidirectional(parkModel.listviewProperty());
 	        	
 			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
