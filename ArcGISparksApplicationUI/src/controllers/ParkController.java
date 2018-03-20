@@ -205,44 +205,23 @@ public class ParkController {
 				parkModel.setDesignationProp(newValue);
 			});
 			
-			
-//			lvDes1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
-//				@Override
-//				public void changed(ObservableValue<? extends Designation> arg0,
-//						Designation arg1, Designation arg2) {
-//						parkModel.setDesignationProp(arg2);
-//				}	
-//	        });
-			
 	        lvDes1.itemsProperty().bindBidirectional(parkModel.lvDesignation1Property());
 	        
-	        lvDes2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Designation>(){
-				@Override
-				public void changed(ObservableValue<? extends Designation> arg0,
-						Designation arg1, Designation arg2) {
-					parkModel.setDesignationProp2(arg2);
-				}	
-	        });
+	        lvDes2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+				parkModel.setDesignationProp2(newValue);
+			});
 	        
 	        lvDes2.itemsProperty().bindBidirectional(parkModel.lvDesignation2Property());
 	        
-	        lvState1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
-				@Override
-				public void changed(ObservableValue<? extends State> arg0,
-						State arg1, State arg2) {
-						parkModel.setStateProp(arg2);
-				}	
-	        });
+	        lvState1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+				parkModel.setStateProp(newValue);
+			});
 	        
 	        lvState1.itemsProperty().bindBidirectional(parkModel.lvState1Property());
 	        
-	        lvState2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<State>(){
-				@Override
-				public void changed(ObservableValue<? extends State> arg0,
-						State arg1, State arg2) {
-					parkModel.setStateProp2(arg2);
-				}	
-	        });
+	        lvState2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+				parkModel.setStateProp2(newValue);
+			});
 	        
 	        lvState2.itemsProperty().bindBidirectional(parkModel.lvState2Property());
 	        
