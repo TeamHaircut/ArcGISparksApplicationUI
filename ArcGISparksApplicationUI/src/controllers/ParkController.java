@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,11 +10,9 @@ import supportclasses.CustomMap;
 import supportclasses.ExplorerPane;
 import supportclasses.NPMap;
 
-import com.esri.arcgisruntime.data.ShapefileFeatureTable;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReference;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
-import com.esri.arcgisruntime.layers.FeatureLayer;
 import com.esri.arcgisruntime.loadable.LoadStatus;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.Graphic;
@@ -46,7 +43,7 @@ import entities.Site;
 import entities.State;
 
 public class ParkController {
-	private static final boolean INIT_BANNERS = false;//for testing only
+	private static final boolean INIT_BANNERS = true;//for testing only
 	
 	private CustomMap mapControl = CustomMap.getInstance();
 	
@@ -181,25 +178,6 @@ public class ParkController {
 					titledpane1.setExpanded(false);
 				}
 		    });
-		    
-//		      // create a shapefile feature table from the local file
-		      File shapefile = new File("C:\\Users\\RuthDan\\git\\ArcGISparksApplicationUI\\ArcGISparksApplicationUI\\nps_boundary.shp");
-		      ShapefileFeatureTable shapefileFeatureTable = new ShapefileFeatureTable(shapefile.getAbsolutePath());
-//
-//		      // use the shapefile feature table to create a feature layer
-		      FeatureLayer featureLayer = new FeatureLayer(shapefileFeatureTable);
-		      featureLayer.addDoneLoadingListener(() -> {
-		        if (featureLayer.getLoadStatus() == LoadStatus.LOADED) {
-		          // zoom to the area containing the layer's features
-		        	 mapControl.getMapView().setViewpointGeometryAsync(featureLayer.getFullExtent());
-		        } else {
-		          Alert alert = new Alert(Alert.AlertType.ERROR, featureLayer.getLoadError().getMessage());
-		          alert.show();
-		        }
-		      });
-
-		      // add the feature layer to the map
-		      mapControl.getMap().getOperationalLayers().add(featureLayer);
 		    
 		    ChangeListener<Site> listviewChangeListener = new ChangeListener<Site>() {
 		    	
