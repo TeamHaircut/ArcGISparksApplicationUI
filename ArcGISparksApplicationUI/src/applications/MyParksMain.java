@@ -1,5 +1,5 @@
 package applications;
-
+import com.esri.runtime.ArcGISRuntime;
 import java.io.IOException;
 
 import supportclasses.CustomMap;
@@ -15,6 +15,7 @@ import com.esri.arcgisruntime.geometry.Envelope;
 import com.esri.arcgisruntime.geometry.Point;
 import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.mapping.Viewpoint;
+import com.esri.runtime.ArcGISRuntime;
 
 import controllers.ParkController;
 
@@ -23,7 +24,7 @@ public class MyParksMain extends Application {
 
 	  @Override
 	  public void start(Stage stage) throws IOException {
-		      
+		  ArcGISRuntime.setClientID("sZaIn0lZBqK7jVvM");
 	      Pane view0 = FXMLLoader.load(getClass().getResource("/view0.fxml"));
 	      view0.setVisible(true);
 	      	      
