@@ -1,6 +1,6 @@
 # ArcGIS park database application
 ![alt text](https://github.com/TeamHaircut/ArcGISparksApplicationUI/blob/master/arcgis_pic0.png)
-<p align="center">Search the database for National Parks and National Park Units then explore result set<br><br></p>
+<p align="center">Search the database for National Parks and National Park Units then explore the result set<br><br></p>
 
 ![alt text](https://github.com/TeamHaircut/ArcGISparksApplicationUI/blob/master/arcgis_pic1.png)
 <p align="center">Filter results based on designation, state, and region<br><br></p>
