@@ -1,4 +1,4 @@
-# ArcGIS park database application
+# ArcGIS National Park database application
 ![alt text](https://github.com/TeamHaircut/ArcGISparksApplicationUI/blob/master/arcgis_pic0.png)
 <p align="center">Search the database for National Parks and National Park Units then explore the result set<br><br></p>
 
