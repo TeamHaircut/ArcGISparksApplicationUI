@@ -11,4 +11,4 @@
 ![alt text](https://github.com/TeamHaircut/ArcGISparksApplicationUI/blob/master/arcgis_pic3.png)
 <p align="center">Photo Gallery View<br><br></p>
 
-disclaimer: *project not affiliated with the National Park Service*
+<b>The arrowhead symbol is the official insignia and registered mark of the National Park Service. This project is in no way affiliated with the United States National Park Service.</b>
