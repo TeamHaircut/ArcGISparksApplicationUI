@@ -1,4 +1,7 @@
 # ArcGIS National Park database application
+<p><b>Video Demo</b></p>
+<p>https://youtu.be/4p5E9xw1Dhw</p>
+
 ![alt text](https://github.com/TeamHaircut/ArcGISparksApplicationUI/blob/master/arcgis_pic0.png)
 <p align="center">Search the database for National Parks and National Park Units then explore the result set<br><br></p>
 
